@@ -3,31 +3,42 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chapter 2 – Lesson 1: Alcohols, Ethers, Thiols, Ketones & Aldehydes (Revised)</title>
+<title>Chapter 2 – Lesson 1: Alcohols, Ethers, Thiols, Ketones & Aldehydes (Revised — Part 1)</title>
 <style>
+  :root{
+    --backbone:#136f63;
+    --oxygen:#174ea6;
+    --sulfur:#ffb100;
+    --arrow:#333;
+  }
+
   body { font-family: "Segoe UI", Arial, sans-serif; background: linear-gradient(135deg,#f3fbf8,#f6f9ff); margin:0; padding:30px 18px; color:#222; line-height:1.7; font-size:18px; }
   iframe, .video iframe, .simulation iframe { display: block; width:100%; max-width: 760px; height:420px; border:0; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); margin:12px auto; }
-  h1{color:#136f63;text-align:center;font-size:2em;margin-bottom:6px}
-  h2{color:#136f63;font-size:1.45em;margin-top:1.0em;margin-bottom:0.3em}
-  h3{color:#174ea6;font-size:1.05em;margin-top:0.7em}
-  .section{margin:20px auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 4px 18px rgba(0,0,0,0.05);}
+  h1{color:var(--backbone);text-align:center;font-size:2em;margin-bottom:6px}
+  h2{color:var(--backbone);font-size:1.45em;margin-top:1.0em;margin-bottom:0.3em}
+  h3{color:var(--oxygen);font-size:1.05em;margin-top:0.7em}
+  .section{margin:20px auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 4px 18px rgba(0,0,0,0.05);max-width:980px}
   ul{margin-left:28px} ol{margin-left:28px}
   .image{text-align:center;margin:14px 0}
   img{width:90%;max-width:720px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
   table{width:100%;border-collapse:collapse;margin-top:12px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,0.03)}
   th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
-  th{background:#f3f7ff;color:#174ea6}
-  .activity{background:#f9fbff;border-left:5px solid #136f63;border-radius:8px;padding:14px 16px;margin-top:14px}
-  .concept-box{background:#fff7e6;border-left:5px solid #ffb100;border-radius:8px;padding:12px 16px;margin-top:14px}
-  .toggle-btn{background:#136f63;color:white;border:none;border-radius:8px;padding:8px 14px;font-size:15px;font-weight:700;cursor:pointer;transition:0.18s;margin-top:10px}
+  th{background:#f3f7ff;color:var(--oxygen)}
+  .activity{background:#f9fbff;border-left:5px solid:var(--backbone);border-left:5px solid var(--backbone);border-radius:8px;padding:14px 16px;margin-top:14px}
+  .concept-box{background:#fff7e6;border-left:5px solid var(--sulfur);border-radius:8px;padding:12px 16px;margin-top:14px}
+  .toggle-btn{background:var(--backbone);color:white;border:none;border-radius:8px;padding:8px 14px;font-size:15px;font-weight:700;cursor:pointer;transition:0.18s;margin-top:10px}
   .toggle-btn:hover{background:#0f5b52;transform:translateY(-1px)}
   .answer{display:none;margin-top:10px;background:#eef3ff;border-radius:8px;padding:12px 14px}
-  .quiz-button{display:inline-block;background:#136f63;color:#fff;padding:12px 22px;border-radius:10px;border:none;font-weight:700;font-size:16px;cursor:pointer;transition:0.2s;margin-top:20px}
+  .quiz-button{display:inline-block;background:var(--backbone);color:#fff;padding:12px 22px;border-radius:10px;border:none;font-weight:700;font-size:16px;cursor:pointer;transition:0.2s;margin-top:20px}
   .quiz-button:hover{background:#0f5b52}
-  .key-terms{background:#f8fcff;border-radius:10px;border-left:5px solid #2b7de9;padding:12px 16px;margin-top:14px}
-  pre.code{background:#f4f7ff;padding:10px;border-radius:8px;overflow-x:auto;border-left:4px solid #2b7de9}
-  .reaction-scheme { background:#f7fbff;border-radius:8px;padding:10px;margin:10px 0;border:1px dashed #d8e9ff; font-family:monospace; white-space:pre-wrap;}
-  @media (max-width:720px){ body{font-size:16px;padding:18px 12px} iframe, .video iframe, .simulation iframe{height:300px} }
+  .key-terms{background:#f8fcff;border-radius:10px;border-left:5px solid var(--oxygen);padding:12px 16px;margin-top:14px}
+  pre.code{background:#f4f7ff;padding:10px;border-radius:8px;overflow-x:auto;border-left:4px solid var(--oxygen)}
+  /* reaction scheme styling — increased padding & breathing room, left-aligned SVG inside */
+  .reaction-scheme { background:#f7fbff;border-radius:8px;padding:20px;margin:20px 0;border:1px dashed #d8e9ff; font-family:monospace; white-space:pre-wrap; }
+  .reaction-scheme svg{ display:block; margin:0 0 6px 0; width:100%; max-width:480px; height:auto; }
+  /* force left alignment inside section */
+  .reaction-scheme .caption { font-size:14px; color:#333; margin-top:6px; }
+  @media (max-width:720px){ body{font-size:16px;padding:18px 12px} iframe, .video iframe, .simulation iframe{height:300px} .reaction-scheme svg{max-width:100%} }
 </style>
 </head>
 <body>
@@ -94,10 +105,12 @@ This lesson covers alcohols, ethers, thiols, aldehydes, and ketones. It includes
     <p><em>Hydrogen-bonding capability strongly influences boiling point and solubility.</em></p>
   </div>
 </div>
+
+<!-- VIDEO -->
 <div class="section">
-  <div class="video"> 
-    <h2 style="text-align: center">Aldehyde, Ketone and Carboxylic Acid:</h2>
-      <iframe src="https://www.youtube.com/embed/BbSxBOVjo28" title="Aldehyde, Ketone and Carboxylic Acid: Structure, Properties and Reactions" allowfullscreen></iframe>
+  <div class="video">
+    <h2 style="text-align: center">Aldehyde, Ketone and Carboxylic Acid: (Intro Video)</h2>
+    <iframe src="https://www.youtube.com/embed/BbSxBOVjo28" title="Aldehyde, Ketone and Carboxylic Acid: Structure, Properties and Reactions" allowfullscreen></iframe>
   </div>
 </div>
 
@@ -109,62 +122,209 @@ This lesson covers alcohols, ethers, thiols, aldehydes, and ketones. It includes
   <p><strong>Why it happens:</strong> Oxidation removes hydrogen (or adds oxygen). Primary alcohols have two H atoms on the carbon bearing −OH (an α-H), so they can be oxidized first to aldehydes and then further to acids.</p>
 
   <p><strong>Step 1 — Primary alcohol → Aldehyde (mild oxidant, e.g., PCC)</strong></p>
+
   <div class="reaction-scheme">
-CH₃CH₂CH₂OH  --[PCC]-->  CH₃CH₂CHO  +  2 H⁺ + 2 e⁻
+    <!-- SVG: Primary alcohol -> Aldehyde -->
+    <svg viewBox="0 0 560 110" role="img" aria-labelledby="svgOx1Title svgOx1Desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="svgOx1Title">Primary alcohol to aldehyde (PCC)</title>
+      <desc id="svgOx1Desc">CH3CH2CH2OH oxidized by PCC to CH3CH2CHO with an arrow and reagent label.</desc>
+
+      <!-- left molecule text -->
+      <text x="10" y="48" font-size="18" fill="var(--backbone)">CH₃CH₂CH₂OH</text>
+
+      <!-- arrow line -->
+      <defs>
+        <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="var(--arrow)"/>
+        </marker>
+      </defs>
+      <line x1="200" y1="45" x2="360" y2="45" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead)"/>
+      <!-- reagent label -->
+      <text x="230" y="30" font-size="13" fill="#333">[PCC]</text>
+
+      <!-- right molecule text -->
+      <text x="380" y="48" font-size="18" fill="var(--backbone)">CH₃CH₂CHO</text>
+
+      <!-- small electrons/protons caption -->
+      <text x="380" y="72" font-size="12" fill="#666">+ 2 H⁺ + 2 e⁻</text>
+    </svg>
+
+    <div class="caption">Primary alcohol oxidized by a mild reagent (PCC) to stop at the aldehyde stage.</div>
   </div>
-  <p><strong>Explanation:</strong> The reagent removes two hydrogens: one from the −OH (as a proton H⁺) and one from the carbon (as H⁻ equivalent). The C–O bond becomes C=O (carbonyl) forming an aldehyde. PCC is a mild oxidant that stops at the aldehyde stage (it does not further oxidize under these conditions).</p>
+
+  <p><strong>Explanation:</strong> The reagent removes two hydrogens: one from the −OH (as a proton H⁺) and one from the carbon (as an H-equivalent). The C–O bond is converted to a C=O (carbonyl), producing an aldehyde. PCC is a mild oxidant that generally stops at the aldehyde.</p>
 
   <p><strong>Step 2 — Aldehyde → Carboxylic acid (strong oxidant, e.g., KMnO₄)</strong></p>
+
   <div class="reaction-scheme">
-CH₃CH₂CHO  --[KMnO₄ / strong oxidant]-->  CH₃CH₂COOH
+    <!-- SVG: Aldehyde -> Carboxylic acid -->
+    <svg viewBox="0 0 560 120" role="img" aria-labelledby="svgOx2Title svgOx2Desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="svgOx2Title">Aldehyde to carboxylic acid (KMnO4)</title>
+      <desc id="svgOx2Desc">CH3CH2CHO oxidized by strong oxidant KMnO4 to CH3CH2COOH.</desc>
+
+      <!-- left molecule -->
+      <text x="10" y="52" font-size="18" fill="var(--backbone)">CH₃CH₂CHO</text>
+
+      <!-- arrow -->
+      <defs>
+        <marker id="arrowHead2" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="var(--arrow)"/>
+        </marker>
+      </defs>
+      <line x1="200" y1="50" x2="360" y2="50" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead2)"/>
+      <text x="230" y="34" font-size="13" fill="#333">[KMnO₄, strong oxidant]</text>
+
+      <!-- right molecule -->
+      <text x="380" y="52" font-size="18" fill="var(--backbone)">CH₃CH₂COOH</text>
+    </svg>
+
+    <div class="caption">Aldehydes can be further oxidized by strong oxidants (e.g., KMnO₄) to give carboxylic acids.</div>
   </div>
-  <p><strong>Explanation:</strong> The aldehyde (which has a hydrogen on the carbonyl carbon) is further oxidized: the carbonyl carbon gains an additional oxygen (or loses electrons) to form the carboxyl group −COOH. Strong oxidants supply the required oxygen or remove electrons to allow this transformation.</p>
+
+  <p><strong>Explanation:</strong> The aldehyde carbon (which still bears a hydrogen) is further oxidized: electron loss or oxygen addition converts the carbonyl to a carboxyl group (−COOH). Strong oxidants supply the necessary oxygen or remove electrons to permit this conversion.</p>
 
   <p><strong>Note for beginners:</strong> Secondary alcohols (R₂CHOH) convert to ketones (R₂C=O) because they lack the hydrogen on the carbonyl carbon required for further oxidation. Tertiary alcohols do not oxidize easily because there is no α-H to remove under normal conditions.</p>
 
+</div>
+
+<div class="section">
   <h3>B. Williamson Ether Synthesis (making ethers)</h3>
-  <p><strong>Why it works:</strong> You convert an alcohol to a stronger nucleophile (an alkoxide) then perform an SN2 substitution on a suitable alkyl halide to form an ether.</p>
+  <p><strong>Why it works:</strong> Convert an alcohol to an alkoxide (strong nucleophile) then perform an SN2 substitution on a primary alkyl halide to form an ether.</p>
 
   <p><strong>Step 1 — Formation of alkoxide</strong></p>
   <div class="reaction-scheme">
-ROH  +  NaH  -->  R O⁻ Na⁺  +  H₂(g)
-  </div>
-  <p><strong>Explanation:</strong> A strong base (like sodium hydride) deprotonates the alcohol to form an alkoxide ion (R−O⁻). This alkoxide is a good nucleophile because it carries a negative charge on oxygen.</p>
+    <!-- SVG: ROH + NaH -> R O(-) Na(+) + H2 -->
+    <svg viewBox="0 0 560 120" role="img" aria-labelledby="svgW1Title svgW1Desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="svgW1Title">Alkoxide formation</title>
+      <desc id="svgW1Desc">ROH deprotonated by NaH to form alkoxide and hydrogen gas.</desc>
 
-  <p><strong>Step 2 — SN2 nucleophilic substitution on primary alkyl halide</strong></p>
+      <text x="10" y="48" font-size="18" fill="var(--backbone)">ROH  +  NaH</text>
+
+      <defs>
+        <marker id="arrowHead3" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="var(--arrow)"/>
+        </marker>
+      </defs>
+      <line x1="230" y1="45" x2="370" y2="45" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead3)"/>
+      <text x="260" y="30" font-size="13" fill="#333">deprotonation</text>
+
+      <text x="380" y="48" font-size="18" fill="var(--backbone)">R O⁻ Na⁺  +  H₂(g)</text>
+    </svg>
+
+    <div class="caption">A strong base removes the proton from the alcohol producing an alkoxide nucleophile and hydrogen gas.</div>
+  </div>
+
+  <p><strong>Explanation:</strong> The alkoxide (R−O⁻) formed is a strong nucleophile ready to attack an alkyl halide in an SN2 reaction. Use primary alkyl halides for best yields.</p>
+
+  <p><strong>Step 2 — SN2 attack on alkyl halide (Williamson)</strong></p>
   <div class="reaction-scheme">
-R O⁻  +  R'−X  --SN2-->  R−O−R'  +  X⁻
-  </div>
-  <p><strong>Illustration explanation:</strong> The alkoxide back-side attacks the electrophilic carbon of the alkyl halide (preferably primary for good SN2), displacing the halide ion X⁻ and forming the ether R−O−R'. SN2 gives inversion of configuration at that carbon if it is chiral — useful point for stereochemistry.</p>
+    <!-- SVG: R O(-) + R'-X -> R-O-R' + X(-) -->
+    <svg viewBox="0 0 640 120" role="img" aria-labelledby="svgW2Title svgW2Desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="svgW2Title">Williamson ether synthesis (SN2)</title>
+      <desc id="svgW2Desc">Alkoxide attacks alkyl halide in an SN2 step to form an ether and halide ion.</desc>
 
+      <text x="10" y="40" font-size="18" fill="var(--backbone)">R O⁻  +  R'−X</text>
+
+      <defs>
+        <marker id="arrowHead4" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="var(--arrow)"/>
+        </marker>
+      </defs>
+      <line x1="240" y1="40" x2="420" y2="40" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead4)"/>
+      <text x="280" y="26" font-size="13" fill="#333">SN2 (back-side attack)</text>
+
+      <text x="430" y="40" font-size="18" fill="var(--backbone)">R−O−R'  +  X⁻</text>
+
+      <text x="430" y="64" font-size="12" fill="#666">(inversion at R' carbon if chiral)</text>
+    </svg>
+
+    <div class="caption">SN2 substitution between alkoxide and a primary alkyl halide yields an ether (R−O−R').</div>
+  </div>
+
+  <p><strong>Illustration explanation:</strong> The negatively charged oxygen performs a nucleophilic backside attack on the electrophilic carbon bearing the leaving group X (preferably primary), displacing X⁻ and forming the ether bond. SN2 proceeds with inversion of stereochemistry at the attacked carbon if it is chiral.</p>
+</div>
+
+<div class="section">
   <h3>C. Oxidation of Thiols → Disulfide (protein chemistry example)</h3>
   <p><strong>Why it matters:</strong> Two −SH groups on cysteine residues in proteins can be oxidized to form a covalent disulfide bond (—S—S—) that stabilizes tertiary and quaternary structures.</p>
 
-  <p><strong>Reaction (conceptual):</strong></p>
   <div class="reaction-scheme">
-2 R−SH  --[oxidant]-->  R−S−S−R  +  2 H⁺  +  2 e⁻
-  </div>
-  <p><strong>Explanation:</strong> The sulfur atoms lose electrons (are oxidized) and form a covalent bond connecting the two cysteine side chains. In cells, this process can be reversible (disulfide interchange) and is part of folding pathways and redox regulation.</p>
+    <!-- SVG: 2 R-SH -> R-S-S-R -->
+    <svg viewBox="0 0 640 120" role="img" aria-labelledby="svgTh1Title svgTh1Desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="svgTh1Title">Thiol oxidation to disulfide</title>
+      <desc id="svgTh1Desc">Two thiols oxidize to form a disulfide bond, with loss of protons and electrons.</desc>
 
+      <text x="10" y="45" font-size="18" fill="var(--backbone)">2 R−SH</text>
+
+      <defs>
+        <marker id="arrowHead5" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="var(--arrow)"/>
+        </marker>
+      </defs>
+      <line x1="210" y1="45" x2="370" y2="45" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead5)"/>
+      <text x="260" y="28" font-size="13" fill="#333">oxidant</text>
+
+      <text x="380" y="45" font-size="18" fill="var(--backbone)"><tspan fill="var(--backbone)">R−S−S−R</tspan></text>
+      <text x="380" y="65" font-size="12" fill="#666">+ 2 H⁺ + 2 e⁻</text>
+    </svg>
+
+    <div class="caption">Thiol groups oxidize to form disulfide bonds important for protein structure.</div>
+  </div>
+
+  <p><strong>Explanation:</strong> Sulfur atoms from two cysteine side chains form a covalent S–S bond while losing protons and electrons. Inside cells, enzymes and redox conditions modulate formation and breakage of disulfides (reversible), crucial for proper folding.</p>
+</div>
+
+<div class="section">
   <h3>D. Nucleophilic Addition to Carbonyls (basic idea)</h3>
-  <p><strong>Why carbonyls react:</strong> The carbonyl carbon is electron-poor (electrophilic) because oxygen pulls electron density away; nucleophiles can attack this carbon forming tetrahedral intermediates.</p>
+  <p><strong>Why carbonyls react:</strong> The carbonyl carbon is electrophilic because oxygen withdraws electron density; nucleophiles attack this carbon to form tetrahedral intermediates.</p>
 
   <p><strong>Step — Nucleophile attack & protonation:</strong></p>
   <div class="reaction-scheme">
-R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(−Nu)(−OH)−R'
+    <!-- SVG: R-C(=O)-R' + Nu- -> tetrahedral -> protonation -->
+    <svg viewBox="0 0 720 140" role="img" aria-labelledby="svgNA1Title svgNA1Desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="svgNA1Title">Nucleophilic addition to carbonyl</title>
+      <desc id="svgNA1Desc">Nucleophile attacks carbonyl carbon, forming oxyanion intermediate which upon protonation yields an alcohol addition product.</desc>
+
+      <!-- starting carbonyl -->
+      <text x="10" y="42" font-size="18" fill="var(--backbone)">R−C(=O)−R'</text>
+
+      <defs>
+        <marker id="arrowHead6" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+          <polygon points="0 0, 10 5, 0 10" fill="var(--arrow)"/>
+        </marker>
+      </defs>
+
+      <!-- nucleophile attack arrow -->
+      <line x1="200" y1="42" x2="340" y2="42" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead6)"/>
+      <text x="250" y="26" font-size="13" fill="#333">Nu⁻ attack</text>
+
+      <!-- intermediate -->
+      <text x="360" y="42" font-size="18" fill="var(--backbone)">R−C(−Nu)(−O⁻)−R'</text>
+
+      <!-- protonation arrow -->
+      <line x1="440" y1="42" x2="580" y2="42" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead6)"/>
+      <text x="480" y="26" font-size="13" fill="#333">H⁺ (workup)</text>
+
+      <!-- product -->
+      <text x="600" y="42" font-size="18" fill="var(--backbone)">R−C(−Nu)(−OH)−R'</text>
+    </svg>
+
+    <div class="caption">Nucleophile adds to carbonyl forming an oxyanion intermediate; protonation gives the addition product (often an alcohol derivative).</div>
   </div>
-  <p><strong>Explanation:</strong> The nucleophile (Nu⁻) attacks the carbonyl carbon, breaking the π bond and giving an oxyanion intermediate. Protonation of the oxyanion (by solvent or an acid workup) yields the alcohol product or other addition product depending on Nu. For example, addition of H⁻ (from LiAlH₄) gives an alcohol; addition of HCN yields cyanohydrins.</p>
+
+  <p><strong>Illustration explanation:</strong> A nucleophile attacks the electron-poor carbonyl carbon, forming a tetrahedral intermediate (anion on oxygen). Subsequent protonation (acid workup or solvent) yields an alcohol (or other addition product). Different nucleophiles produce different products (H⁻ → alcohol, CN⁻ → cyanohydrin, etc.).</p>
 </div>
 
 <!-- QUALITATIVE INDICATORS -->
 <div class="section">
   <h2>4. Qualitative Indicators</h2>
-  <p>These are conceptual chemical tests often discussed in textbooks to help identify functional groups conceptually — not instructions to perform experiments.</p>
+  <p>These conceptual tests are useful to recognize functional groups in theory (not a lab protocol):</p>
   <ul>
-    <li><strong>Tollens' concept (silver mirror):</strong> Aldehydes are oxidizable and can reduce Ag⁺ to Ag(0) in Tollens' reagent — ketones generally do not give this reaction.</li>
-    <li><strong>Fehling's concept:</strong> Aldehydes can reduce blue Cu²⁺ to red Cu₂O — useful to illustrate reducing sugars (open-chain aldehyde forms).</li>
-    <li><strong>Lucas concept:</strong> Reactivity with HCl/ZnCl₂ differentiates primary, secondary, and tertiary alcohols (tertiary reacts fastest due to carbocation stability in substitution).</li>
+    <li><strong>Tollens' concept (silver mirror):</strong> Aldehydes reduce Ag⁺ to Ag(0) producing a silver mirror; ketones generally do not unless α-hydroxy ketones or enolizable forms are present.</li>
+    <li><strong>Fehling's concept:</strong> Aldehydes reduce Cu²⁺ (blue) to Cu₂O (red precipitate) — useful in identifying reducing sugars in their open-chain form.</li>
+    <li><strong>Lucas concept:</strong> Alcohol reactivity with HCl/ZnCl₂ (Lucas reagent) gives tertiary alcohols fastest due to carbocation stability; primary alcohols react slowly.</li>
   </ul>
+
   <div class="concept-box">
     <strong>Reminder:</strong> These tests are included for conceptual recognition only. They involve reagents that must be handled by trained personnel in proper labs; do not attempt them outside a controlled laboratory environment.
   </div>
@@ -186,7 +346,7 @@ R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(�
     <div class="answer">
       <ol>
         <li><strong>Propan-1-ol</strong> (or 1-propanol)</li>
-        <li><strong>Butan-2-one</strong> (also called methyl ethyl ketone for CH₃COCH₂CH₃)</li>
+        <li><strong>Butan-2-one</strong> (CH₃COCH₂CH₃ = butan-2-one)</li>
         <li><strong>Ethanethiol</strong> (ethane-thiol)</li>
       </ol>
     </div>
@@ -205,7 +365,7 @@ R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(�
       <ol>
         <li><strong>Propanal (CH₃CH₂CHO)</strong> — aldehyde (PCC stops at aldehyde).</li>
         <li><strong>Ethyl methyl ether (CH₃CH₂OCH₃)</strong> — product of Williamson SN2.</li>
-        <li><strong>Disulfide bond (—S—S—)</strong> connects the two cysteine side chains (cystine).</li>
+        <li><strong>Disulfide bond (—S—S—)</strong> connecting the two cysteine side chains (cystine).</li>
       </ol>
     </div>
   </div>
@@ -215,7 +375,7 @@ R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(�
     <p>Explain briefly (2–3 sentences) why tertiary alcohols are resistant to oxidation under mild conditions.</p>
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
     <div class="answer">
-      <p>Tertiary alcohols lack an α-hydrogen on the carbon bearing the −OH group (no H on the carbon to be removed). Oxidation typically requires removal of that hydrogen; without it, oxidation requires C–C bond cleavage which needs much harsher conditions.</p>
+      <p>Tertiary alcohols lack an α-hydrogen on the carbon bearing the −OH group (no H to remove). Oxidation typically needs removal of that hydrogen; without it, oxidation must break C–C bonds which requires harsh conditions.</p>
     </div>
   </div>
 
@@ -227,6 +387,10 @@ R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(�
       <p><strong>Ethanol</strong> — because ethanol can form intermolecular hydrogen bonds (donates and accepts), while dimethyl ether cannot donate hydrogen bonds (only accept), resulting in weaker intermolecular attractions.</p>
     </div>
   </div>
+
+  <div class="concept-box">
+    <strong>Note about activities:</strong> Longer or interactive practice exercises will be provided inside the web app environment (drag-and-drop, structure identification and timed quizzes). This lesson contains short practice items suitable for reading and quick self-checks.
+  </div>
 </div>
 
 <!-- KEY TERMS -->
@@ -235,10 +399,10 @@ R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(�
   <div class="key-terms">
     <ul>
       <li><strong>Alcohol (−OH):</strong> polar, H-bonding; named with −ol suffix.</li>
-      <li><strong>Ether (R−O−R'): </strong> oxygen bridge between groups; named as alkoxyalkane or common names.</li>
+      <li><strong>Ether (R−O−R'):</strong> oxygen bridge between groups; named as alkoxyalkane or common names.</li>
       <li><strong>Thiol (−SH):</strong> sulfur analog of alcohol; forms disulfides.</li>
       <li><strong>Aldehyde (−CHO):</strong> terminal carbonyl; oxidizable to acids.</li>
-      <li><strong>Ketone (RC(=O)R'): </strong> internal carbonyl; forms by oxidation of secondary alcohols.</li>
+      <li><strong>Ketone (RC(=O)R'):</strong> internal carbonyl; forms by oxidation of secondary alcohols.</li>
       <li><strong>Williamson synthesis:</strong> formation of ethers via alkoxide SN2 on alkyl halide.</li>
     </ul>
   </div>
@@ -249,6 +413,7 @@ R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(�
   <button class="quiz-button" id="takeQuizBtn">Take Lesson 1 Quiz →</button>
 </div>
 
+<!-- SCRIPTS -->
 <script>
 function toggleAnswer(btn){
   const answer = btn.nextElementSibling;
@@ -256,9 +421,12 @@ function toggleAnswer(btn){
   answer.style.display = visible ? 'none' : 'block';
   btn.textContent = visible ? 'Show Answers' : 'Hide Answers';
 }
+
 document.getElementById('takeQuizBtn').addEventListener('click', () => {
   window.parent.postMessage({ type:'openQuiz', quiz:'chapter2_lesson1_quiz.html' }, '*');
 });
 </script>
+
 </body>
 </html>
+
