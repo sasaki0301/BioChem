@@ -13,11 +13,11 @@
   }
 
   body { font-family: "Segoe UI", Arial, sans-serif; background: linear-gradient(135deg,#f3fbf8,#f6f9ff); margin:0; padding:30px 18px; color:#222; line-height:1.7; font-size:18px; }
-  iframe, .video iframe, .simulation iframe { display: block; width:100%; max-width: 760px; height:420px; border:0; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); margin:12px auto; }
+  iframe, .video iframe, .simulation iframe { display: block; width:90%; max-width: 760px; height:420px; border:0; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); margin:12px auto; }
   h1{color:var(--backbone);text-align:center;font-size:2em;margin-bottom:6px}
   h2{color:var(--backbone);font-size:1.45em;margin-top:1.0em;margin-bottom:0.3em}
   h3{color:var(--oxygen);font-size:1.05em;margin-top:0.7em}
-  .section{margin:20px auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 4px 18px rgba(0,0,0,0.05);max-width:980px}
+  .section{margin:20px auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 4px 18px rgba(0,0,0,0.05);}
   ul{margin-left:28px} ol{margin-left:28px}
   .image{text-align:center;margin:14px 0}
   img{width:90%;max-width:720px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
@@ -34,10 +34,10 @@
   .key-terms{background:#f8fcff;border-radius:10px;border-left:5px solid var(--oxygen);padding:12px 16px;margin-top:14px}
   pre.code{background:#f4f7ff;padding:10px;border-radius:8px;overflow-x:auto;border-left:4px solid var(--oxygen)}
   /* reaction scheme styling — increased padding & breathing room, left-aligned SVG inside */
-  .reaction-scheme { background:#f7fbff;border-radius:8px;padding:20px;margin:20px 0;border:1px dashed #d8e9ff; font-family:monospace; white-space:pre-wrap; }
+  .reaction-scheme { background:#f7fbff;border-radius:8px;padding:10px;margin:20px 0;border:1px dashed #d8e9ff; font-family:monospace; white-space:pre-wrap; }
   .reaction-scheme svg{ display:block; margin:0 0 6px 0; width:100%; max-width:480px; height:auto; }
   /* force left alignment inside section */
-  .reaction-scheme .caption { font-size:14px; color:#333; margin-top:6px; }
+  .reaction-scheme .caption { font-size:20px; color:#333; margin-top:6px; }
   @media (max-width:720px){ body{font-size:16px;padding:18px 12px} iframe, .video iframe, .simulation iframe{height:300px} .reaction-scheme svg{max-width:100%} }
 </style>
 </head>
@@ -130,7 +130,7 @@ This lesson covers alcohols, ethers, thiols, aldehydes, and ketones. It includes
       <desc id="svgOx1Desc">CH3CH2CH2OH oxidized by PCC to CH3CH2CHO with an arrow and reagent label.</desc>
 
       <!-- left molecule text -->
-      <text x="10" y="48" font-size="18" fill="var(--backbone)">CH₃CH₂CH₂OH</text>
+      <text x="10" y="48" font-size="24" fill="var(--backbone)">CH₃CH₂CH₂OH</text>
 
       <!-- arrow line -->
       <defs>
@@ -140,10 +140,10 @@ This lesson covers alcohols, ethers, thiols, aldehydes, and ketones. It includes
       </defs>
       <line x1="200" y1="45" x2="360" y2="45" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead)"/>
       <!-- reagent label -->
-      <text x="230" y="30" font-size="13" fill="#333">[PCC]</text>
+      <text x="230" y="30" font-size="18" fill="#333">[PCC]</text>
 
       <!-- right molecule text -->
-      <text x="380" y="48" font-size="18" fill="var(--backbone)">CH₃CH₂CHO</text>
+      <text x="380" y="48" font-size="24" fill="var(--backbone)">CH₃CH₂CHO</text>
 
       <!-- small electrons/protons caption -->
       <text x="380" y="72" font-size="12" fill="#666">+ 2 H⁺ + 2 e⁻</text>
