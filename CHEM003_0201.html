@@ -1,450 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chapter 2 – Lesson 1: Alcohols, Ethers, Thiols, Ketones & Aldehydes</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chapter 2 – Lesson 1: Alcohols, Ethers, Thiols, Ketones & Aldehydes (Revised)</title>
 <style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
-    margin: 0;
-    padding: 30px 20px;
-    color: #222;
-    line-height: 1.7;
-    font-size: 18px;
-  }
-
-  iframe, .video iframe, .simulation iframe {
-    display: block,
-    width: 90%;
-    max-width: 760px;
-    height: 420px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 12px auto;
-  }
-
-  h1 { color: #136f63; text-align: center; font-size: 2em; margin-bottom: 6px; }
-  h2 { color: #136f63; font-size: 1.45em; margin-top: 1.0em; margin-bottom: 0.3em; }
-  h3 { color: #174ea6; font-size: 1.05em; margin-top: 0.7em; }
-
-  .section {
-    margin-bottom: 28px;
-    background: #fff;
-    border-radius: 14px;
-    padding: 24px 28px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-  }
-
-  ul { margin-left: 28px; }
-  ol { margin-left: 28px; }
-  .image { text-align: center; margin: 14px 0; }
-
-  img {
-    width: 90%;
-    max-width: 720px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 12px;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-  }
-
-  th, td {
-    text-align: left;
-    padding: 10px 12px;
-    border-bottom: 1px solid #eee;
-    vertical-align: top;
-  }
-
-  th { background: #f3f7ff; color: #174ea6; }
-
-  .activity {
-    background: #f9fbff;
-    border-left: 5px solid #136f63;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin-top: 14px;
-  }
-
-  .concept-box {
-    background: #fff7e6;
-    border-left: 5px solid #ffb100;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-top: 14px;
-  }
-
-  .toggle-btn {
-    background: #136f63;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.18s;
-    margin-top: 10px;
-  }
-  .toggle-btn:hover { background: #0f5b52; transform: translateY(-1px); }
-
-  .answer {
-    display: none;
-    margin-top: 10px;
-    background: #eef3ff;
-    border-radius: 8px;
-    padding: 12px 14px;
-  }
-
-  .quiz-button {
-    display: inline-block;
-    background-color: #136f63;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 20px;
-  }
-  .quiz-button:hover { background-color: #0f5b52; }
-
-  .key-terms {
-    background: #f8fcff;
-    border-radius: 10px;
-    border-left: 5px solid #2b7de9;
-    padding: 12px 16px;
-    margin-top: 14px;
-  }
-
-  pre.code {
-    background: #f4f7ff;
-    padding: 10px;
-    border-radius: 8px;
-    overflow-x: auto;
-    border-left: 4px solid #2b7de9;
-  }
-
-  @media (max-width: 720px) {
-    body { font-size: 16px; padding: 18px 12px; }
-    iframe, .video iframe, .simulation iframe { height: 300px; }
-  }
+  body { font-family: "Segoe UI", Arial, sans-serif; background: linear-gradient(135deg,#f3fbf8,#f6f9ff); margin:0; padding:30px 18px; color:#222; line-height:1.7; font-size:18px; }
+  iframe, .video iframe, .simulation iframe { width:100%; height:420px; border:0; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); margin:12px 0; }
+  h1{color:#136f63;text-align:center;font-size:2em;margin-bottom:6px}
+  h2{color:#136f63;font-size:1.45em;margin-top:1.0em;margin-bottom:0.3em}
+  h3{color:#174ea6;font-size:1.05em;margin-top:0.7em}
+  .section{margin:20px auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 4px 18px rgba(0,0,0,0.05);max-width:980px}
+  ul{margin-left:28px} ol{margin-left:28px}
+  .image{text-align:center;margin:14px 0}
+  img{width:90%;max-width:720px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+  table{width:100%;border-collapse:collapse;margin-top:12px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,0.03)}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
+  th{background:#f3f7ff;color:#174ea6}
+  .activity{background:#f9fbff;border-left:5px solid #136f63;border-radius:8px;padding:14px 16px;margin-top:14px}
+  .concept-box{background:#fff7e6;border-left:5px solid #ffb100;border-radius:8px;padding:12px 16px;margin-top:14px}
+  .toggle-btn{background:#136f63;color:white;border:none;border-radius:8px;padding:8px 14px;font-size:15px;font-weight:700;cursor:pointer;transition:0.18s;margin-top:10px}
+  .toggle-btn:hover{background:#0f5b52;transform:translateY(-1px)}
+  .answer{display:none;margin-top:10px;background:#eef3ff;border-radius:8px;padding:12px 14px}
+  .quiz-button{display:inline-block;background:#136f63;color:#fff;padding:12px 22px;border-radius:10px;border:none;font-weight:700;font-size:16px;cursor:pointer;transition:0.2s;margin-top:20px}
+  .quiz-button:hover{background:#0f5b52}
+  .key-terms{background:#f8fcff;border-radius:10px;border-left:5px solid #2b7de9;padding:12px 16px;margin-top:14px}
+  pre.code{background:#f4f7ff;padding:10px;border-radius:8px;overflow-x:auto;border-left:4px solid #2b7de9}
+  .reaction-scheme { background:#f7fbff;border-radius:8px;padding:10px;margin:10px 0;border:1px dashed #d8e9ff; font-family:monospace; white-space:pre-wrap;}
+  @media (max-width:720px){ body{font-size:16px;padding:18px 12px} iframe, .video iframe, .simulation iframe{height:300px} }
 </style>
 </head>
 <body>
 
 <h1>Lesson 1: Alcohols, Ethers, Thiols, Ketones & Aldehydes</h1>
-<p style="text-align:center; max-width:900px; margin: 0 auto;">
-This lesson covers functional groups derived from hydrocarbons: alcohols, ethers, thiols, aldehydes, and ketones. We’ll study their structure, naming, physical properties, common reactions, biological relevance, and worked practice problems.
+<p style="text-align:center;max-width:900px;margin:0 auto;">
+This lesson covers alcohols, ethers, thiols, aldehydes, and ketones. It includes clear step-by-step reaction explanations with small illustrated schemes after each step so beginners can follow the transformations and logic.
 </p>
 
-<!-- SECTION: OVERVIEW -->
+<!-- OVERVIEW -->
 <div class="section">
   <h2>Overview — What you will learn</h2>
   <ul>
-    <li>Structural formulas and identifying each functional group</li>
-    <li>Naming rules (IUPAC basics and simple common names)</li>
-    <li>Physical properties (polarity, boiling point, solubility)</li>
-    <li>Key reactions (oxidation of alcohols, ether formation, thiol oxidation, nucleophilic addition to carbonyls)</li>
-    <li>Biological examples and importance</li>
-    <li>Practice problems with step-by-step solutions</li>
+    <li>How to identify each functional group (structure & examples)</li>
+    <li>IUPAC naming basics and common names</li>
+    <li>Physical properties and biological relevance</li>
+    <li>Important reactions with step-by-step illustrations and explanations</li>
+    <li>Practice problems and short in-app activities</li>
   </ul>
 </div>
 
-<!-- SECTION: STRUCTURES & NAMING -->
+<!-- STRUCTURES & NAMING -->
 <div class="section">
   <h2>1. Structures & Nomenclature</h2>
   <table>
     <tr><th>Group</th><th>General Structure</th><th>Naming & Example</th></tr>
-    <tr>
-      <td><strong>Alcohol (hydroxyl)</strong></td>
-      <td>R−OH</td>
-      <td>
-        <strong>IUPAC:</strong> replace −e of alkane with −ol (e.g., ethanol).<br>
-        <strong>Common:</strong> methyl alcohol = methanol.<br>
-        <em>Example:</em> CH₃CH₂OH — ethanol.
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Ether</strong></td>
-      <td>R−O−R′</td>
-      <td>
-        <strong>IUPAC:</strong> name as alkoxyalkane (e.g., methoxyethane) or common: ethyl methyl ether.<br>
-        <em>Example:</em> CH₃−O−CH₂CH₃ — ethyl methyl ether.
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Thiol (sulfhydryl)</strong></td>
-      <td>R−SH</td>
-      <td>
-        <strong>IUPAC:</strong> suffix −thiol (e.g., ethanethiol).<br>
-        <em>Example:</em> CH₃CH₂SH — ethanethiol.
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Aldehyde</strong></td>
-      <td>R−CHO</td>
-      <td>
-        <strong>IUPAC:</strong> replace −e with −al (e.g., ethanal). Aldehydes have carbonyl at end of chain.<br>
-        <em>Example:</em> CH₃CHO — ethanal (acetaldehyde).
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Ketone</strong></td>
-      <td>R−C(=O)−R′</td>
-      <td>
-        <strong>IUPAC:</strong> replace −e with −one and number carbonyl position if needed (e.g., propanone = acetone).<br>
-        <em>Example:</em> CH₃COCH₃ — propanone (acetone).
-      </td>
-    </tr>
+    <tr><td><strong>Alcohol (hydroxyl)</strong></td><td>R−OH</td><td><strong>IUPAC:</strong> replace −e with −ol (ethanol). <em>Example:</em> CH₃CH₂OH — ethanol.</td></tr>
+    <tr><td><strong>Ether</strong></td><td>R−O−R′</td><td><strong>IUPAC:</strong> alkoxyalkane (methoxyethane); common: ethyl methyl ether. <em>Example:</em> CH₃OCH₂CH₃.</td></tr>
+    <tr><td><strong>Thiol (sulfhydryl)</strong></td><td>R−SH</td><td><strong>IUPAC:</strong> −thiol (ethanethiol). <em>Example:</em> CH₃CH₂SH.</td></tr>
+    <tr><td><strong>Aldehyde</strong></td><td>R−CHO</td><td><strong>IUPAC:</strong> −al (ethanal). Carbonyl is terminal. <em>Example:</em> CH₃CHO.</td></tr>
+    <tr><td><strong>Ketone</strong></td><td>R−C(=O)−R′</td><td><strong>IUPAC:</strong> −one (propanone). Carbonyl is internal. <em>Example:</em> CH₃COCH₃.</td></tr>
   </table>
 
   <div class="concept-box">
-    <strong>Quick recognition tips:</strong>
+    <strong>Recognition tips for beginners</strong>
     <ul>
-      <li>Aldehydes have the carbonyl (C=O) at the end and often react with mild oxidants.</li>
-      <li>Ketones have carbonyl within the chain — generally less easily oxidized than aldehydes.</li>
-      <li>Alcohols are polar and form hydrogen bonds; ethers are less polar and have lower boiling points than equivalent alcohols.</li>
-      <li>Thiol compounds are less polar, often have strong odors, and can form disulfide bonds (important in proteins).</li>
+      <li>If you see −OH attached to carbon → alcohol.</li>
+      <li>If you see C=O at the end of a chain → aldehyde; if internal → ketone.</li>
+      <li>Thiol is sulfur analog of alcohol (−SH) and often smells strong.</li>
     </ul>
   </div>
 </div>
 
-<!-- SECTION: PHYSICAL PROPERTIES -->
+<!-- PHYSICAL PROPERTIES -->
 <div class="section">
   <h2>2. Physical Properties & Biological Relevance</h2>
-  <p><strong>Polarity & hydrogen bonding:</strong></p>
+  <p><strong>How polarity and hydrogen bonding affect behavior:</strong></p>
   <ul>
-    <li>Alcohols (−OH): polar, form hydrogen bonds → higher boiling points and water solubility (short chains).</li>
-    <li>Ethers (R−O−R): do not form hydrogen bonds between themselves (no −OH proton) → lower b.p. than alcohols but can accept H-bonds from water.</li>
-    <li>Thiols (−SH): less polar than alcohols; weaker hydrogen bonding; distinctive odors (e.g., skunk smell molecules are thiols).</li>
-    <li>Aldehydes & ketones (C=O): polar; carbonyl oxygen accepts H-bonds from water, increasing solubility for small molecules.</li>
+    <li><strong>Alcohols:</strong> Polar, hydrogen-bond donors and acceptors → higher b.p. and good solubility for short chains.</li>
+    <li><strong>Ethers:</strong> Polar but cannot donate H-bonds; lower b.p. than comparable alcohols.</li>
+    <li><strong>Thiol:</strong> Less polar; weaker H-bonding; characteristic odors; can form disulfide bonds in proteins (important structurally).</li>
+    <li><strong>Aldehydes & Ketones:</strong> Carbonyl oxygen is polar and can accept H-bonds → small ones are water-soluble; carbonyl carbon is electrophilic (reactive).</li>
   </ul>
 
-  <h3>Biological examples</h3>
+  <h3>Examples:</h3>
   <ul>
-    <li><strong>Alcohol:</strong> Ethanol (fermentation); serine contains −OH in side chain.</li>
-    <li><strong>Ether:</strong> Ether linkages appear in some lipids and in lipid-linked sugars.</li>
-    <li><strong>Thiol:</strong> Cysteine side chain −SH forms disulfide bonds (—S—S—) in proteins, stabilizing tertiary/quaternary structure.</li>
-    <li><strong>Aldehyde & Ketone:</strong> Sugars contain carbonyl groups: glucose (aldehyde in open chain), fructose (ketone).</li>
+    <li><strong>Ethanol:</strong> used in fermentation and solvents; small alcohols are miscible with water.</li>
+    <li><strong>Acetone (propanone):</strong> small ketone used as solvent; miscible with water.</li>
+    <li><strong>Cysteine:</strong> contains −SH and forms disulfide bridges that stabilize proteins.</li>
   </ul>
 
   <div class="image">
     <img src="https://i.imgur.com/6y2tQ6K.png" alt="Alcohol and carbonyl structures">
-    <p><em>Compare hydrogen bonding capacity and shapes of these groups.</em></p>
+    <p><em>Hydrogen-bonding capability strongly influences boiling point and solubility.</em></p>
   </div>
 </div>
 
-<!-- SECTION: KEY REACTIONS & MECHANISMS -->
+<!-- REACTIONS: DETAILED -->
 <div class="section">
-  <h2>3. Important Reactions — Step by step</h2>
+  <h2>3. Important Reactions — Detailed steps with illustrations</h2>
 
-  <h3>A. Oxidation of Alcohols</h3>
-  <p><strong>Primary alcohol → aldehyde → carboxylic acid</strong><br>
-     <strong>Secondary alcohol → ketone</strong><br>
-     <strong>Tertiary alcohol → resists oxidation (under normal conditions)</strong></p>
+  <h3>A. Oxidation of Alcohols (Primary → Aldehyde → Carboxylic acid)</h3>
+  <p><strong>Why it happens:</strong> Oxidation removes hydrogen (or adds oxygen). Primary alcohols have two H atoms on the carbon bearing −OH (an α-H), so they can be oxidized first to aldehydes and then further to acids.</p>
 
-  <ol>
-    <li>Step 1 (Primary → Aldehyde): remove 2 H (one from −OH, one from α-C) using mild oxidant (e.g., PCC) → aldehyde.</li>
-    <li>Step 2 (Aldehyde → Carboxylic acid): further oxidation (strong oxidants like KMnO₄) adds oxygen to form −COOH.</li>
-  </ol>
-
-  <div class="concept-box">
-    <strong>Example (stepwise):</strong>
-    <pre class="code">CH₃CH₂OH  --[PCC]-->  CH₃CHO  --[KMnO₄]-->  CH₃COOH</pre>
-    <em>Note:</em> Secondary alcohols (R₂CHOH) oxidize to ketones (R₂C=O). Tertiary alcohols lack an α-H and generally do not oxidize under mild conditions.
+  <p><strong>Step 1 — Primary alcohol → Aldehyde (mild oxidant, e.g., PCC)</strong></p>
+  <div class="reaction-scheme">
+CH₃CH₂CH₂OH  --[PCC]-->  CH₃CH₂CHO  +  2 H⁺ + 2 e⁻
   </div>
+  <p><strong>Illustration explanation:</strong> The reagent removes two hydrogens: one from the −OH (as a proton H⁺) and one from the carbon (as H⁻ equivalent). The C–O bond becomes C=O (carbonyl) forming an aldehyde. PCC is a mild oxidant that stops at the aldehyde stage (it does not further oxidize under these conditions).</p>
 
-  <h3>B. Ether formation (Williamson ether synthesis)</h3>
-  <p>Step-by-step mechanism (simplified):</p>
-  <ol>
-    <li>Deprotonate an alcohol with a strong base (e.g., NaH or NaOH) → alkoxide (R−O⁻).</li>
-    <li>Alkoxide performs nucleophilic substitution (SN2) on a primary alkyl halide (R′−X) → R−O−R′ (ether) + X⁻.</li>
-  </ol>
-
-  <div class="concept-box">
-    <strong>Example:</strong>
-    <pre class="code">CH₃CH₂O⁻  +  CH₃Br  --->  CH₃CH₂OCH₃  +  Br⁻</pre>
-    <em>Tip:</em> SN2 works best with primary alkyl halides; secondary/tertiary lead to elimination or poor yields.
+  <p><strong>Step 2 — Aldehyde → Carboxylic acid (strong oxidant, e.g., KMnO₄)</strong></p>
+  <div class="reaction-scheme">
+CH₃CH₂CHO  --[KMnO₄ / strong oxidant]-->  CH₃CH₂COOH
   </div>
+  <p><strong>Illustration explanation:</strong> The aldehyde (which has a hydrogen on the carbonyl carbon) is further oxidized: the carbonyl carbon gains an additional oxygen (or loses electrons) to form the carboxyl group −COOH. Strong oxidants supply the required oxygen or remove electrons to allow this transformation.</p>
 
-  <h3>C. Oxidation of Thiols & Disulfide formation</h3>
-  <p>Two cysteine −SH groups can oxidize to form a disulfide bond (—S—S—), important in protein folding.</p>
-  <pre class="code">2 R−SH  --[oxidant]-->  R−S−S−R  +  2 H⁺ + 2 e⁻</pre>
+  <p><strong>Note for beginners:</strong> Secondary alcohols (R₂CHOH) convert to ketones (R₂C=O) because they lack the hydrogen on the carbonyl carbon required for further oxidation. Tertiary alcohols do not oxidize easily because there is no α-H to remove under normal conditions.</p>
 
-  <h3>D. Reactions of Carbonyls — Nucleophilic Addition</h3>
-  <p>Carbonyl carbon (C=O) is electrophilic. Nucleophiles (Nu⁻) can add to it:</p>
-  <ol>
-    <li>Nucleophile attacks C=O → tetrahedral intermediate.</li>
-    <li>Depending on reagents, the intermediate can be protonated to give alcohol derivatives (e.g., in addition of H⁻ or R−Li), or undergo condensation reactions.</li>
-  </ol>
+  <h3>B. Williamson Ether Synthesis (making ethers)</h3>
+  <p><strong>Why it works:</strong> You convert an alcohol to a stronger nucleophile (an alkoxide) then perform an SN2 substitution on a suitable alkyl halide to form an ether.</p>
 
-  <div class="activity">
-    <h3>Activity: Identify reaction type</h3>
-    <p>For each transformation below, name the reaction (oxidation, reduction, condensation, substitution, nucleophilic addition) and briefly explain:</p>
-    <ol>
-      <li>CH₃CH₂OH → CH₃CHO</li>
-      <li>R−OH + R′−X → R−O−R′ + X⁻</li>
-      <li>2 R−SH → R−S−S−R</li>
-    </ol>
-    <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answers</button>
-    <div class="answer">
-      <ul>
-        <li>1: Oxidation (primary alcohol → aldehyde)</li>
-        <li>2: Substitution (Williamson ether synthesis via alkoxide SN2) / condensation to form ether</li>
-        <li>3: Oxidation (thiol → disulfide)</li>
-      </ul>
-    </div>
+  <p><strong>Step 1 — Formation of alkoxide</strong></p>
+  <div class="reaction-scheme">
+ROH  +  NaH  -->  R O⁻ Na⁺  +  H₂(g)
   </div>
+  <p><strong>Illustration explanation:</strong> A strong base (like sodium hydride) deprotonates the alcohol to form an alkoxide ion (R−O⁻). This alkoxide is a good nucleophile because it carries a negative charge on oxygen.</p>
+
+  <p><strong>Step 2 — SN2 nucleophilic substitution on primary alkyl halide</strong></p>
+  <div class="reaction-scheme">
+R O⁻  +  R'−X  --SN2-->  R−O−R'  +  X⁻
+  </div>
+  <p><strong>Illustration explanation:</strong> The alkoxide back-side attacks the electrophilic carbon of the alkyl halide (preferably primary for good SN2), displacing the halide ion X⁻ and forming the ether R−O−R'. SN2 gives inversion of configuration at that carbon if it is chiral — useful point for stereochemistry.</p>
+
+  <h3>C. Oxidation of Thiols → Disulfide (protein chemistry example)</h3>
+  <p><strong>Why it matters:</strong> Two −SH groups on cysteine residues in proteins can be oxidized to form a covalent disulfide bond (—S—S—) that stabilizes tertiary and quaternary structures.</p>
+
+  <p><strong>Reaction (conceptual):</strong></p>
+  <div class="reaction-scheme">
+2 R−SH  --[oxidant]-->  R−S−S−R  +  2 H⁺  +  2 e⁻
+  </div>
+  <p><strong>Illustration explanation:</strong> The sulfur atoms lose electrons (are oxidized) and form a covalent bond connecting the two cysteine side chains. In cells, this process can be reversible (disulfide interchange) and is part of folding pathways and redox regulation.</p>
+
+  <h3>D. Nucleophilic Addition to Carbonyls (basic idea)</h3>
+  <p><strong>Why carbonyls react:</strong> The carbonyl carbon is electron-poor (electrophilic) because oxygen pulls electron density away; nucleophiles can attack this carbon forming tetrahedral intermediates.</p>
+
+  <p><strong>Step — Nucleophile attack & protonation:</strong></p>
+  <div class="reaction-scheme">
+R−C(=O)−R'  +  Nu⁻  -->  R−C(−Nu)(−O⁻)−R'  --[H⁺]-->  R−C(−Nu)(−OH)−R'
+  </div>
+  <p><strong>Illustration explanation:</strong> The nucleophile (Nu⁻) attacks the carbonyl carbon, breaking the π bond and giving an oxyanion intermediate. Protonation of the oxyanion (by solvent or an acid workup) yields the alcohol product or other addition product depending on Nu. For example, addition of H⁻ (from LiAlH₄) gives an alcohol; addition of HCN yields cyanohydrins.</p>
 </div>
 
-<!-- SECTION: DETECTION & LAB TESTS (SHORT) -->
+<!-- QUALITATIVE INDICATORS -->
 <div class="section">
-  <h2>4. Simple laboratory tests (qualitative)</h2>
-  <p>Useful to recognize functional groups in the lab (conceptual overview):</p>
+  <h2>4. Qualitative Indicators (conceptual tests)</h2>
+  <p>These are conceptual chemical tests often discussed in textbooks to help identify functional groups conceptually — not instructions to perform experiments.</p>
   <ul>
-    <li><strong>Tollen's test:</strong> aldehydes reduce Tollens' reagent (Ag⁺) to metallic silver (silver mirror) — ketones generally do not.</li>
-    <li><strong>Fehling's test:</strong> aldehydes reduce Cu²⁺ (blue) to Cu₂O (red precipitate) — useful for reducing sugars (open-chain aldehydes).</li>
-    <li><strong>Lucas test:</strong> differentiates primary, secondary, tertiary alcohols based on reactivity with HCl/ZnCl₂ (tertiary reacts fastest).</li>
+    <li><strong>Tollens' concept (silver mirror):</strong> Aldehydes are oxidizable and can reduce Ag⁺ to Ag(0) in Tollens' reagent — ketones generally do not give this reaction.</li>
+    <li><strong>Fehling's concept:</strong> Aldehydes can reduce blue Cu²⁺ to red Cu₂O — useful to illustrate reducing sugars (open-chain aldehyde forms).</li>
+    <li><strong>Lucas concept:</strong> Reactivity with HCl/ZnCl₂ differentiates primary, secondary, and tertiary alcohols (tertiary reacts fastest due to carbocation stability in substitution).</li>
   </ul>
   <div class="concept-box">
-    <strong>Safety note:</strong> These tests involve reagents that must be handled with care in a proper lab setting — conceptual understanding is sufficient for foundational biochemistry.
+    <strong>Reminder:</strong> These tests are included for conceptual recognition only. They involve reagents that must be handled by trained personnel in proper labs; do not attempt them outside a controlled laboratory environment.
   </div>
 </div>
 
-<!-- SECTION: PRACTICE PROBLEMS -->
+<!-- PRACTICE PROBLEMS -->
 <div class="section">
   <h2>5. Practice Problems (try first — answers hidden)</h2>
 
   <div class="activity">
-    <h3>Problem 1 — Naming</h3>
+    <h3>Problem 1 — Naming (IUPAC)</h3>
     <p>Give the IUPAC name for each compound:</p>
     <ol>
       <li>CH₃CH₂CH₂OH</li>
-      <li>CH₃−CO−CH₂CH₃</li>
+      <li>CH₃COCH₂CH₃</li>
       <li>CH₃CH₂−S−H</li>
     </ol>
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answers</button>
     <div class="answer">
       <ol>
-        <li>1-Propanol (or propan-1-ol)</li>
-        <li>Butan-2-one (commonly: methyl ethyl ketone) — actually CH₃COCH₂CH₃ = butan-2-one</li>
-        <li>Ethanethiol (or ethane-thiol)</li>
+        <li><strong>Propan-1-ol</strong> (or 1-propanol)</li>
+        <li><strong>Butan-2-one</strong> (also called methyl ethyl ketone for CH₃COCH₂CH₃)</li>
+        <li><strong>Ethanethiol</strong> (ethane-thiol)</li>
       </ol>
     </div>
   </div>
 
   <div class="activity">
     <h3>Problem 2 — Reaction prediction</h3>
-    <p>Predict major product:</p>
+    <p>Predict the major product for each:</p>
     <ol>
       <li>Oxidize primary alcohol CH₃CH₂CH₂OH with PCC.</li>
       <li>React sodium ethoxide (CH₃CH₂O⁻ Na⁺) with methyl bromide (CH₃Br).</li>
-      <li>Two cysteine residues in a protein exposed to an oxidizing environment — what bond forms?</li>
+      <li>Two cysteine residues in an oxidizing environment — what linkage forms?</li>
     </ol>
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answers</button>
     <div class="answer">
       <ol>
-        <li>PCC (mild oxidant) converts primary alcohol → aldehyde: CH₃CH₂CHO (propanal).</li>
-        <li>SN2 substitution gives an ether: CH₃CH₂OCH₃ (ethyl methyl ether).</li>
-        <li>Disulfide bond (—S—S—) between the two cysteine side chains (cystine formation).</li>
+        <li><strong>Propanal (CH₃CH₂CHO)</strong> — aldehyde (PCC stops at aldehyde).</li>
+        <li><strong>Ethyl methyl ether (CH₃CH₂OCH₃)</strong> — product of Williamson SN2.</li>
+        <li><strong>Disulfide bond (—S—S—)</strong> connects the two cysteine side chains (cystine).</li>
       </ol>
     </div>
   </div>
 
   <div class="activity">
-    <h3>Problem 3 — Mechanism sketch (step-by-step)</h3>
-    <p>Sketch the key steps (word description is fine) for the Williamson ether synthesis of ethyl methyl ether starting from ethanol.</p>
+    <h3>Problem 3 — Mechanistic reasoning (short)</h3>
+    <p>Explain briefly (2–3 sentences) why tertiary alcohols are resistant to oxidation under mild conditions.</p>
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
     <div class="answer">
-      <ol>
-        <li>Deprotonation: Ethanol + NaH → ethoxide ion (CH₃CH₂O⁻) + H₂.</li>
-        <li>Nucleophilic attack: CH₃CH₂O⁻ attacks CH₃Br (methyl bromide) in an SN2 step → CH₃CH₂OCH₃ + Br⁻.</li>
-        <li>Overall: formation of ethyl methyl ether via SN2 substitution.</li>
-      </ol>
+      <p>Tertiary alcohols lack an α-hydrogen on the carbon bearing the −OH group (no H on the carbon to be removed). Oxidation typically requires removal of that hydrogen; without it, oxidation requires C–C bond cleavage which needs much harsher conditions.</p>
     </div>
   </div>
 
   <div class="activity">
-    <h3>Problem 4 — Compare properties</h3>
-    <p>Which has higher boiling point: ethanol or dimethyl ether (CH₃OCH₃)? Explain briefly.</p>
+    <h3>Problem 4 — Compare boiling points</h3>
+    <p>Which has a higher boiling point: ethanol (CH₃CH₂OH) or dimethyl ether (CH₃OCH₃)? Explain briefly.</p>
     <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
     <div class="answer">
-      <p><strong>Ethanol</strong> has higher boiling point because it can form intermolecular hydrogen bonds (−OH groups), while dimethyl ether cannot donate H-bonds (only accept), leading to weaker intermolecular attraction.</p>
+      <p><strong>Ethanol</strong> — because ethanol can form intermolecular hydrogen bonds (donates and accepts), while dimethyl ether cannot donate hydrogen bonds (only accept), resulting in weaker intermolecular attractions.</p>
     </div>
   </div>
-</div>
 
-<!-- SECTION: EXTENDED EXERCISE -->
-<div class="section">
-  <h2>6. Extended Activity — Short worksheet (3 tasks)</h2>
-
-  <div class="activity">
-    <h3>Task A — Identify & Draw</h3>
-    <p>For the following names, draw the structural formula and identify the functional group(s):</p>
-    <ol>
-      <li>2-propanol</li>
-      <li>1,2-ethanedithiol</li>
-      <li>3-pentanone</li>
-    </ol>
-  </div>
-
-  <div class="activity">
-    <h3>Task B — Short answer</h3>
-    <p>Explain in 3–4 sentences why aldehydes are generally more reactive toward oxidation than ketones.</p>
-  </div>
-
-  <div class="activity">
-    <h3>Task C — Mini research</h3>
-    <p>Find one biological molecule that contains each of these groups and write a one-sentence explanation of its role: (a) hydroxyl, (b) thiol, (c) carbonyl (aldehyde/ketone), (d) ether (if applicable).</p>
+  <div class="concept-box">
+    <strong>Note about activities:</strong> Longer or interactive practice exercises will be provided inside the web app environment (drag-and-drop, structure identification and timed quizzes). This lesson contains short practice items suitable for reading and quick self-checks.
   </div>
 </div>
 
-<!-- SECTION: KEY TERMS -->
+<!-- KEY TERMS -->
 <div class="section">
-  <h2>7. Key Terms Summary</h2>
+  <h2>6. Key Terms Summary</h2>
   <div class="key-terms">
     <ul>
-      <li><strong>Alcohol (−OH):</strong> hydroxyl functional group; polar, H-bonding.</li>
-      <li><strong>Ether (R−O−R′):</strong> oxygen bridge between two alkyl/aryl groups; lower b.p. than alcohols.</li>
-      <li><strong>Thiol (−SH):</strong> sulfur analog of alcohol; can form disulfide bonds.</li>
-      <li><strong>Aldehyde (−CHO):</strong> carbonyl at chain end; easily oxidized.</li>
-      <li><strong>Ketone (R−CO−R′):</strong> carbonyl within chain; polar but less easily oxidized.</li>
-      <li><strong>Williamson synthesis:</strong> method to form ethers using alkoxides and alkyl halides (SN2).</li>
-      <li><strong>Oxidation:</strong> increase in oxidation state; in organic chemistry often loss of H or gain of O.</li>
+      <li><strong>Alcohol (−OH):</strong> polar, H-bonding; named with −ol suffix.</li>
+      <li><strong>Ether (R−O−R'): </strong> oxygen bridge between groups; named as alkoxyalkane or common names.</li>
+      <li><strong>Thiol (−SH):</strong> sulfur analog of alcohol; forms disulfides.</li>
+      <li><strong>Aldehyde (−CHO):</strong> terminal carbonyl; oxidizable to acids.</li>
+      <li><strong>Ketone (RC(=O)R'): </strong> internal carbonyl; forms by oxidation of secondary alcohols.</li>
+      <li><strong>Williamson synthesis:</strong> formation of ethers via alkoxide SN2 on alkyl halide.</li>
     </ul>
   </div>
 </div>
 
 <!-- QUIZ BUTTON -->
-<div style="text-align:center; margin-top:20px;">
+<div style="text-align:center;margin-top:18px">
   <button class="quiz-button" id="takeQuizBtn">Take Lesson 1 Quiz →</button>
 </div>
 
 <script>
-function toggleAnswer(btn) {
+function toggleAnswer(btn){
   const answer = btn.nextElementSibling;
-  const visible = answer.style.display === "block";
-  answer.style.display = visible ? "none" : "block";
-  btn.textContent = visible ? "Show Answer" : "Hide Answer";
+  const visible = answer.style.display === 'block';
+  answer.style.display = visible ? 'none' : 'block';
+  btn.textContent = visible ? 'Show Answers' : 'Hide Answers';
 }
-
-document.getElementById("takeQuizBtn").addEventListener("click", () => {
-  window.parent.postMessage({ type: "openQuiz", quiz: "chapter2_lesson1_quiz.html" }, "*");
+document.getElementById('takeQuizBtn').addEventListener('click', () => {
+  window.parent.postMessage({ type:'openQuiz', quiz:'chapter2_lesson1_quiz.html' }, '*');
 });
 </script>
-
 </body>
 </html>
