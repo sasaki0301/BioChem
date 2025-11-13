@@ -7,7 +7,7 @@
 <style>
   body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
     margin: 0;
     padding: 40px 20px;
     color: #222;
@@ -84,6 +84,7 @@
     font-size: 1.05em;
     transition: all 0.2s ease;
   }
+
   .choice:hover { background: #d3dbf8; transform: translateY(-2px); }
   .choice.selected { background: #174ea6; color: #fff; transform: scale(1.02); }
 
@@ -142,9 +143,24 @@
     cursor: pointer;
     transition: all 0.2s ease;
   }
+
   .quiz-btn:hover { background: #d3dbf8; transform: translateY(-2px); }
   .quiz-btn.primary { background: #136f63; color: #fff; }
   .quiz-btn.primary:hover { background: #0f5b52; }
+
+  svg {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+  }
+
+  .svg-caption {
+    font-size: 0.9em;
+    color: #444;
+    margin-bottom: 10px;
+  }
 
   @media (max-width: 600px) {
     .quiz-container { padding: 25px; }
@@ -155,81 +171,156 @@
 </head>
 
 <body>
-<div class="quiz-container">
-  <h2>Alcohols, Ethers, Thiols, Ketones & Aldehydes – Quiz</h2>
-  <div class="progress-text" id="progressText">Question 1 of 10</div>
-  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="quiz-container">
+    <h2>Lesson 1 Quiz — Alcohols, Ethers, Thiols, Ketones & Aldehydes</h2>
+    <div class="progress-text" id="progressText">Question 1 of 10</div>
+    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
 
-  <div id="quizBox"></div>
-  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
-</div>
+    <div id="quizBox"></div>
+    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  </div>
 
 <script>
 const quizData = [
   {
-    q: "1. Which functional group defines an alcohol?",
-    c: ["–SH", "–OH", "–COOH", "–CHO"],
+    q: "1. Which of the following functional groups contains a hydroxyl (-OH) group attached to a carbon atom?",
+    c: ["Alcohol", "Aldehyde", "Ether", "Ketone"],
+    a: 0,
+    e: "Alcohols have the functional group –OH bonded to a carbon atom."
+  },
+  {
+    q: "2. Which structure represents ethanol?",
+    svg: `
+      <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgEtOH">
+        <title id="svgEtOH">Structure of ethanol</title>
+        <desc>Ethanol molecule showing CH3-CH2-OH</desc>
+        <text x="50" y="50" font-size="22" fill="#136f63">CH₃–CH₂–OH</text>
+      </svg>
+      <div class='svg-caption'>Ethanol is a two-carbon alcohol with the formula CH₃CH₂OH.</div>
+    `,
+    c: ["CH₃CH₃", "CH₃CH₂OH", "CH₃OCH₃", "CH₃COCH₃"],
     a: 1,
-    e: "An alcohol contains a hydroxyl group (–OH) attached to a carbon atom."
+    e: "Ethanol (CH₃CH₂OH) is an alcohol with a hydroxyl group attached to the second carbon."
   },
   {
-    q: "2. What is the IUPAC name of CH₃CH₂OH?",
-    c: ["Methanol", "Ethanol", "Propanol", "Butanol"],
+    q: "3. What is the correct IUPAC name for CH₃CH₂CH₂OH?",
+    c: ["Propanol", "Methanol", "Butanol", "Ethanol"],
+    a: 0,
+    e: "The molecule has three carbons and an –OH group on carbon 1, making it propan-1-ol (or propanol)."
+  },
+  {
+    q: "4. What is the product when a primary alcohol is oxidized using PCC?",
+    svg: `
+      <svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgOx1">
+        <title id="svgOx1">Primary alcohol oxidation</title>
+        <desc>Primary alcohol CH₃CH₂CH₂OH oxidized to CH₃CH₂CHO using PCC.</desc>
+        <text x="10" y="55" font-size="18" fill="#136f63">CH₃CH₂CH₂OH</text>
+        <line x1="150" y1="50" x2="300" y2="50" stroke="#333" stroke-width="2" marker-end="url(#arrowOx1)"/>
+        <text x="190" y="35" font-size="14" fill="#333">[PCC]</text>
+        <text x="320" y="55" font-size="18" fill="#136f63">CH₃CH₂CHO</text>
+        <defs>
+          <marker id="arrowOx1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <polygon points="0 0, 10 5, 0 10" fill="#333"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class='svg-caption'>Primary alcohols oxidize to aldehydes with mild oxidants like PCC.</div>
+    `,
+    c: ["Carboxylic acid", "Aldehyde", "Ketone", "Ether"],
     a: 1,
-    e: "CH₃CH₂OH is ethanol, a two-carbon alcohol."
+    e: "PCC is a mild oxidizing agent that stops at the aldehyde stage when oxidizing primary alcohols."
   },
   {
-    q: "3. Which compound is classified as an ether?",
-    c: ["CH₃CH₂OH", "CH₃OCH₂CH₃", "CH₃SH", "CH₃CHO"],
+    q: "5. What is the name of the reaction where an alkoxide reacts with an alkyl halide to form an ether?",
+    svg: `
+      <svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgWMS">
+        <title id="svgWMS">Williamson Ether Synthesis</title>
+        <desc>Alkoxide reacting with alkyl halide to form an ether.</desc>
+        <text x="10" y="55" font-size="18" fill="#136f63">R–O⁻ + R′–X</text>
+        <line x1="140" y1="50" x2="300" y2="50" stroke="#333" stroke-width="2" marker-end="url(#arrowW1)"/>
+        <text x="180" y="35" font-size="14" fill="#333">SN2</text>
+        <text x="320" y="55" font-size="18" fill="#136f63">R–O–R′ + X⁻</text>
+        <defs>
+          <marker id="arrowW1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <polygon points="0 0, 10 5, 0 10" fill="#333"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class='svg-caption'>In Williamson Ether Synthesis, an alkoxide ion reacts with a primary alkyl halide via SN2 mechanism to form an ether.</div>
+    `,
+    c: ["Esterification", "Williamson Ether Synthesis", "Dehydration", "Hydrogenation"],
     a: 1,
-    e: "CH₃OCH₂CH₃ has an oxygen linking two carbon chains — that’s the ether functional group."
+    e: "Williamson Ether Synthesis forms ethers from an alkoxide and an alkyl halide using SN2 substitution."
   },
   {
-    q: "4. What is the product of oxidizing a primary alcohol with PCC?",
-    c: ["Ketone", "Carboxylic acid", "Aldehyde", "No reaction"],
-    a: 2,
-    e: "Mild oxidation (e.g., PCC) converts primary alcohols to aldehydes, not further to acids."
-  },
-  {
-    q: "5. Which of the following best describes the Williamson ether synthesis?",
-    c: [
-      "A dehydration between two alcohols forming an ether",
-      "Reaction of an alkoxide ion with an alkyl halide (SN2)",
-      "Direct combination of alkyl halides with water",
-      "Reaction of a thiol with halides"
-    ],
+    q: "6. What is produced when two thiol (R–SH) groups are oxidized?",
+    svg: `
+      <svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgThiol">
+        <title id="svgThiol">Thiol oxidation to disulfide</title>
+        <desc>Two R-SH molecules oxidize to form R-S-S-R (disulfide).</desc>
+        <text x="10" y="50" font-size="18" fill="#136f63">2 R–SH</text>
+        <line x1="150" y1="45" x2="300" y2="45" stroke="#333" stroke-width="2" marker-end="url(#arrowTh)"/>
+        <text x="190" y="30" font-size="13" fill="#333">oxidant</text>
+        <text x="320" y="50" font-size="18" fill="#136f63">R–S–S–R</text>
+        <defs>
+          <marker id="arrowTh" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <polygon points="0 0, 10 5, 0 10" fill="#333"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class='svg-caption'>Two thiols can be oxidized to form a disulfide bond (—S—S—), crucial in protein structure.</div>
+    `,
+    c: ["Ether", "Disulfide", "Ester", "Alcohol"],
     a: 1,
-    e: "Williamson ether synthesis uses an alkoxide nucleophile reacting with an alkyl halide via SN2 substitution."
+    e: "Two thiol groups oxidize to form a disulfide bond (R–S–S–R)."
   },
   {
-    q: "6. What happens when two thiol groups (R–SH) are oxidized?",
-    c: ["They form an ether bond", "They form a disulfide bond", "They form an ester", "They are reduced to alcohols"],
-    a: 1,
-    e: "Two thiols oxidize to form a disulfide linkage (R–S–S–R), important in protein structure."
-  },
-  {
-    q: "7. Which compound is an aldehyde?",
+    q: "7. Which of the following is an aldehyde?",
     c: ["CH₃CH₂OH", "CH₃COCH₃", "CH₃CHO", "CH₃SH"],
     a: 2,
-    e: "CH₃CHO (ethanal) is an aldehyde because it has a terminal –CHO carbonyl group."
+    e: "CH₃CHO (ethanal) is an aldehyde because it has a terminal carbonyl (–CHO)."
   },
   {
-    q: "8. Why do alcohols generally have higher boiling points than ethers?",
-    c: ["Because ethers are nonpolar", "Because alcohols form hydrogen bonds", "Because ethers contain sulfur", "Because alcohols are ionic"],
-    a: 1,
-    e: "Alcohols can both donate and accept hydrogen bonds, greatly increasing intermolecular forces and boiling point."
+    q: "8. What happens when a nucleophile (Nu⁻) attacks a carbonyl (C=O)?",
+    svg: `
+      <svg viewBox="0 0 720 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgCarbonyl">
+        <title id="svgCarbonyl">Nucleophilic addition to a carbonyl</title>
+        <desc>Nucleophile attacks carbonyl carbon, forming oxyanion intermediate then protonation yields an alcohol-type product.</desc>
+        <text x="10" y="48" font-size="18" fill="#136f63">R–C(=O)–R'</text>
+        <line x1="200" y1="45" x2="340" y2="45" stroke="#333" stroke-width="2" marker-end="url(#arrowNA)"/>
+        <text x="240" y="30" font-size="13" fill="#333">Nu⁻ attack</text>
+        <text x="360" y="48" font-size="18" fill="#136f63">R–C(−Nu)(−O⁻)–R'</text>
+        <line x1="440" y1="45" x2="580" y2="45" stroke="#333" stroke-width="2" marker-end="url(#arrowNA)"/>
+        <text x="480" y="30" font-size="13" fill="#333">H⁺ (workup)</text>
+        <text x="600" y="48" font-size="18" fill="#136f63">R–C(−Nu)(−OH)–R'</text>
+        <defs>
+          <marker id="arrowNA" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <polygon points="0 0, 10 5, 0 10" fill="#333"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class='svg-caption'>Nucleophiles add to carbonyl carbons to form tetrahedral intermediates that are protonated to give addition products.</div>
+    `,
+    c: [
+      "The carbonyl oxygen becomes a better electrophile",
+      "The carbonyl carbon is reduced to form an alkane",
+      "A tetrahedral intermediate (oxyanion) forms which upon protonation yields an alcohol addition product",
+      "The carbonyl disappears and forms a double bond elsewhere"
+    ],
+    a: 2,
+    e: "Nucleophilic addition to a carbonyl gives a tetrahedral oxyanion intermediate that, after protonation, yields an alcohol or related addition product."
   },
   {
-    q: "9. The oxidation of a secondary alcohol produces:",
+    q: "9. Oxidation of a secondary alcohol yields which product?",
     c: ["Aldehyde", "Ketone", "Carboxylic acid", "No reaction"],
     a: 1,
-    e: "Secondary alcohols oxidize to ketones — they lack the hydrogen required for aldehyde formation."
+    e: "Secondary alcohols are oxidized to ketones because the carbon bearing the −OH lacks the hydrogen needed to form an aldehyde."
   },
   {
-    q: "10. In biological systems, disulfide bonds (–S–S–) are important because:",
-    c: ["They store energy like ATP", "They stabilize protein structure", "They act as enzymes", "They make sugars soluble"],
-    a: 1,
-    e: "Disulfide bonds between cysteine residues help stabilize protein tertiary and quaternary structures."
+    q: "10. Why are disulfide bonds (—S—S—) important in proteins?",
+    c: ["They act as catalysts", "They store genetic information", "They stabilize tertiary/quaternary structures", "They transport electrons like NADH"],
+    a: 2,
+    e: "Disulfide bonds between cysteine residues help stabilize the three-dimensional folding (tertiary/quaternary) of proteins."
   }
 ];
 
@@ -242,11 +333,15 @@ const progressBar = document.getElementById("progressBar");
 function showQuestion() {
   const q = quizData[current];
   updateProgress();
-  quizBox.innerHTML = `
+  // render SVG (if provided) then question
+  let html = "";
+  if (q.svg) html += q.svg;
+  html += `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
     <div class='explanation' id='explanationBox'></div>
   `;
+  quizBox.innerHTML = html;
   const choicesContainer = quizBox.querySelector(".choices");
   q.c.forEach((choice, i) => {
     const btn = document.createElement("button");
@@ -258,6 +353,8 @@ function showQuestion() {
   nextBtn.style.display = "none";
   selected = null;
   showingExplanation = false;
+  // scroll to top of quiz (helpful in iframes)
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function selectChoice(i) {
@@ -326,6 +423,7 @@ function retryQuiz() {
   showQuestion();
 }
 
+// start
 showQuestion();
 </script>
 </body>
