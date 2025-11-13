@@ -190,14 +190,6 @@ const quizData = [
   },
   {
     q: "2. Which structure represents ethanol?",
-    svg: `
-      <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgEtOH">
-        <title id="svgEtOH">Structure of ethanol</title>
-        <desc>Ethanol molecule showing CH3-CH2-OH</desc>
-        <text x="50" y="50" font-size="22" fill="#136f63">CH₃–CH₂–OH</text>
-      </svg>
-      <div class='svg-caption'>Ethanol is a two-carbon alcohol with the formula CH₃CH₂OH.</div>
-    `,
     c: ["CH₃CH₃", "CH₃CH₂OH", "CH₃OCH₃", "CH₃COCH₃"],
     a: 1,
     e: "Ethanol (CH₃CH₂OH) is an alcohol with a hydroxyl group attached to the second carbon."
@@ -224,7 +216,6 @@ const quizData = [
           </marker>
         </defs>
       </svg>
-      <div class='svg-caption'>Primary alcohols oxidize to aldehydes with mild oxidants like PCC.</div>
     `,
     c: ["Carboxylic acid", "Aldehyde", "Ketone", "Ether"],
     a: 1,
@@ -246,7 +237,6 @@ const quizData = [
           </marker>
         </defs>
       </svg>
-      <div class='svg-caption'>In Williamson Ether Synthesis, an alkoxide ion reacts with a primary alkyl halide via SN2 mechanism to form an ether.</div>
     `,
     c: ["Esterification", "Williamson Ether Synthesis", "Dehydration", "Hydrogenation"],
     a: 1,
@@ -268,7 +258,6 @@ const quizData = [
           </marker>
         </defs>
       </svg>
-      <div class='svg-caption'>Two thiols can be oxidized to form a disulfide bond (—S—S—), crucial in protein structure.</div>
     `,
     c: ["Ether", "Disulfide", "Ester", "Alcohol"],
     a: 1,
@@ -282,25 +271,6 @@ const quizData = [
   },
   {
     q: "8. What happens when a nucleophile (Nu⁻) attacks a carbonyl (C=O)?",
-    svg: `
-      <svg viewBox="0 0 720 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgCarbonyl">
-        <title id="svgCarbonyl">Nucleophilic addition to a carbonyl</title>
-        <desc>Nucleophile attacks carbonyl carbon, forming oxyanion intermediate then protonation yields an alcohol-type product.</desc>
-        <text x="10" y="48" font-size="18" fill="#136f63">R–C(=O)–R'</text>
-        <line x1="200" y1="45" x2="340" y2="45" stroke="#333" stroke-width="2" marker-end="url(#arrowNA)"/>
-        <text x="240" y="30" font-size="13" fill="#333">Nu⁻ attack</text>
-        <text x="360" y="48" font-size="18" fill="#136f63">R–C(−Nu)(−O⁻)–R'</text>
-        <line x1="440" y1="45" x2="580" y2="45" stroke="#333" stroke-width="2" marker-end="url(#arrowNA)"/>
-        <text x="480" y="30" font-size="13" fill="#333">H⁺ (workup)</text>
-        <text x="600" y="48" font-size="18" fill="#136f63">R–C(−Nu)(−OH)–R'</text>
-        <defs>
-          <marker id="arrowNA" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-            <polygon points="0 0, 10 5, 0 10" fill="#333"/>
-          </marker>
-        </defs>
-      </svg>
-      <div class='svg-caption'>Nucleophiles add to carbonyl carbons to form tetrahedral intermediates that are protonated to give addition products.</div>
-    `,
     c: [
       "The carbonyl oxygen becomes a better electrophile",
       "The carbonyl carbon is reduced to form an alkane",
