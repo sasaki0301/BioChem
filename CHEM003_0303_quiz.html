@@ -60,13 +60,20 @@ h2 { color: #136f63; margin-bottom: 20px; }
 
 .choice {
   background: #e8ecf8;
-  padding: 14px;
-  border-radius: 10px;
-  margin-bottom: 10px;
   border: none;
+  border-radius: 10px;
+  padding: 14px 18px;
   cursor: pointer;
   text-align: left;
-  transition: 0.2s;
+  font-size: 1.05em;
+  transition: all 0.2s ease;
+}
+
+  .choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
 }
 
 .choice:hover { background: #d3dbf8; }
@@ -295,17 +302,21 @@ const quizBox = document.getElementById("quizBox");
 const nextBtn = document.getElementById("nextBtn");
 
 function showQuestion() {
-const q = quizData[current];
-quizBox.innerHTML = `
-${q.svg ? q.svg : ""}
-<div class="question">${q.q}</div>
-${q.c.map((choice,i)=>`<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join("")}
-<div class="explanation" id="exp"></div>
-`;
-nextBtn.style.display = "none";
+  const q = quizData[current];
 
-document.getElementById("progressText").innerText = `Question ${current+1} of ${quizData.length}`;
-document.getElementById("progressBar").style.width = `${(current/quizData.length)*100}%`;
+  quizBox.innerHTML = `
+    ${q.svg ? q.svg : ""}
+    <div class="question">${q.q}</div>
+    <div class="choices">
+      ${q.c.map((choice,i)=>`<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join("")}
+    </div>
+    <div class="explanation" id="exp"></div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  document.getElementById("progressText").innerText = `Question ${current+1} of ${quizData.length}`;
+  document.getElementById("progressBar").style.width = `${(current/quizData.length)*100}%`;
 }
 
 function selectChoice(i){
