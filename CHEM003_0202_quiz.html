@@ -73,6 +73,16 @@ h2 { color:#136f63; text-align:center; }
   cursor:pointer;
 }
 
+.choice.correct {
+  background:#2e7d32;
+  color:#fff;
+}
+
+.choice.wrong {
+  background:#c62828;
+  color:#fff;
+}
+
 .result { text-align:center; font-size:1.3em; margin-top:20px; }
 .stars { font-size:2em; }
 </style>
@@ -215,6 +225,9 @@ const q=quizData[current];
 const exp=document.getElementById("exp");
 const correct=i===q.a;
 
+if(index === q.a) btn.classList.add("correct");
+if(index === i && !correct) btn.classList.add("wrong");
+  
 if(correct) score++;
 
 exp.innerHTML=(correct?"✅ Correct! ":"❌ Incorrect. ")+q.e;
