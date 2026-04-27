@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapter 3 – Lesson 2 Quiz: Monosaccharides and Cyclization</title>
+
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .quiz-container {
+    background: #fff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    width: 95%;
+    max-width: 850px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  h2 {
+    color: #136f63;
+    margin-bottom: 20px;
+  }
+
+  .progress-text {
+    text-align: right;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 10px;
+  }
+
+  .progress-wrapper {
+    height: 14px;
+    background: #e9f5ef;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    border-radius: 8px;
+    transition: width 0.4s ease;
+  }
+
+  .question {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .choice {
+    background: #e8ecf8;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    border: none;
+    transition: 0.2s;
+    font-size: 1em;
+  }
+
+  .choice:hover {
+    background: #d3dbf8;
+    transform: translateY(-1px);
+  }
+
+  .choice.selected {
+    background: #174ea6;
+    color: #fff;
+  }
+
+  .choice.correct {
+    background: #2e7d32;
+    color: #fff;
+  }
+
+  .choice.wrong {
+    background: #c62828;
+    color: #fff;
+  }
+
+  .explanation {
+    display: none;
+    margin-top: 15px;
+    padding: 12px 14px;
+    background: #eef3ff;
+    border-radius: 10px;
+    text-align: left;
+  }
+
+  .next-btn {
+    margin-top: 20px;
+    padding: 12px 26px;
+    border-radius: 10px;
+    border: none;
+    background: #136f63;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .next-btn:hover {
+    background: #0f5b52;
+  }
+
+  .diagram-box {
+    background: #f7fbff;
+    border: 1px dashed #d8e9ff;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 12px 0 18px;
+  }
+
+  svg {
+    width: 100%;
+    max-width: 620px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .diagram-caption {
+    font-size: 0.92em;
+    color: #444;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .stars {
+    font-size: 2.5em;
+  }
+
+  .result {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .quiz-nav {
+    margin-top: 20px;
+  }
+
+  .quiz-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #e8ecf8;
+    color: #174ea6;
+  }
+
+  .quiz-btn.primary {
+    background: #136f63;
+    color: white;
+  }
+
+  @media (max-width: 600px) {
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.08em; }
+    .stars { font-size: 2em; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+  <h2>Monosaccharides and Cyclization – Quiz</h2>
+
+  <div class="progress-text" id="progressText"></div>
+  <div class="progress-wrapper">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+  {
+    q: "1. Why do monosaccharides such as glucose mostly exist in cyclic form in aqueous solution?",
+    c: [
+      "Because carbon-carbon bonds are unstable in water",
+      "Because an internal hydroxyl group can react with the carbonyl group",
+      "Because water removes all hydroxyl groups",
+      "Because cyclic sugars have no oxygen atoms"
+    ],
+    a: 1,
+    e: "Cyclization occurs when a hydroxyl group within the same molecule reacts with the carbonyl carbon, forming a ring."
+  },
+  {
+    q: "2. In sugar cyclization, what group usually attacks the carbonyl carbon?",
+    c: [
+      "A hydroxyl group from the same molecule",
+      "A phosphate group from ATP",
+      "A nitrogen atom from an amino acid",
+      "A chloride ion from solution"
+    ],
+    a: 0,
+    e: "Cyclization is intramolecular: one of the sugar's own −OH groups attacks its carbonyl carbon."
+  },
+  {
+    q: "3. Diagram Question: What process is represented below?",
+    svg: `
+      <div class="diagram-box">
+        <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="q3title q3desc">
+          <title id="q3title">Open chain sugar becoming ring sugar</title>
+          <desc id="q3desc">Open chain monosaccharide converts into cyclic form.</desc>
+          <text x="50" y="120" font-size="30" fill="#136f63">Open-chain sugar</text>
+          <line x1="330" y1="110" x2="570" y2="110" stroke="#333" stroke-width="4" marker-end="url(#arrowq3)" />
+          <text x="385" y="82" font-size="22" fill="#333">ring formation</text>
+          <text x="620" y="120" font-size="30" fill="#136f63">Cyclic sugar</text>
+          <defs>
+            <marker id="arrowq3" markerWidth="22" markerHeight="22" refX="11" refY="11" orient="auto">
+              <polygon points="0 0, 22 11, 0 22" fill="#333"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="diagram-caption">Open-chain monosaccharide ⇌ cyclic monosaccharide</div>
+      </div>
+    `,
+    c: [
+      "Hydrolysis",
+      "Cyclization",
+      "Peptide bond formation",
+      "Esterification"
+    ],
+    a: 1,
+    e: "The diagram shows cyclization, where an open-chain monosaccharide forms a ring structure."
+  },
+  {
+    q: "4. What is the anomeric carbon?",
+    c: [
+      "The carbon farthest from the oxygen atom",
+      "The carbon that becomes a new chiral center after ring formation",
+      "The carbon that is always removed during hydrolysis",
+      "The carbon attached only to hydrogen atoms"
+    ],
+    a: 1,
+    e: "The anomeric carbon is the former carbonyl carbon that becomes a new stereocenter when the ring forms."
+  },
+  {
+    q: "5. The alpha (α) and beta (β) forms of glucose differ mainly in:",
+    c: [
+      "The number of carbon atoms",
+      "The position of the OH group on the anomeric carbon",
+      "The presence or absence of oxygen",
+      "The total molecular formula"
+    ],
+    a: 1,
+    e: "Alpha and beta anomers differ in the orientation of the hydroxyl group on the anomeric carbon."
+  },
+  {
+    q: "6. Diagram Question: In the simplified diagram below, what feature determines whether the sugar is α or β?",
+    svg: `
+      <div class="diagram-box">
+        <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="q6title q6desc">
+          <title id="q6title">Alpha and beta anomer comparison</title>
+          <desc id="q6desc">Two ring sugars differ by the position of OH on the anomeric carbon.</desc>
+
+          <polygon points="110,130 165,70 245,95 245,165 165,190" fill="none" stroke="#136f63" stroke-width="5"/>
+          <text x="250" y="100" font-size="24" fill="#174ea6">O</text>
+          <text x="150" y="225" font-size="24" fill="#333">α-form</text>
+          <text x="250" y="170" font-size="24" fill="#c62828">OH ↓</text>
+
+          <line x1="430" y1="130" x2="500" y2="130" stroke="#333" stroke-width="4" marker-end="url(#arrowq6)" />
+
+          <polygon points="590,130 645,70 725,95 725,165 645,190" fill="none" stroke="#136f63" stroke-width="5"/>
+          <text x="730" y="100" font-size="24" fill="#174ea6">O</text>
+          <text x="630" y="225" font-size="24" fill="#333">β-form</text>
+          <text x="730" y="170" font-size="24" fill="#2e7d32">OH ↑</text>
+
+          <defs>
+            <marker id="arrowq6" markerWidth="22" markerHeight="22" refX="11" refY="11" orient="auto">
+              <polygon points="0 0, 22 11, 0 22" fill="#333"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="diagram-caption">Simplified anomer comparison: orientation of OH at the anomeric carbon changes.</div>
+      </div>
+    `,
+    c: [
+      "The position of the OH group on the anomeric carbon",
+      "The number of oxygen atoms in the ring",
+      "The length of the carbon chain only",
+      "The presence of nitrogen"
+    ],
+    a: 0,
+    e: "The α/β distinction depends on the orientation of the OH group on the anomeric carbon."
+  },
+  {
+    q: "7. What is mutarotation?",
+    c: [
+      "The conversion of glucose into amino acids",
+      "The change in optical rotation as α and β anomers interconvert",
+      "The breakdown of polysaccharides into amino acids",
+      "The formation of peptide bonds"
+    ],
+    a: 1,
+    e: "Mutarotation occurs because α and β sugar forms interconvert through the open-chain form, changing optical rotation over time."
+  },
+  {
+    q: "8. Which statement best explains why starch and cellulose have different properties even though both are made of glucose?",
+    c: [
+      "Starch has nitrogen while cellulose does not",
+      "Starch contains α-glucose linkages while cellulose contains β-glucose linkages",
+      "Cellulose contains no oxygen atoms",
+      "Starch is made of fructose, not glucose"
+    ],
+    a: 1,
+    e: "Starch is built from α-glucose linkages, while cellulose uses β-glucose linkages, giving different shapes and functions."
+  },
+  {
+    q: "9. A six-membered sugar ring is commonly called a:",
+    c: [
+      "Furanose",
+      "Pyranose",
+      "Triacylglycerol",
+      "Peptide"
+    ],
+    a: 1,
+    e: "A six-membered sugar ring is called a pyranose."
+  },
+  {
+    q: "10. A five-membered sugar ring is commonly called a:",
+    c: [
+      "Pyranose",
+      "Furanose",
+      "Aldehyde",
+      "Carboxylate"
+    ],
+    a: 1,
+    e: "A five-membered sugar ring is called a furanose."
+  },
+  {
+    q: "11. Diagram Question: Which label best fits the diagram below?",
+    svg: `
+      <div class="diagram-box">
+        <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="q11title q11desc">
+          <title id="q11title">Six membered sugar ring</title>
+          <desc id="q11desc">A simplified six-membered ring containing oxygen.</desc>
+          <polygon points="250,130 320,60 430,90 470,170 360,220 260,190" fill="none" stroke="#136f63" stroke-width="6"/>
+          <text x="430" y="95" font-size="30" fill="#174ea6">O</text>
+          <text x="210" y="250" font-size="22" fill="#444">6-membered sugar ring</text>
+        </svg>
+      </div>
+    `,
+    c: [
+      "Furanose",
+      "Pyranose",
+      "Amide",
+      "Ketone only"
+    ],
+    a: 1,
+    e: "A six-membered sugar ring is called a pyranose."
+  },
+  {
+    q: "12. Which feature allows a sugar to be a reducing sugar?",
+    c: [
+      "A free anomeric carbon that can open to a carbonyl form",
+      "The complete absence of hydroxyl groups",
+      "A peptide bond",
+      "A long hydrocarbon chain"
+    ],
+    a: 0,
+    e: "A sugar is reducing if it has a free anomeric carbon that can open into a reactive carbonyl form."
+  },
+  {
+    q: "13. Why is sucrose non-reducing?",
+    c: [
+      "It contains no carbon atoms",
+      "Both anomeric carbons are involved in the glycosidic bond",
+      "It is made only of amino acids",
+      "It contains no oxygen atoms"
+    ],
+    a: 1,
+    e: "Sucrose is non-reducing because both anomeric carbons are locked in the glycosidic bond."
+  },
+  {
+    q: "14. Which situation best describes cyclization of glucose?",
+    c: [
+      "A hydroxyl group attacks the aldehyde carbonyl, forming a hemiacetal ring",
+      "An amine attacks a carboxylic acid, forming an amide",
+      "Two fatty acids join glycerol",
+      "Water breaks a peptide bond"
+    ],
+    a: 0,
+    e: "Glucose cyclizes when an internal hydroxyl group attacks the aldehyde carbonyl, forming a hemiacetal ring."
+  },
+  {
+    q: "15. Why is cyclization biologically important?",
+    c: [
+      "It removes all hydroxyl groups from sugar",
+      "It creates specific 3D shapes that enzymes can recognize",
+      "It converts sugar into protein",
+      "It prevents all chemical reactions"
+    ],
+    a: 1,
+    e: "Cyclization gives sugars specific three-dimensional forms, allowing enzymes to distinguish and process them."
+  }
+];
+
+let current = 0;
+let score = 0;
+let showing = false;
+
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+
+  let html = "";
+  if (q.svg) html += q.svg;
+
+  html += `
+    <div class="question">${q.q}</div>
+    <div class="choices">
+      ${q.c.map((choice,i)=>`<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join("")}
+    </div>
+    <div class="explanation" id="exp"></div>
+  `;
+
+  quizBox.innerHTML = html;
+  nextBtn.style.display = "none";
+  showing = false;
+
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+  progressBar.style.width = `${(current / quizData.length) * 100}%`;
+}
+
+function selectChoice(i) {
+  if (showing) return;
+
+  const q = quizData[current];
+  const exp = document.getElementById("exp");
+
+  document.querySelectorAll(".choice").forEach((btn, idx)=>{
+    btn.disabled = true;
+
+    if (idx === q.a) btn.classList.add("correct");
+    if (idx === i && idx !== q.a) btn.classList.add("wrong");
+    if (idx === i) btn.classList.add("selected");
+  });
+
+  if (i === q.a) score++;
+
+  exp.innerHTML = `<strong>${i===q.a ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  exp.style.display = "block";
+
+  nextBtn.style.display = "inline-block";
+  showing = true;
+}
+
+nextBtn.onclick = () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+};
+
+function getStars(p){
+  if(p === 100) return "⭐️⭐️⭐️";
+  if(p >= 90) return "⭐️⭐️☆";
+  if(p >= 80) return "⭐️☆☆";
+  return "☆☆☆";
+}
+
+function showResult(){
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class="stars">${getStars(percent)}</div>
+    <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+    <div class="quiz-nav">
+      <button class="quiz-btn" id="backBtn">⬅ Back</button>
+      <button class="quiz-btn" onclick="location.reload()">🔁 Retry</button>
+      <button class="quiz-btn primary" id="nextLessonBtn" ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+    </div>
+  `;
+
+  progressBar.style.width = "100%";
+  progressText.textContent = "Completed";
+  nextBtn.style.display = "none";
+
+  window.parent.postMessage({
+    type: "quizResult",
+    score: percent,
+    passed: passed
+  }, "*");
+
+  document.getElementById("backBtn").addEventListener("click", () => {
+    window.parent.postMessage({ type: "quizBack" }, "*");
+  });
+
+  document.getElementById("nextLessonBtn").addEventListener("click", () => {
+    if (passed) {
+      window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    }
+  });
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
