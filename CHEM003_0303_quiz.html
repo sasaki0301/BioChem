@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chapter 3 – Lesson 3 Quiz: Disaccharides and Polysaccharides</title>
+
+<style>
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.quiz-container {
+  background: #fff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  width: 95%;
+  max-width: 850px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+h2 { color: #136f63; margin-bottom: 20px; }
+
+.progress-text {
+  text-align: right;
+  font-weight: 600;
+  color: #174ea6;
+  margin-bottom: 10px;
+}
+
+.progress-wrapper {
+  height: 14px;
+  background: #e9f5ef;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #136f63, #2b7de9);
+}
+
+.question {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #174ea6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.choice {
+  background: #e8ecf8;
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.choice:hover { background: #d3dbf8; }
+
+.choice.correct { background: #2e7d32; color:#fff; }
+.choice.wrong { background: #c62828; color:#fff; }
+
+.explanation {
+  display: none;
+  margin-top: 10px;
+  padding: 12px;
+  background: #eef3ff;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.next-btn {
+  margin-top: 20px;
+  padding: 12px 26px;
+  border-radius: 10px;
+  border: none;
+  background: #136f63;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.diagram-box {
+  margin: 12px 0 20px;
+  background: #f7fbff;
+  border: 1px dashed #d8e9ff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+svg {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: block;
+}
+
+.stars { font-size: 2.5em; }
+.result { font-size: 1.3em; font-weight: bold; }
+
+.quiz-btn {
+  margin: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.quiz-btn.primary {
+  background: #136f63;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+<h2>Disaccharides and Polysaccharides – Quiz</h2>
+
+<div class="progress-text" id="progressText"></div>
+<div class="progress-wrapper">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div id="quizBox"></div>
+<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+
+{
+q: "1. What type of reaction forms a glycosidic bond?",
+c: ["Oxidation", "Condensation", "Reduction", "Neutralization"],
+a: 1,
+e: "Glycosidic bonds form via condensation (dehydration synthesis) releasing water."
+},
+
+{
+q: "2. Which of the following disaccharides is non-reducing?",
+c: ["Maltose", "Lactose", "Sucrose", "Cellobiose"],
+a: 2,
+e: "Sucrose is non-reducing because both anomeric carbons are involved in the bond."
+},
+
+{
+q: "3. Diagram Question: What type of bond is shown?",
+svg: `
+<div class="diagram-box">
+<svg viewBox="0 0 500 200">
+<circle cx="150" cy="100" r="40" stroke="#136f63" stroke-width="4" fill="none"/>
+<circle cx="300" cy="100" r="40" stroke="#136f63" stroke-width="4" fill="none"/>
+<line x1="190" y1="100" x2="260" y2="100" stroke="#174ea6" stroke-width="5"/>
+</svg>
+</div>`,
+c: ["Peptide bond", "Hydrogen bond", "Glycosidic bond", "Ionic bond"],
+a: 2,
+e: "The bond linking two sugar rings is a glycosidic bond."
+},
+
+{
+q: "4. Which disaccharide is composed of glucose + fructose?",
+c: ["Maltose", "Sucrose", "Lactose", "Cellulose"],
+a: 1,
+e: "Sucrose = glucose + fructose."
+},
+
+{
+q: "5. Why is glycogen highly branched?",
+c: [
+"To reduce solubility",
+"To allow rapid glucose release",
+"To increase rigidity",
+"To prevent digestion"
+],
+a: 1,
+e: "Branching creates many ends for enzyme activity, enabling rapid glucose release."
+},
+
+{
+q: "6. Diagram Question: Identify the polysaccharide type",
+svg: `
+<div class="diagram-box">
+<svg viewBox="0 0 600 200">
+<circle cx="100" cy="100" r="30" stroke="#136f63" stroke-width="4" fill="none"/>
+<circle cx="200" cy="100" r="30" stroke="#136f63" stroke-width="4" fill="none"/>
+<circle cx="300" cy="100" r="30" stroke="#136f63" stroke-width="4" fill="none"/>
+<line x1="130" y1="100" x2="170" y2="100" stroke="#174ea6" stroke-width="4"/>
+<line x1="230" y1="100" x2="270" y2="100" stroke="#174ea6" stroke-width="4"/>
+<line x1="200" y1="100" x2="200" y2="50" stroke="#174ea6" stroke-width="4"/>
+</svg>
+</div>`,
+c: ["Cellulose", "Amylose", "Glycogen", "Chitin"],
+a: 2,
+e: "The branching pattern indicates glycogen."
+},
+
+{
+q: "7. Which polysaccharide is used for energy storage in plants?",
+c: ["Cellulose", "Glycogen", "Starch", "Chitin"],
+a: 2,
+e: "Starch is the primary storage polysaccharide in plants."
+},
+
+{
+q: "8. Why can't humans digest cellulose?",
+c: [
+"It contains no glucose",
+"It has β-glycosidic bonds",
+"It lacks oxygen",
+"It is too small"
+],
+a: 1,
+e: "Humans lack enzymes to break β-glycosidic bonds in cellulose."
+},
+
+{
+q: "9. Which disaccharide is found in milk?",
+c: ["Sucrose", "Maltose", "Lactose", "Fructose"],
+a: 2,
+e: "Lactose is the sugar found in milk."
+},
+
+{
+q: "10. What reaction breaks a glycosidic bond?",
+c: ["Condensation", "Hydrolysis", "Oxidation", "Reduction"],
+a: 1,
+e: "Hydrolysis uses water to break glycosidic bonds."
+},
+
+{
+q: "11. Which polysaccharide is structural in plants?",
+c: ["Starch", "Glycogen", "Cellulose", "Amylose"],
+a: 2,
+e: "Cellulose provides structural support in plant cell walls."
+},
+
+{
+q: "12. Why is sucrose not a reducing sugar?",
+c: [
+"It has no oxygen",
+"It has no hydroxyl groups",
+"Both anomeric carbons are bonded",
+"It is not a carbohydrate"
+],
+a: 2,
+e: "Both anomeric carbons are locked in the glycosidic bond."
+},
+
+{
+q: "13. Which molecule is released during condensation?",
+c: ["CO₂", "O₂", "H₂O", "NH₃"],
+a: 2,
+e: "Water is released in condensation reactions."
+},
+
+{
+q: "14. Which polysaccharide is found in animal liver?",
+c: ["Cellulose", "Starch", "Glycogen", "Chitin"],
+a: 2,
+e: "Glycogen is stored in liver and muscle cells."
+},
+
+{
+q: "15. Why do polysaccharides have different functions?",
+c: [
+"They contain different atoms",
+"They have different glycosidic bonds and structures",
+"They have no glucose",
+"They cannot react"
+],
+a: 1,
+e: "Structure and bond type determine function."
+}
+
+];
+
+let current = 0, score = 0;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+
+function showQuestion() {
+const q = quizData[current];
+quizBox.innerHTML = `
+${q.svg ? q.svg : ""}
+<div class="question">${q.q}</div>
+${q.c.map((choice,i)=>`<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join("")}
+<div class="explanation" id="exp"></div>
+`;
+nextBtn.style.display = "none";
+
+document.getElementById("progressText").innerText = `Question ${current+1} of ${quizData.length}`;
+document.getElementById("progressBar").style.width = `${(current/quizData.length)*100}%`;
+}
+
+function selectChoice(i){
+const q = quizData[current];
+const choices = document.querySelectorAll(".choice");
+const exp = document.getElementById("exp");
+
+choices.forEach((btn,idx)=>{
+btn.disabled = true;
+if(idx===q.a) btn.classList.add("correct");
+if(idx===i && idx!==q.a) btn.classList.add("wrong");
+});
+
+if(i===q.a) score++;
+
+exp.innerHTML = `<strong>${i===q.a?"✅ Correct":"❌ Incorrect"}</strong><br>${q.e}`;
+exp.style.display = "block";
+
+nextBtn.style.display = "inline-block";
+}
+
+nextBtn.onclick = () => {
+current++;
+if(current < quizData.length) showQuestion();
+else showResult();
+};
+
+function showResult(){
+const percent = Math.round((score/quizData.length)*100);
+quizBox.innerHTML = `
+<div class="stars">${percent>=90?"⭐️⭐️⭐️":percent>=80?"⭐️⭐️☆":"⭐️☆☆"}</div>
+<div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+<div>
+<button class="quiz-btn" onclick="location.reload()">Retry</button>
+<button class="quiz-btn primary" onclick="window.parent.postMessage({type:'quizNextLesson'},'*')">Next Lesson</button>
+</div>
+`;
+nextBtn.style.display="none";
+
+window.parent.postMessage({
+type:"quizResult",
+score:percent,
+passed: percent>=80
+},"*");
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
