@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3 Quiz: Interconversion and Reactions</title>
+
+<style>
+body {
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:linear-gradient(135deg,#e8f9f1,#f7faff);
+  margin:0;
+  padding:40px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+.quiz-container {
+  background:#fff;
+  padding:40px;
+  border-radius:18px;
+  width:95%;
+  max-width:850px;
+  box-shadow:0 8px 28px rgba(0,0,0,0.08);
+}
+
+h2 { text-align:center; color:#136f63; }
+
+.progress-wrapper {
+  background:#e9f5ef;
+  height:12px;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+
+.progress-bar {
+  height:100%;
+  width:0%;
+  background:#136f63;
+  border-radius:8px;
+}
+
+.question {
+  font-size:1.25em;
+  color:#174ea6;
+  margin-bottom:15px;
+}
+
+.choice {
+  display:block;
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:none;
+  border-radius:8px;
+  background:#e8ecf8;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.choice:hover { background:#d3dbf8; }
+.choice.selected { background:#174ea6; color:#fff; }
+.choice.correct { background:#2e7d32; color:#fff; }
+.choice.wrong { background:#c62828; color:#fff; }
+
+.explanation {
+  display:none;
+  background:#eef3ff;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+}
+
+.next-btn {
+  margin-top:15px;
+  padding:10px 20px;
+  background:#136f63;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.result { text-align:center; font-size:1.3em; margin-top:20px; }
+.stars { font-size:2em; margin-bottom:10px; }
+
+svg {
+  width:100%;
+  max-width:500px;
+  margin:10px auto;
+  display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+<h2>Lesson 3 Quiz</h2>
+<div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+<div id="quizBox"></div>
+<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+
+{
+q:"1. What type of reaction converts an alcohol into an aldehyde?",
+c:["Reduction","Oxidation","Condensation","Hydrolysis"],
+a:1,
+e:"Alcohol → aldehyde involves loss of hydrogen (oxidation)."
+},
+
+{
+q:"2. Which sequence correctly represents increasing oxidation?",
+c:["Acid → Aldehyde → Alcohol","Alcohol → Aldehyde → Acid","Aldehyde → Alcohol → Acid","Alcohol → Acid → Aldehyde"],
+a:1,
+e:"Alcohol oxidizes to aldehyde, then further to carboxylic acid."
+},
+
+{
+q:"3. Why can't tertiary alcohols be oxidized easily?",
+c:["Too reactive","Too stable","No alpha hydrogen","Too small"],
+a:2,
+e:"They lack the hydrogen needed for oxidation."
+},
+
+{
+q:"4. Which reaction requires water as a reactant?",
+c:["Condensation","Oxidation","Hydrolysis","Reduction"],
+a:2,
+e:"Hydrolysis uses water to break bonds."
+},
+
+{
+q:"5. What is formed when an ester undergoes hydrolysis?",
+c:["Alcohol + Acid","Amine + Acid","Alcohol + Amine","Acid + Amide"],
+a:0,
+e:"Hydrolysis breaks ester into alcohol and acid."
+},
+
+{
+q:"6. Which reaction forms an amide?",
+c:["Hydrolysis","Oxidation","Condensation","Reduction"],
+a:2,
+e:"Amide forms via condensation of acid and amine."
+},
+
+{
+q:"7. What type of bond is formed in amide formation?",
+c:["Ionic","Hydrogen","Peptide","Metallic"],
+a:2,
+e:"Peptide bond is a type of amide linkage."
+},
+
+{
+q:"8. Which process breaks peptide bonds?",
+c:["Condensation","Hydrolysis","Reduction","Oxidation"],
+a:1,
+e:"Water breaks peptide bonds via hydrolysis."
+},
+
+{
+q:"9. Which reaction produces water as a product?",
+c:["Hydrolysis","Condensation","Reduction","Neutralization"],
+a:1,
+e:"Condensation reactions release water."
+},
+
+{
+q:"10. What is the product of reducing an aldehyde?",
+c:["Alcohol","Acid","Ester","Amide"],
+a:0,
+e:"Reduction adds hydrogen, forming alcohol."
+},
+
+{
+q:"11. Diagram Question:",
+c:["Alcohol → Acid","Alcohol → Aldehyde → Acid","Acid → Alcohol","Aldehyde → Alcohol"],
+a:1,
+e:"This is the oxidation pathway sequence."
+},
+
+{
+q:"12. Which compound is most oxidized?",
+c:["Alcohol","Aldehyde","Carboxylic acid","Amine"],
+a:2,
+e:"Carboxylic acids are the most oxidized form here."
+},
+
+{
+q:"13. Why is hydrolysis important in digestion?",
+c:["Builds molecules","Breaks molecules","Adds oxygen","Removes nitrogen"],
+a:1,
+e:"Hydrolysis breaks large biomolecules into smaller units."
+},
+
+{
+q:"14. Which transformation involves gain of hydrogen?",
+c:["Oxidation","Reduction","Condensation","Hydrolysis"],
+a:1,
+e:"Reduction adds hydrogen."
+},
+
+{
+q:"15. What is the major difference between condensation and hydrolysis?",
+c:["Energy","Water direction","Temperature","Catalyst"],
+a:1,
+e:"Condensation removes water, hydrolysis adds water."
+}
+
+];
+
+let current=0, score=0;
+
+function loadQuestion(){
+const q=quizData[current];
+
+let diagram = "";
+if(current === 10){
+diagram = `
+<svg viewBox="0 0 400 150">
+<text x="20" y="80">Alcohol → Aldehyde → Acid</text>
+</svg>`;
+}
+
+document.getElementById("quizBox").innerHTML=`
+<div class="question">${q.q}</div>
+${diagram}
+${q.c.map((choice,i)=>`<button class="choice" onclick="select(${i})">${choice}</button>`).join("")}
+<div class="explanation" id="exp"></div>
+`;
+
+document.getElementById("nextBtn").style.display="none";
+updateBar();
+}
+
+function select(i){
+const q=quizData[current];
+const exp=document.getElementById("exp");
+const correct=i===q.a;
+
+document.querySelectorAll(".choice").forEach((btn,index)=>{
+btn.disabled=true;
+
+if(index===q.a) btn.classList.add("correct");
+if(index===i && !correct) btn.classList.add("wrong");
+if(index===i) btn.classList.add("selected");
+});
+
+if(correct) score++;
+
+exp.innerHTML=(correct?"✅ Correct! ":"❌ Incorrect. ")+q.e;
+exp.style.display="block";
+
+document.getElementById("nextBtn").style.display="block";
+}
+
+document.getElementById("nextBtn").onclick=()=>{
+current++;
+if(current<quizData.length){
+loadQuestion();
+}else{
+showResult();
+}
+};
+
+function updateBar(){
+document.getElementById("progressBar").style.width=(current/quizData.length*100)+"%";
+}
+
+function showResult(){
+const percent=Math.round(score/quizData.length*100);
+let stars = percent===100?"⭐⭐⭐":percent>=90?"⭐⭐☆":percent>=80?"⭐☆☆":"☆☆☆";
+
+document.getElementById("quizBox").innerHTML=`
+<div class="stars">${stars}</div>
+<div class="result">You scored ${score}/${quizData.length} (${percent}%)</div>
+`;
+
+document.getElementById("nextBtn").style.display="none";
+
+window.parent.postMessage({
+type:"quizResult",
+score:percent,
+passed:percent>=80
+},"*");
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
