@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapter 3 – Lesson 1 Quiz: Nature and Classification of Carbohydrates</title>
+
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f9f1, #f7faff);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .quiz-container {
+    background: #fff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    width: 95%;
+    max-width: 850px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  h2 {
+    color: #136f63;
+    margin-bottom: 20px;
+  }
+
+  .progress-text {
+    text-align: right;
+    font-weight: 600;
+    color: #174ea6;
+  }
+
+  .progress-wrapper {
+    height: 14px;
+    background: #e9f5ef;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #136f63, #2b7de9);
+    border-radius: 8px;
+  }
+
+  .question {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #174ea6;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .choice {
+    background: #e8ecf8;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    border: none;
+    transition: 0.2s;
+  }
+
+  .choice:hover {
+    background: #d3dbf8;
+  }
+
+  .choice.selected {
+    background: #174ea6;
+    color: #fff;
+  }
+
+  .choice.correct {
+    background: #2e7d32;
+    color: #fff;
+  }
+
+  .choice.wrong {
+    background: #c62828;
+    color: #fff;
+  }
+
+  .explanation {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    background: #eef3ff;
+    border-radius: 10px;
+    text-align: left;
+  }
+
+  .next-btn {
+    margin-top: 20px;
+    padding: 12px 26px;
+    border-radius: 10px;
+    border: none;
+    background: #136f63;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .next-btn:hover {
+    background: #0f5b52;
+  }
+
+  .stars {
+    font-size: 2.5em;
+  }
+
+  .result {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  .quiz-nav {
+    margin-top: 20px;
+  }
+
+  .quiz-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .primary {
+    background: #136f63;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+  <h2>Carbohydrates – Lesson 1 Quiz</h2>
+
+  <div class="progress-text" id="progressText"></div>
+  <div class="progress-wrapper">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+  {
+    q: "1. Which best describes a carbohydrate?",
+    c: ["Hydrocarbon only", "Polyhydroxy aldehyde or ketone", "Nitrogen-based molecule", "Nonpolar compound"],
+    a: 1,
+    e: "Carbohydrates are commonly defined as polyhydroxy aldehydes or ketones."
+  },
+  {
+    q: "2. Which formula best represents many simple carbohydrates?",
+    c: ["CₙH₂ₙ", "Cₙ(H₂O)ₙ", "CₙHₙO₂", "CH₄"],
+    a: 1,
+    e: "Many carbohydrates follow the empirical formula Cₙ(H₂O)ₙ."
+  },
+  {
+    q: "3. Which of the following is a monosaccharide?",
+    c: ["Sucrose", "Glucose", "Starch", "Cellulose"],
+    a: 1,
+    e: "Glucose is a single sugar unit, making it a monosaccharide."
+  },
+  {
+    q: "4. Which is a disaccharide?",
+    c: ["Glucose", "Fructose", "Sucrose", "Glycogen"],
+    a: 2,
+    e: "Sucrose consists of glucose and fructose."
+  },
+  {
+    q: "5. Which is a polysaccharide?",
+    c: ["Glucose", "Maltose", "Ribose", "Glycogen"],
+    a: 3,
+    e: "Glycogen is a storage polysaccharide in animals."
+  },
+  {
+    q: "6. What type of monosaccharide is glucose?",
+    c: ["Ketopentose", "Aldohexose", "Aldopentose", "Ketohexose"],
+    a: 1,
+    e: "Glucose is an aldose with six carbons, making it an aldohexose."
+  },
+  {
+    q: "7. Which is a ketose?",
+    c: ["Glucose", "Galactose", "Fructose", "Ribose"],
+    a: 2,
+    e: "Fructose contains a ketone group."
+  },
+  {
+    q: "8. Ribose is classified as:",
+    c: ["Aldohexose", "Ketopentose", "Aldopentose", "Ketohexose"],
+    a: 2,
+    e: "Ribose has an aldehyde group and five carbons."
+  },
+  {
+    q: "9. Which carbohydrate is primarily used for energy storage in plants?",
+    c: ["Glycogen", "Cellulose", "Starch", "Chitin"],
+    a: 2,
+    e: "Starch is the storage carbohydrate in plants."
+  },
+  {
+    q: "10. Which carbohydrate is structural in plants?",
+    c: ["Glycogen", "Cellulose", "Glucose", "Sucrose"],
+    a: 1,
+    e: "Cellulose forms plant cell walls."
+  },
+  {
+    q: "11. What type of reaction forms disaccharides?",
+    c: ["Hydrolysis", "Oxidation", "Condensation", "Reduction"],
+    a: 2,
+    e: "Condensation reactions join sugars and release water."
+  },
+  {
+    q: "12. Which sugar is non-reducing?",
+    c: ["Glucose", "Maltose", "Sucrose", "Lactose"],
+    a: 2,
+    e: "Sucrose is non-reducing because both anomeric carbons are involved."
+  }
+];
+
+let current = 0;
+let score = 0;
+let showing = false;
+
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+
+  quizBox.innerHTML = `
+    <div class="question">${q.q}</div>
+    <div class="choices">
+      ${q.c.map((choice,i)=>`<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join("")}
+    </div>
+    <div class="explanation" id="exp"></div>
+  `;
+
+  nextBtn.style.display = "none";
+  showing = false;
+
+  progressText.textContent = `Question ${current+1} of ${quizData.length}`;
+  progressBar.style.width = `${(current/quizData.length)*100}%`;
+}
+
+function selectChoice(i) {
+  if (showing) return;
+
+  const q = quizData[current];
+  const exp = document.getElementById("exp");
+
+  document.querySelectorAll(".choice").forEach((btn, idx)=>{
+    btn.disabled = true;
+
+    if (idx === q.a) btn.classList.add("correct");
+    if (idx === i && idx !== q.a) btn.classList.add("wrong");
+    if (idx === i) btn.classList.add("selected");
+  });
+
+  if (i === q.a) score++;
+
+  exp.innerHTML = `<strong>${i===q.a ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  exp.style.display = "block";
+
+  nextBtn.style.display = "inline-block";
+  showing = true;
+}
+
+nextBtn.onclick = () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+};
+
+function getStars(p){
+  if(p===100) return "⭐️⭐️⭐️";
+  if(p>=90) return "⭐️⭐️☆";
+  if(p>=80) return "⭐️☆☆";
+  return "☆☆☆";
+}
+
+function showResult(){
+  const percent = Math.round((score/quizData.length)*100);
+
+  quizBox.innerHTML = `
+    <div class="stars">${getStars(percent)}</div>
+    <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+    <div class="quiz-nav">
+      <button class="quiz-btn" onclick="location.reload()">Retry</button>
+    </div>
+  `;
+
+  progressBar.style.width = "100%";
+  progressText.textContent = "Completed";
+  nextBtn.style.display = "none";
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
