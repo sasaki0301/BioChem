@@ -210,58 +210,70 @@ e:"Peptide bond formation is a condensation reaction removing water."
 let current=0,score=0;
 
 function loadQuestion(){
-const q=quizData[current];
-document.getElementById("quizBox").innerHTML=`
-<div class="question">${q.q}</div>
-${q.c.map((choice,i)=>`<button class="choice" onclick="select(${i})">${choice}</button>`).join("")}
-<div class="explanation" id="exp"></div>
-`;
-document.getElementById("nextBtn").style.display="none";
-updateBar();
+  const q=quizData[current];
+  document.getElementById("quizBox").innerHTML=`
+    <div class="question">${q.q}</div>
+    ${q.c.map((choice,i)=>`<button class="choice" onclick="select(${i})">${choice}</button>`).join("")}
+    <div class="explanation" id="exp"></div>
+  `;
+  document.getElementById("nextBtn").style.display="none";
+  updateBar();
 }
 
 function select(i){
-const q=quizData[current];
-const exp=document.getElementById("exp");
-const correct=i===q.a;
+  const q=quizData[current];
+  const exp=document.getElementById("exp");
+  const correct=i===q.a;
 
-if(index === q.a) btn.classList.add("correct");
-if(index === i && !correct) btn.classList.add("wrong");
-  
-if(correct) score++;
+  // 🔥 FIX: Loop through all buttons properly
+  document.querySelectorAll(".choice").forEach((btn, index) => {
+    btn.disabled = true;
 
-exp.innerHTML=(correct?"✅ Correct! ":"❌ Incorrect. ")+q.e;
-exp.style.display="block";
+    if(index === q.a){
+      btn.classList.add("correct"); // correct answer = green
+    }
 
-document.querySelectorAll(".choice").forEach(btn=>btn.disabled=true);
+    if(index === i && !correct){
+      btn.classList.add("wrong"); // wrong selection = red
+    }
 
-document.getElementById("nextBtn").style.display="block";
+    if(index === i){
+      btn.classList.add("selected"); // selected highlight
+    }
+  });
+
+  if(correct) score++;
+
+  exp.innerHTML=(correct?"✅ Correct! ":"❌ Incorrect. ")+q.e;
+  exp.style.display="block";
+
+  document.getElementById("nextBtn").style.display="block";
 }
 
 document.getElementById("nextBtn").onclick=()=>{
-current++;
-if(current<quizData.length){
-loadQuestion();
-}else{
-showResult();
-}
+  current++;
+  if(current<quizData.length){
+    loadQuestion();
+  }else{
+    showResult();
+  }
 };
 
 function updateBar(){
-document.getElementById("progressBar").style.width=(current/quizData.length*100)+"%";
+  document.getElementById("progressBar").style.width=(current/quizData.length*100)+"%";
 }
 
 function showResult(){
-const percent=Math.round(score/quizData.length*100);
-let stars=percent>=90?"⭐⭐⭐":percent>=80?"⭐⭐☆":"⭐☆☆";
+  const percent=Math.round(score/quizData.length*100);
+  let stars=percent>=90?"⭐⭐⭐":percent>=80?"⭐⭐☆":"⭐☆☆";
 
-document.getElementById("quizBox").innerHTML=`
-<div class="stars">${stars}</div>
-<div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
-`;
-document.getElementById("nextBtn").style.display="none";
+  document.getElementById("quizBox").innerHTML=`
+    <div class="stars">${stars}</div>
+    <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+  `;
+  document.getElementById("nextBtn").style.display="none";
 
-window.parent.postMessage({type:"quizResult",score:percent,passed:percent>=80},"*");
+  window.parent.postMessage({type:"quizResult",score:percent,passed:percent>=80},"*");
 }
 
 loadQuestion();
