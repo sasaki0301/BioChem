@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Chapter 2 Assessment – Hydrocarbon Derivatives and Reactions</title>
+
 <style>
   body {
     font-family: "Segoe UI", Arial, sans-serif;
@@ -97,6 +98,26 @@
     transform: scale(1.02);
   }
 
+  .choice.correct {
+    background: #2e7d32;
+    color: #fff;
+  }
+
+  .choice.wrong {
+    background: #c62828;
+    color: #fff;
+  }
+
+  .explanation {
+    background: #eef3ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    display: none;
+    text-align: left;
+    font-size: 1.05em;
+  }
+
   .next-btn {
     background: #136f63;
     color: #fff;
@@ -180,51 +201,227 @@
 
 <script>
 const quizData = [
-  { q:"1. Which functional group is present in alcohols?", c:["−OH","−COOH","−NH₂","−CHO"], a:0 },
-  { q:"2. Which compound is classified as an ether?", c:["R−OH","R−O−R′","R−SH","R−CHO"], a:1 },
-  { q:"3. Thiols contain which functional group?", c:["−OH","−NH₂","−SH","−COOH"], a:2 },
-  { q:"4. Which functional group defines an aldehyde?", c:["Internal carbonyl","Terminal carbonyl","Carboxyl group","Amino group"], a:1 },
-  { q:"5. Which functional group defines a ketone?", c:["R−CO−R′","R−CHO","R−COOH","R−NH₂"], a:0 },
+  {
+    q:"1. Which functional group is present in alcohols?",
+    c:["−OH","−COOH","−NH₂","−CHO"],
+    a:0,
+    e:"Alcohols contain the hydroxyl group, written as −OH."
+  },
+  {
+    q:"2. Which compound is classified as an ether?",
+    c:["R−OH","R−O−R′","R−SH","R−CHO"],
+    a:1,
+    e:"Ethers have an oxygen atom between two carbon groups, represented as R−O−R′."
+  },
+  {
+    q:"3. Thiols contain which functional group?",
+    c:["−OH","−NH₂","−SH","−COOH"],
+    a:2,
+    e:"Thiols contain the sulfhydryl group, −SH."
+  },
+  {
+    q:"4. Which functional group defines an aldehyde?",
+    c:["Internal carbonyl","Terminal carbonyl","Carboxyl group","Amino group"],
+    a:1,
+    e:"Aldehydes contain a carbonyl group at the end of a carbon chain, often written as −CHO."
+  },
+  {
+    q:"5. Which functional group defines a ketone?",
+    c:["R−CO−R′","R−CHO","R−COOH","R−NH₂"],
+    a:0,
+    e:"Ketones contain an internal carbonyl group, represented as R−CO−R′."
+  },
 
-  { q:"6. Oxidation of a primary alcohol using a mild oxidant commonly produces:", c:["Ketone","Aldehyde","Ether","Amide"], a:1 },
-  { q:"7. Further oxidation of an aldehyde produces:", c:["Alcohol","Ketone","Carboxylic acid","Amine"], a:2 },
-  { q:"8. Oxidation of a secondary alcohol produces:", c:["Aldehyde","Ketone","Carboxylic acid","Ether"], a:1 },
-  { q:"9. Why are tertiary alcohols resistant to oxidation under mild conditions?", c:["They contain no oxygen","They lack an α-hydrogen","They are too acidic","They are ionic"], a:1 },
-  { q:"10. Two thiols can oxidize to form:", c:["Ester bond","Disulfide bond","Peptide bond","Hydrogen bond"], a:1 },
+  {
+    q:"6. Oxidation of a primary alcohol using a mild oxidant commonly produces:",
+    c:["Ketone","Aldehyde","Ether","Amide"],
+    a:1,
+    e:"A primary alcohol can be mildly oxidized to an aldehyde."
+  },
+  {
+    q:"7. Further oxidation of an aldehyde produces:",
+    c:["Alcohol","Ketone","Carboxylic acid","Amine"],
+    a:2,
+    e:"Aldehydes can be further oxidized into carboxylic acids."
+  },
+  {
+    q:"8. Oxidation of a secondary alcohol produces:",
+    c:["Aldehyde","Ketone","Carboxylic acid","Ether"],
+    a:1,
+    e:"Secondary alcohols oxidize to ketones."
+  },
+  {
+    q:"9. Why are tertiary alcohols resistant to oxidation under mild conditions?",
+    c:["They contain no oxygen","They lack an α-hydrogen","They are too acidic","They are ionic"],
+    a:1,
+    e:"Tertiary alcohols lack the α-hydrogen needed for normal mild oxidation."
+  },
+  {
+    q:"10. Two thiols can oxidize to form:",
+    c:["Ester bond","Disulfide bond","Peptide bond","Hydrogen bond"],
+    a:1,
+    e:"Two thiol groups can oxidize to form a disulfide bond, R−S−S−R."
+  },
 
-  { q:"11. Which functional group is responsible for acidity in organic acids?", c:["Amino","Carboxyl","Ester","Amide"], a:1 },
-  { q:"12. Carboxylic acids are stronger acids than alcohols mainly because:", c:["They are larger","Their conjugate base is resonance-stabilized","They contain nitrogen","They are nonpolar"], a:1 },
-  { q:"13. Which group is generally basic?", c:["Carboxylic acid","Amine","Ester","Aldehyde"], a:1 },
-  { q:"14. Amines act as bases because nitrogen:", c:["Has a lone pair that can accept H⁺","Always donates H⁺","Has no electrons","Forms only ionic bonds"], a:0 },
-  { q:"15. Which functional group is found in many peptide bonds?", c:["Ester","Amide","Ether","Thiol"], a:1 },
+  {
+    q:"11. Which functional group is responsible for acidity in organic acids?",
+    c:["Amino","Carboxyl","Ester","Amide"],
+    a:1,
+    e:"The carboxyl group, −COOH, is responsible for acidic behavior."
+  },
+  {
+    q:"12. Carboxylic acids are stronger acids than alcohols mainly because:",
+    c:["They are larger","Their conjugate base is resonance-stabilized","They contain nitrogen","They are nonpolar"],
+    a:1,
+    e:"The carboxylate ion formed after losing H⁺ is resonance-stabilized, making carboxylic acids more acidic."
+  },
+  {
+    q:"13. Which group is generally basic?",
+    c:["Carboxylic acid","Amine","Ester","Aldehyde"],
+    a:1,
+    e:"Amines are generally basic because nitrogen has a lone pair that can accept H⁺."
+  },
+  {
+    q:"14. Amines act as bases because nitrogen:",
+    c:["Has a lone pair that can accept H⁺","Always donates H⁺","Has no electrons","Forms only ionic bonds"],
+    a:0,
+    e:"The lone pair on nitrogen allows amines to accept a proton."
+  },
+  {
+    q:"15. Which functional group is found in many peptide bonds?",
+    c:["Ester","Amide","Ether","Thiol"],
+    a:1,
+    e:"Peptide bonds are amide linkages formed between amino acids."
+  },
 
-  { q:"16. Esterification usually involves:", c:["Acid + Alcohol","Acid + Amine","Alcohol + Amine","Aldehyde + Ketone"], a:0 },
-  { q:"17. What is released during esterification?", c:["Carbon dioxide","Water","Oxygen","Hydrogen gas"], a:1 },
-  { q:"18. Esters are often known for having:", c:["Fruity odors","Strong basicity","Strong acidity","Metallic properties"], a:0 },
-  { q:"19. Hydrolysis of an ester produces:", c:["Alcohol + Carboxylic acid","Amine + Alcohol","Amide + Water","Ether + Acid"], a:0 },
-  { q:"20. Hydrolysis uses which molecule to break bonds?", c:["Oxygen","Water","Nitrogen","Carbon dioxide"], a:1 },
+  {
+    q:"16. Esterification usually involves:",
+    c:["Acid + Alcohol","Acid + Amine","Alcohol + Amine","Aldehyde + Ketone"],
+    a:0,
+    e:"Esterification forms an ester from a carboxylic acid and an alcohol."
+  },
+  {
+    q:"17. What is released during esterification?",
+    c:["Carbon dioxide","Water","Oxygen","Hydrogen gas"],
+    a:1,
+    e:"Esterification is a condensation reaction, so water is released."
+  },
+  {
+    q:"18. Esters are often known for having:",
+    c:["Fruity odors","Strong basicity","Strong acidity","Metallic properties"],
+    a:0,
+    e:"Many esters have pleasant or fruity smells."
+  },
+  {
+    q:"19. Hydrolysis of an ester produces:",
+    c:["Alcohol + Carboxylic acid","Amine + Alcohol","Amide + Water","Ether + Acid"],
+    a:0,
+    e:"Ester hydrolysis breaks the ester into an alcohol and a carboxylic acid."
+  },
+  {
+    q:"20. Hydrolysis uses which molecule to break bonds?",
+    c:["Oxygen","Water","Nitrogen","Carbon dioxide"],
+    a:1,
+    e:"Hydrolysis literally means bond-breaking using water."
+  },
 
-  { q:"21. Amide formation can occur from:", c:["Carboxylic acid + Amine","Alcohol + Ether","Ketone + Thiol","Aldehyde + Alcohol"], a:0 },
-  { q:"22. Peptide bond formation is an example of:", c:["Hydrolysis","Condensation","Oxidation","Reduction"], a:1 },
-  { q:"23. During condensation, water is:", c:["Added","Removed","Converted into oxygen","Stored as ATP"], a:1 },
-  { q:"24. During hydrolysis, water is:", c:["Used to break a bond","Removed to form a bond","Converted into acid","Released as gas"], a:0 },
-  { q:"25. Amides are less reactive than esters mainly because of:", c:["Resonance stabilization","Higher acidity","Lack of carbonyl","Low molecular mass"], a:0 },
+  {
+    q:"21. Amide formation can occur from:",
+    c:["Carboxylic acid + Amine","Alcohol + Ether","Ketone + Thiol","Aldehyde + Alcohol"],
+    a:0,
+    e:"Amides can form from the reaction between a carboxylic acid derivative and an amine."
+  },
+  {
+    q:"22. Peptide bond formation is an example of:",
+    c:["Hydrolysis","Condensation","Oxidation","Reduction"],
+    a:1,
+    e:"Peptide bond formation removes water, so it is a condensation reaction."
+  },
+  {
+    q:"23. During condensation, water is:",
+    c:["Added","Removed","Converted into oxygen","Stored as ATP"],
+    a:1,
+    e:"Condensation reactions join molecules while removing water."
+  },
+  {
+    q:"24. During hydrolysis, water is:",
+    c:["Used to break a bond","Removed to form a bond","Converted into acid","Released as gas"],
+    a:0,
+    e:"Hydrolysis uses water to split larger molecules into smaller parts."
+  },
+  {
+    q:"25. Amides are less reactive than esters mainly because of:",
+    c:["Resonance stabilization","Higher acidity","Lack of carbonyl","Low molecular mass"],
+    a:0,
+    e:"Amides are stabilized by resonance between nitrogen and the carbonyl group."
+  },
 
-  { q:"26. Which sequence shows increasing oxidation?", c:["Acid → Aldehyde → Alcohol","Alcohol → Aldehyde → Carboxylic acid","Aldehyde → Alcohol → Acid","Alcohol → Acid → Aldehyde"], a:1 },
-  { q:"27. Reduction of an aldehyde commonly produces:", c:["Alcohol","Carboxylic acid","Amide","Ester"], a:0 },
-  { q:"28. Which reaction builds larger molecules by joining smaller molecules?", c:["Hydrolysis","Condensation","Reduction","Combustion"], a:1 },
-  { q:"29. Which reaction breaks larger molecules into smaller units?", c:["Condensation","Hydrolysis","Oxidation","Esterification"], a:1 },
-  { q:"30. Which reaction is important in digestion of fats and proteins?", c:["Hydrolysis","Esterification only","Combustion","Polymerization only"], a:0 },
+  {
+    q:"26. Which sequence shows increasing oxidation?",
+    c:["Acid → Aldehyde → Alcohol","Alcohol → Aldehyde → Carboxylic acid","Aldehyde → Alcohol → Acid","Alcohol → Acid → Aldehyde"],
+    a:1,
+    e:"The usual oxidation sequence is primary alcohol → aldehyde → carboxylic acid."
+  },
+  {
+    q:"27. Reduction of an aldehyde commonly produces:",
+    c:["Alcohol","Carboxylic acid","Amide","Ester"],
+    a:0,
+    e:"Reduction adds hydrogen or electrons, converting aldehydes back into alcohols."
+  },
+  {
+    q:"28. Which reaction builds larger molecules by joining smaller molecules?",
+    c:["Hydrolysis","Condensation","Reduction","Combustion"],
+    a:1,
+    e:"Condensation reactions build larger molecules by joining smaller ones and releasing water."
+  },
+  {
+    q:"29. Which reaction breaks larger molecules into smaller units?",
+    c:["Condensation","Hydrolysis","Oxidation","Esterification"],
+    a:1,
+    e:"Hydrolysis breaks molecules apart using water."
+  },
+  {
+    q:"30. Which reaction is important in digestion of fats and proteins?",
+    c:["Hydrolysis","Esterification only","Combustion","Polymerization only"],
+    a:0,
+    e:"Digestion commonly uses hydrolysis to break fats and proteins into absorbable units."
+  },
 
-  { q:"31. Which functional group is found in fatty acids?", c:["Carboxylic acid","Amide","Ether","Aldehyde only"], a:0 },
-  { q:"32. Which group is especially important in protein structure because it forms disulfide bonds?", c:["Thiol","Ester","Ether","Aldehyde"], a:0 },
-  { q:"33. Which functional group is common in fats and oils?", c:["Ester","Amine","Aldehyde","Ketone only"], a:0 },
-  { q:"34. Which pair correctly matches the group with its property?", c:["Amine-acidic","Carboxylic acid-basic","Amide-stable due to resonance","Ester-strong base"], a:2 },
-  { q:"35. Which best describes interconversion?", c:["Changing one functional group into another","Destroying all organic molecules","Removing all carbon atoms","Making only inorganic compounds"], a:0 }
+  {
+    q:"31. Which functional group is found in fatty acids?",
+    c:["Carboxylic acid","Amide","Ether","Aldehyde only"],
+    a:0,
+    e:"Fatty acids contain a carboxylic acid group at one end."
+  },
+  {
+    q:"32. Which group is especially important in protein structure because it forms disulfide bonds?",
+    c:["Thiol","Ester","Ether","Aldehyde"],
+    a:0,
+    e:"Thiol groups from cysteine residues can form disulfide bonds that stabilize protein structure."
+  },
+  {
+    q:"33. Which functional group is common in fats and oils?",
+    c:["Ester","Amine","Aldehyde","Ketone only"],
+    a:0,
+    e:"Fats and oils are triglycerides, which contain ester linkages."
+  },
+  {
+    q:"34. Which pair correctly matches the group with its property?",
+    c:["Amine-acidic","Carboxylic acid-basic","Amide-stable due to resonance","Ester-strong base"],
+    a:2,
+    e:"Amides are stabilized by resonance, which makes them less reactive."
+  },
+  {
+    q:"35. Which best describes interconversion?",
+    c:["Changing one functional group into another","Destroying all organic molecules","Removing all carbon atoms","Making only inorganic compounds"],
+    a:0,
+    e:"Interconversion means transforming one functional group into another through chemical reactions."
+  }
 ];
 
 let current = 0;
 let score = 0;
+let showingExplanation = false;
 
 const quizBox = document.getElementById("quizBox");
 const nextBtn = document.getElementById("nextBtn");
@@ -239,25 +436,44 @@ function showQuestion() {
     <div class="choices">
       ${q.c.map((choice, i) => `<button class="choice" onclick="selectChoice(${i})">${choice}</button>`).join("")}
     </div>
+    <div class="explanation" id="explanationBox"></div>
   `;
 
   nextBtn.style.display = "none";
+  showingExplanation = false;
   updateProgress();
 }
 
 function selectChoice(i) {
+  if (showingExplanation) return;
+
   const q = quizData[current];
+  const correct = i === q.a;
+  const explanationBox = document.getElementById("explanationBox");
 
   document.querySelectorAll(".choice").forEach((btn, index) => {
     btn.disabled = true;
+
+    if (index === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (index === i && !correct) {
+      btn.classList.add("wrong");
+    }
+
     if (index === i) {
       btn.classList.add("selected");
     }
   });
 
-  if (i === q.a) score++;
+  if (correct) score++;
+
+  explanationBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  explanationBox.style.display = "block";
 
   nextBtn.style.display = "inline-block";
+  showingExplanation = true;
 }
 
 nextBtn.addEventListener("click", () => {
