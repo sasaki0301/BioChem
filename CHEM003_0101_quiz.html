@@ -293,6 +293,8 @@ function getStarRating(percent) {
   else return "☆☆☆";
 }
 
+let resultSent = false;
+
 function showResult() {
   progressBar.style.width = "100%";
   progressText.textContent = "Quiz Completed";
@@ -303,27 +305,47 @@ function showResult() {
   quizBox.innerHTML = `
     <div class='stars'>${getStarRating(percent)}</div>
     <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
     <div class='quiz-nav'>
-      <button class='quiz-btn' id='backBtn'>⬅ Back</button>
-      <button class='quiz-btn' id='retryBtn'>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' ${passed ? "" : "disabled"}>➡ Next Lesson</button>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
     </div>
   `;
 
   nextBtn.style.display = "none";
 
-  window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
 
-  document.getElementById("retryBtn").addEventListener("click", retryQuiz);
-  document.getElementById("backBtn").addEventListener("click", () =>
-    window.parent.postMessage({ type: "quizBack" }, "*")
-  );
-  document.getElementById("nextLessonBtn").addEventListener("click", () => {
-    if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
-  });
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
 }
 
 function retryQuiz() {
+  resultSent = false;
   current = 0;
   score = 0;
   showQuestion();
