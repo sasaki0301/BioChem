@@ -207,76 +207,130 @@ e:"Peptide bond formation is a condensation reaction removing water."
 
 ];
 
-let current=0,score=0;
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
 
-function loadQuestion(){
-  const q=quizData[current];
-  document.getElementById("quizBox").innerHTML=`
-    <div class="question">${q.q}</div>
-    ${q.c.map((choice,i)=>`<button class="choice" onclick="select(${i})">${choice}</button>`).join("")}
-    <div class="explanation" id="exp"></div>
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
   `;
-  document.getElementById("nextBtn").style.display="none";
-  updateBar();
-}
-
-function select(i){
-  const q=quizData[current];
-  const exp=document.getElementById("exp");
-  const correct=i===q.a;
-
-  // 🔥 FIX: Loop through all buttons properly
-  document.querySelectorAll(".choice").forEach((btn, index) => {
-    btn.disabled = true;
-
-    if(index === q.a){
-      btn.classList.add("correct"); // correct answer = green
-    }
-
-    if(index === i && !correct){
-      btn.classList.add("wrong"); // wrong selection = red
-    }
-
-    if(index === i){
-      btn.classList.add("selected"); // selected highlight
-    }
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
   });
-
-  if(correct) score++;
-
-  exp.innerHTML=(correct?"✅ Correct! ":"❌ Incorrect. ")+q.e;
-  exp.style.display="block";
-
-  document.getElementById("nextBtn").style.display="block";
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
 }
 
-document.getElementById("nextBtn").onclick=()=>{
+function selectChoice(i) {
+  if (showingExplanation) return;
+  selected = i;
+  document.querySelectorAll(".choice").forEach((btn, idx) => {
+    btn.classList.toggle("selected", idx === i);
+    btn.disabled = true;
+  });
+  const q = quizData[current];
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
   current++;
-  if(current<quizData.length){
-    loadQuestion();
-  }else{
-    showResult();
-  }
-};
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
 
-function updateBar(){
-  document.getElementById("progressBar").style.width=(current/quizData.length*100)+"%";
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
 }
 
-function showResult(){
-  const percent=Math.round(score/quizData.length*100);
-  let stars=percent>=90?"⭐⭐⭐":percent>=80?"⭐⭐☆":"⭐☆☆";
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
 
-  document.getElementById("quizBox").innerHTML=`
-    <div class="stars">${stars}</div>
-    <div class="result">Score: ${score}/${quizData.length} (${percent}%)</div>
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
   `;
-  document.getElementById("nextBtn").style.display="none";
 
-  window.parent.postMessage({type:"quizResult",score:percent,passed:percent>=80},"*");
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
 }
 
-loadQuestion();
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
 </script>
 
 </body>
