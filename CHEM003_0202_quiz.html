@@ -6,85 +6,44 @@
 <title>Lesson 2 Quiz: Carboxylic Acids, Esters, Amines, and Amides</title>
 
 <style>
+/* SAME STYLE AS TEMPLATE */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg,#e8f9f1,#f7faff);
-  margin:0;
-  padding:40px 20px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
-
 .quiz-container {
-  background:#fff;
-  padding:40px;
-  border-radius:18px;
-  width:95%;
-  max-width:850px;
-  box-shadow:0 8px 28px rgba(0,0,0,0.08);
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
 }
-
-h2 { color:#136f63; text-align:center; }
-
-.progress-bar {
-  height:12px;
-  background:#136f63;
-  width:0%;
-  border-radius:6px;
-  margin-bottom:20px;
-}
-
-.question {
-  font-size:1.3em;
-  margin-bottom:15px;
-  color:#174ea6;
-}
-
-.choice {
-  display:block;
-  width:100%;
-  padding:12px;
-  margin:6px 0;
-  border:none;
-  border-radius:8px;
-  background:#e8ecf8;
-  cursor:pointer;
-}
-
-.choice:hover { background:#d3dbf8; }
-.choice.selected { background:#174ea6; color:#fff; }
-
-.explanation {
-  display:none;
-  background:#eef3ff;
-  padding:10px;
-  margin-top:10px;
-  border-radius:8px;
-}
-
-.next-btn {
-  margin-top:15px;
-  padding:10px 20px;
-  background:#136f63;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.choice.correct {
-  background:#2e7d32;
-  color:#fff;
-}
-
-.choice.wrong {
-  background:#c62828;
-  color:#fff;
-}
-
-.result { text-align:center; font-size:1.3em; margin-top:20px; }
-.stars { font-size:2em; }
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
 </style>
 </head>
 
@@ -236,16 +195,25 @@ function showQuestion() {
 
 function selectChoice(i) {
   if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
+
   const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
   const expBox = document.getElementById("explanationBox");
   const correct = i === q.a;
 
   if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
 
   expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
   expBox.style.display = "block";
