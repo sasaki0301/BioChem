@@ -94,12 +94,15 @@ const progressBar = document.getElementById("progressBar");
 function showQuestion() {
   const q = quizData[current];
   updateProgress();
+
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
     <div class='choices'></div>
     <div class='explanation' id='explanationBox'></div>
   `;
+
   const choicesContainer = quizBox.querySelector(".choices");
+
   q.c.forEach((choice, i) => {
     const btn = document.createElement("button");
     btn.className = "choice";
@@ -107,6 +110,7 @@ function showQuestion() {
     btn.addEventListener("click", () => selectChoice(i));
     choicesContainer.appendChild(btn);
   });
+
   nextBtn.style.display = "none";
   selected = null;
   showingExplanation = false;
@@ -115,6 +119,7 @@ function showQuestion() {
 function selectChoice(i) {
   if (showingExplanation) return;
 
+  selected = i;
   const q = quizData[current];
   const buttons = document.querySelectorAll(".choice");
   const expBox = document.getElementById("explanationBox");
@@ -134,7 +139,7 @@ function selectChoice(i) {
     }
   });
 
-  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."};
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
   expBox.style.display = "block";
   nextBtn.style.display = "inline-block";
   showingExplanation = true;
@@ -163,7 +168,7 @@ let resultSent = false;
 
 function showResult() {
   progressBar.style.width = "100%";
-  progressText.textContent = "Quiz Completed";
+  progressText.textContent = "Assessment Completed";
 
   const percent = Math.round((score / quizData.length) * 100);
   const passed = percent >= 80;
@@ -175,7 +180,7 @@ function showResult() {
     <div class='quiz-nav'>
       <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
       <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
-      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Chapter</button>
     </div>
   `;
 
@@ -194,7 +199,7 @@ function showResult() {
 
     if (status) status.textContent = passed
       ? "Progress sent. You may proceed after it is saved."
-      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+      : "Attempt recorded. Retake the assessment to unlock the next chapter.";
 
     if (backBtn) backBtn.disabled = false;
     if (retryBtn) retryBtn.disabled = false;
