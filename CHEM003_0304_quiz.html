@@ -461,16 +461,25 @@ function showQuestion() {
 
 function selectChoice(i) {
   if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
+
   const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
   const expBox = document.getElementById("explanationBox");
   const correct = i === q.a;
 
   if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
 
   expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
   expBox.style.display = "block";
@@ -557,6 +566,5 @@ function retryQuiz() {
 
 showQuestion();
 </script>
-
 </body>
 </html>
