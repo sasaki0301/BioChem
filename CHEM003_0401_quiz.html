@@ -6,185 +6,57 @@
 <title>Chapter 4 – Lesson 1 Quiz: Introduction to Lipids and Classification</title>
 
 <style>
+/* SAME STYLE AS TEMPLATE */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: linear-gradient(135deg, #e8f9f1, #f7faff);
   margin: 0;
   padding: 40px 20px;
+  color: #222;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
 }
-
-/* === QUIZ CONTAINER === */
 .quiz-container {
-  background: #fff;
+  background: #ffffff;
   border-radius: 18px;
   padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
   width: 95%;
   max-width: 850px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
   text-align: center;
 }
-
-h2 {
-  color: #136f63;
-  margin-bottom: 20px;
-  font-size: 1.8em;
-}
-
-/* === PROGRESS === */
-.progress-text {
-  text-align: right;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 10px;
-}
-
-.progress-wrapper {
-  height: 14px;
-  background: #e9f5ef;
-  border-radius: 8px;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(to right, #136f63, #2b7de9);
-  transition: width 0.4s ease;
-}
-
-/* === QUESTION === */
-.question {
-  font-size: 1.25em;
-  font-weight: 600;
-  color: #174ea6;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* === MOBILE-FRIENDLY CHOICE FORMAT === */
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-
-.choice {
-  background: #e8ecf8;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 18px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 1.05em;
-  transition: all 0.2s ease;
-}
-
-.choice:hover {
-  background: #d3dbf8;
-  transform: translateY(-2px);
-}
-
-.choice.selected {
-  background: #174ea6;
-  color: #fff;
-  transform: scale(1.02);
-}
-
-.choice.correct {
-  background: #2e7d32;
-  color: #fff;
-}
-
-.choice.wrong {
-  background: #c62828;
-  color: #fff;
-}
-
-/* === EXPLANATION === */
-.explanation {
-  display: none;
-  margin-top: 15px;
-  padding: 14px 18px;
-  background: #eef3ff;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 1.05em;
-}
-
-/* === BUTTONS === */
-.next-btn {
-  margin-top: 20px;
-  padding: 12px 26px;
-  border-radius: 10px;
-  border: none;
-  background: #136f63;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1.05em;
-}
-
-.next-btn:hover {
-  background: #0f5b52;
-}
-
-/* === RESULT === */
-.stars {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-.result {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #174ea6;
-  margin-top: 10px;
-}
-
-.quiz-nav {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.quiz-btn {
-  background: #e8ecf8;
-  color: #174ea6;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 0.95em;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.quiz-btn:hover {
-  background: #d3dbf8;
-  transform: translateY(-2px);
-}
-
-.quiz-btn.primary {
-  background: #136f63;
-  color: white;
-}
-
-.quiz-btn.primary:hover {
-  background: #0f5b52;
-}
-
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
 @media (max-width: 600px) {
-  body { padding: 25px 12px; }
-  .quiz-container { padding: 25px; }
-  .question { font-size: 1.1em; }
-  .stars { font-size: 2em; }
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.1em; }
+    .stars { font-size: 2em; }
+  }
+
+.diagram-box {margin: 12px 0 20px; background: #f7fbff; border: 1px dashed #d8e9ff; padding: 10px; border-radius: 8px; }
+
+svg {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: block;
 }
 </style>
 </head>
@@ -371,7 +243,7 @@ const quizData = [
     e: "Vitamins A, D, E, and K are fat-soluble and are transported with lipids."
   }
 ];
-
+  
 let current = 0, score = 0, selected = null, showingExplanation = false;
 const quizBox = document.getElementById("quizBox");
 const nextBtn = document.getElementById("nextBtn");
@@ -383,6 +255,7 @@ function showQuestion() {
   updateProgress();
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
+	${q.svg || ""}
     <div class='choices'></div>
     <div class='explanation' id='explanationBox'></div>
   `;
@@ -401,16 +274,25 @@ function showQuestion() {
 
 function selectChoice(i) {
   if (showingExplanation) return;
-  selected = i;
-  document.querySelectorAll(".choice").forEach((btn, idx) => {
-    btn.classList.toggle("selected", idx === i);
-    btn.disabled = true;
-  });
+
   const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
   const expBox = document.getElementById("explanationBox");
   const correct = i === q.a;
 
   if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
 
   expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
   expBox.style.display = "block";
@@ -497,6 +379,5 @@ function retryQuiz() {
 
 showQuestion();
 </script>
-
 </body>
 </html>
