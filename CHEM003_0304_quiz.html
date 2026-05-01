@@ -291,6 +291,7 @@ function showQuestion() {
   updateProgress();
   quizBox.innerHTML = `
     <div class='question'>${q.q}</div>
+    ${q.svg || ""}
     <div class='choices'></div>
     <div class='explanation' id='explanationBox'></div>
   `;
