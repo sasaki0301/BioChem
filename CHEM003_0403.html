@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chapter 4 – Lesson 3: Complex Lipids and Biological Membranes</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
+    margin: 0;
+    padding: 35px 22px;
+    color: #222;
+    line-height: 1.7;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    color: #136f63;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  h2 {
+    color: #136f63;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin: 1.2em 0 0.55em;
+  }
+
+  h3 {
+    color: #174ea6;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin: 0.8em 0 0.45em;
+  }
+
+  p {
+    margin: 0.65em 0;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 0 28px;
+    padding: 0;
+  }
+
+  img,
+  picture,
+  svg,
+  video,
+  canvas,
+  iframe,
+  embed,
+  object {
+    max-width: 100%;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    height: auto;
+  }
+
+  .lesson-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section {
+    margin: 24px auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    max-width: 950px;
+  }
+
+  .concept-box,
+  .quick-check,
+  .activity,
+  .key-terms {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+
+  .concept-box {
+    background: #fff7e6;
+    border-left: 5px solid #ffb100;
+  }
+
+  .quick-check {
+    background: #eef3ff;
+    border-left: 5px solid #174ea6;
+  }
+
+  .activity {
+    background: #f9fbff;
+    border-left: 5px solid #136f63;
+  }
+
+  .key-terms {
+    background: #f8fcff;
+    border-left: 5px solid #2b7de9;
+    margin-top: 18px;
+  }
+
+  .answer {
+    display: none;
+    margin-top: 10px;
+    background: #eef3ff;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .toggle-btn,
+  .quiz-button {
+    background: #136f63;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 10px;
+  }
+
+  .toggle-btn:hover,
+  .quiz-button:hover {
+    background: #0f5b52;
+    transform: translateY(-1px);
+  }
+
+  .quiz-button {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 22px;
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f3f7ff;
+    color: #174ea6;
+  }
+
+  .reaction-scheme,
+  .media-block,
+  .video-block,
+  .simulation-block,
+  .image-block {
+    background: #f7fbff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px dashed #d8e9ff;
+    max-width: 100%;
+  }
+
+  .reaction-scheme svg,
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lesson-image,
+  figure img,
+  .image-block img {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    border-radius: 10px;
+    margin: 16px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  figure {
+    margin: 18px auto;
+    text-align: center;
+  }
+
+  figure img {
+    margin-bottom: 8px;
+  }
+
+  .caption,
+  figcaption {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+  }
+
+  iframe,
+  video,
+  .media-frame {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    min-height: 260px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 16px auto;
+    background: #fff;
+  }
+
+  .simulation-frame,
+  .simulation-block iframe,
+  iframe[src*="phet"],
+  iframe[src*="simulation"] {
+    max-width: 900px;
+    aspect-ratio: 4 / 3;
+    min-height: 420px;
+  }
+
+  .quiz-actions {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 720px) {
+    body {
+      font-size: 16px;
+      padding: 20px 14px;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+    }
+
+    .section {
+      padding: 18px 16px;
+      margin: 18px auto;
+      border-radius: 12px;
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+    }
+
+    .reaction-scheme,
+    .media-block,
+    .video-block,
+    .simulation-block,
+    .image-block {
+      padding: 14px;
+      margin: 16px 0;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      min-width: 150px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 220px;
+    }
+
+    .simulation-frame,
+    .simulation-block iframe,
+    iframe[src*="phet"],
+    iframe[src*="simulation"] {
+      min-height: 360px;
+    }
+
+    .toggle-btn,
+    .quiz-button {
+      max-width: 100%;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 420px) {
+    body {
+      padding: 16px 10px;
+    }
+
+    .section {
+      padding: 16px 12px;
+    }
+
+    .concept-box,
+    .quick-check,
+    .activity,
+    .key-terms {
+      padding: 12px 14px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 200px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Lesson 3: Complex Lipids and Biological Membranes</h1>
+
+<div class="section">
+<h2>Overview</h2>
+<ul>
+<li>What complex lipids are</li>
+<li>Types: phospholipids, glycolipids, lipoproteins</li>
+<li>Structure and behavior of membranes</li>
+<li>Fluid mosaic model</li>
+<li>Membrane functions and transport</li>
+</ul>
+
+<div class="concept-box">
+<strong>Big Idea:</strong> Complex lipids are essential for building cell membranes and enabling life at the cellular level.
+</div>
+</div>
+
+<div class="section">
+<h2>1. What Are Complex Lipids?</h2>
+
+<p>
+Complex lipids are lipids that contain additional functional groups beyond fatty acids and glycerol.
+</p>
+
+<table>
+<tr><th>Type</th><th>Additional Group</th><th>Function</th></tr>
+<tr><td>Phospholipids</td><td>Phosphate</td><td>Cell membrane structure</td></tr>
+<tr><td>Glycolipids</td><td>Carbohydrate</td><td>Cell recognition</td></tr>
+<tr><td>Lipoproteins</td><td>Protein</td><td>Lipid transport</td></tr>
+</table>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> What makes complex lipids different from simple lipids?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+They contain additional functional groups such as phosphate, carbohydrate, or protein.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>2. Phospholipids</h2>
+
+<p>
+Phospholipids are the main structural components of cell membranes.
+</p>
+
+<ul>
+<li>Hydrophilic head (phosphate group)</li>
+<li>Hydrophobic tails (fatty acids)</li>
+</ul>
+
+<div class="image">
+<img src="https://i.imgur.com/Mx4xSPR.png" alt="Phospholipid structure">
+<p><em>Amphipathic nature allows membrane formation.</em></p>
+</div>
+
+<div class="concept-box">
+<strong>Important:</strong> Because phospholipids are amphipathic, they self-assemble into bilayers in water.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why do phospholipids form bilayers?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Hydrophilic heads face water, while hydrophobic tails avoid water, forming a bilayer.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>3. Glycolipids</h2>
+
+<p>
+Glycolipids contain carbohydrate groups and are found on the outer surface of membranes.
+</p>
+
+<ul>
+<li>Involved in cell recognition</li>
+<li>Help in immune response</li>
+<li>Important in cell signaling</li>
+</ul>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Where are glycolipids located?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+On the outer surface of the cell membrane.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>4. Lipoproteins</h2>
+
+<p>
+Lipoproteins transport lipids through the bloodstream.
+</p>
+
+<table>
+<tr><th>Type</th><th>Function</th></tr>
+<tr><td>HDL</td><td>Removes cholesterol</td></tr>
+<tr><td>LDL</td><td>Delivers cholesterol</td></tr>
+</table>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which is considered “good cholesterol”?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+HDL is considered good cholesterol.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>5. Structure of Biological Membranes</h2>
+
+<p>
+Cell membranes are composed mainly of a phospholipid bilayer with embedded proteins.
+</p>
+
+<div class="image">
+<img src="https://i.imgur.com/5zO7F3H.png" alt="Cell membrane structure">
+</div>
+
+<ul>
+<li>Phospholipid bilayer</li>
+<li>Proteins embedded</li>
+<li>Cholesterol regulates fluidity</li>
+</ul>
+
+<div class="concept-box">
+<strong>Fluid Mosaic Model:</strong> Membrane is fluid and proteins move within it.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why is it called fluid mosaic?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Because the membrane is fluid and composed of many different components.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>6. Membrane Functions</h2>
+
+<ul>
+<li>Barrier between inside and outside</li>
+<li>Regulates transport</li>
+<li>Cell communication</li>
+<li>Structural support</li>
+</ul>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> What is the main role of membranes?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+To regulate what enters and leaves the cell.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>7. Transport Across Membranes</h2>
+
+<table>
+<tr><th>Type</th><th>Description</th></tr>
+<tr><td>Diffusion</td><td>Movement from high to low concentration</td></tr>
+<tr><td>Facilitated diffusion</td><td>Uses proteins</td></tr>
+<tr><td>Active transport</td><td>Requires energy</td></tr>
+</table>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which requires energy?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Active transport requires energy.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>8. Video Explanation</h2>
+
+<iframe src="https://www.youtube.com/embed/dPKvHrD1eS4" allowfullscreen></iframe>
+
+</div>
+
+<div class="section">
+<h2>9. Practice Activities</h2>
+
+<div class="activity">
+<h3>Activity 1</h3>
+<p>Identify the lipid type responsible for membrane structure.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Phospholipids</div>
+</div>
+
+<div class="activity">
+<h3>Activity 2</h3>
+<p>Explain why membranes are selective.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Because only certain molecules can pass through.</div>
+</div>
+
+<div class="activity">
+<h3>Activity 3</h3>
+<p>Which lipoprotein removes cholesterol?</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">HDL</div>
+</div>
+
+</div>
+
+<div class="section">
+<h2>10. Key Terms</h2>
+
+<div class="key-terms">
+<ul>
+<li>Phospholipid</li>
+<li>Glycolipid</li>
+<li>Lipoprotein</li>
+<li>Bilayer</li>
+<li>Fluid Mosaic Model</li>
+<li>Diffusion</li>
+<li>Active Transport</li>
+</ul>
+</div>
+
+</div>
+
+<div style="text-align:center;">
+<button class="quiz-button" id="quizBtn">Take Lesson Quiz →</button>
+</div>
+
+<script>
+function toggleAnswer(btn){
+  const ans = btn.nextElementSibling;
+  ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+}
+
+document.getElementById("quizBtn").addEventListener("click", () => {
+  window.parent.postMessage({ type:'openQuiz', quiz:'chapter4_lesson3_quiz.html' }, '*');
+});
+</script>
+
+</body>
+</html>
