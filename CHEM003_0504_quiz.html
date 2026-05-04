@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 Assessment</title>
+
+<style>
+/* SAME STYLE AS TEMPLATE */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
+@media (max-width: 600px) {
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.1em; }
+    .stars { font-size: 2em; }
+  }
+
+.diagram-box {margin: 12px 0 20px; background: #f7fbff; border: 1px dashed #d8e9ff; padding: 10px; border-radius: 8px; }
+
+svg {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+<h2>Chapter 5 Assessment: Biomolecules</h2>
+
+<div class="progress-text" id="progressText"></div>
+<div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
+
+<div id="quizBox"></div>
+<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+
+const quizData = [
+
+/* --- AMINO ACIDS --- */
+
+{q:"1. Which feature is unique among amino acids?",c:["Amino group","Carboxyl group","R-group","Hydrogen"],a:2,e:"R-group varies and defines identity."},
+{q:"2. Amino acids act as buffers because:",c:["They are nonpolar","They can donate/accept protons","They lack nitrogen","They are lipids"],a:1,e:"Amphoteric nature enables buffering."},
+{q:"3. Zwitterions occur when:",c:["Only positive charge present","Only negative charge present","Both charges present","No charges"],a:2,e:"They contain both positive and negative charges."},
+{q:"4. Which amino acids are buried inside proteins?",c:["Polar","Charged","Nonpolar","Acidic"],a:2,e:"Hydrophobic amino acids avoid water."},
+{q:"5. Essential amino acids:",c:["Synthesized in body","Must be obtained from diet","Are unnecessary","Are lipids"],a:1,e:"Body cannot produce them sufficiently."},
+
+/* --- PROTEINS --- */
+
+{q:"6. Primary structure refers to:",c:["3D shape","Sequence","Helix","Multiple chains"],a:1,e:"Primary = amino acid sequence."},
+{q:"7. Secondary structure is stabilized by:",c:["Peptide bonds","Hydrogen bonds","Ionic bonds","Covalent bonds"],a:1,e:"Hydrogen bonding stabilizes helices/sheets."},
+{q:"8. Tertiary structure depends mainly on:",c:["DNA","R-group interactions","Peptide bonds","Water only"],a:1,e:"Side chain interactions determine folding."},
+{q:"9. Strongest interaction in proteins:",c:["Hydrogen","Ionic","Disulfide","Van der Waals"],a:2,e:"Disulfide bonds are covalent."},
+{q:"10. Quaternary structure involves:",c:["Single chain","Multiple chains","Only helices","Only sheets"],a:1,e:"Multiple polypeptides interact."},
+
+/* --- FUNCTION + DENATURATION --- */
+
+{q:"11. Denaturation affects:",c:["Primary only","Higher structures","DNA","Carbohydrates"],a:1,e:"Folding is disrupted."},
+{q:"12. Which remains unchanged in denaturation?",c:["Tertiary","Secondary","Primary","Quaternary"],a:2,e:"Sequence remains intact."},
+{q:"13. Enzymes function because of:",c:["Sequence only","Shape","DNA","Energy storage"],a:1,e:"Shape determines active site."},
+
+/* --- NUCLEIC ACIDS --- */
+
+{q:"14. Nucleotides consist of:",c:["Protein + sugar","Base + sugar + phosphate","Only sugar","Only base"],a:1,e:"Three components form nucleotides."},
+{q:"15. DNA differs from RNA by:",c:["Sugar","Base","Strand","All of the above"],a:3,e:"All listed differences apply."},
+{q:"16. Which base is found only in RNA?",c:["A","C","U","G"],a:2,e:"Uracil replaces thymine."},
+{q:"17. Complementary base of G:",c:["A","T","C","U"],a:2,e:"G pairs with C."},
+{q:"18. Hydrogen bonds hold:",c:["Backbone","Base pairs","Proteins","Water"],a:1,e:"They connect bases."},
+
+/* --- CENTRAL DOGMA --- */
+
+{q:"19. Central dogma describes:",c:["Protein → DNA","DNA → RNA → Protein","RNA → DNA","Protein only"],a:1,e:"Information flow."},
+{q:"20. Transcription produces:",c:["DNA","Protein","RNA","Lipids"],a:2,e:"DNA → RNA."},
+{q:"21. Translation produces:",c:["RNA","Protein","DNA","Sugar"],a:1,e:"RNA → protein."},
+
+/* --- APPLICATION --- */
+
+{q:"22. Mutation results from:",c:["Correct pairing","Incorrect pairing","Hydrogen bonds","Stable DNA"],a:1,e:"Errors alter sequence."},
+{q:"23. Change in sequence affects:",c:["Only RNA","Only protein","Genetic info","Nothing"],a:2,e:"Sequence defines information."},
+{q:"24. Protein folding failure leads to:",c:["Better function","Loss of function","More energy","DNA repair"],a:1,e:"Misfolded proteins malfunction."},
+
+/* --- HIGHER ORDER --- */
+
+{q:"25. Why is sequence critical?",c:["Stores energy","Determines structure","Forms lipids","Adds oxygen"],a:1,e:"Sequence dictates folding."},
+{q:"26. Which interaction stabilizes membrane proteins?",c:["Hydrophobic","Ionic only","Peptide only","Water only"],a:0,e:"Hydrophobic interactions dominate."},
+{q:"27. DNA replication depends on:",c:["Random pairing","Complementary pairing","Protein folding","Energy storage"],a:1,e:"Base pairing ensures accuracy."},
+{q:"28. Which molecule carries genetic instructions to ribosome?",c:["DNA","mRNA","tRNA","rRNA"],a:1,e:"mRNA carries code."},
+{q:"29. Which molecule brings amino acids?",c:["mRNA","tRNA","DNA","rRNA"],a:1,e:"tRNA delivers amino acids."},
+{q:"30. Which structure ensures enzyme specificity?",c:["Sequence","Shape","Temperature","pH"],a:1,e:"Shape defines function."},
+
+/* --- INTEGRATED --- */
+
+{q:"31. DNA controls protein synthesis because:",c:["Stores energy","Contains instructions","Forms lipids","Breaks bonds"],a:1,e:"DNA encodes protein information."},
+{q:"32. Proteins affect traits because:",c:["They store DNA","They perform functions","They store lipids","They form RNA"],a:1,e:"Proteins carry out biological roles."},
+{q:"33. Life processes depend on:",c:["Lipids only","DNA only","Flow of genetic info","Water only"],a:2,e:"DNA → RNA → protein governs life."}
+
+];
+
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+	${q.svg || ""}
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
+}
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+
+  const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>
