@@ -6,130 +6,351 @@
 <title>Chapter 5 – Lesson 1: Amino Acids</title>
 
 <style>
-body{
-  font-family:"Segoe UI",Arial,sans-serif;
-  background:linear-gradient(135deg,#f3fbf8,#f6f9ff);
-  margin:0;
-  padding:35px 22px;
-  color:#222;
-  line-height:1.7;
-  font-size:18px;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-h1{color:#136f63;text-align:center}
-h2{color:#136f63;margin-top:1.2em}
-h3{color:#174ea6;margin-top:0.8em}
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
 
-.section{
-  background:#fff;
-  padding:22px 26px;
-  border-radius:14px;
-  margin:22px auto;
-  max-width:950px;
-  box-shadow:0 4px 18px rgba(0,0,0,0.05);
-}
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
+    margin: 0;
+    padding: 35px 22px;
+    color: #222;
+    line-height: 1.7;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
 
-ul,ol{margin-left:25px}
+  h1 {
+    color: #136f63;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
 
-.concept-box{
-  background:#fff7e6;
-  border-left:5px solid #ffb100;
-  padding:12px 16px;
-  border-radius:8px;
-  margin-top:12px;
-}
+  h2 {
+    color: #136f63;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin: 1.2em 0 0.55em;
+  }
 
-.quick-check{
-  background:#eef3ff;
-  border-left:5px solid #174ea6;
-  padding:12px 16px;
-  border-radius:8px;
-  margin-top:12px;
-}
+  h3 {
+    color: #174ea6;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin: 0.8em 0 0.45em;
+  }
 
-.activity{
-  background:#f9fbff;
-  border-left:5px solid #136f63;
-  padding:12px 16px;
-  border-radius:8px;
-  margin-top:12px;
-}
+  p {
+    margin: 0.65em 0;
+  }
 
-.answer{
-  display:none;
-  margin-top:10px;
-  background:#eef3ff;
-  padding:10px;
-  border-radius:8px;
-}
+  ul,
+  ol {
+    margin: 0 0 0 28px;
+    padding: 0;
+  }
 
-.toggle-btn{
-  margin-top:10px;
-  padding:8px 14px;
-  border:none;
-  background:#136f63;
-  color:white;
-  border-radius:8px;
-  cursor:pointer;
-}
+  img,
+  picture,
+  svg,
+  video,
+  canvas,
+  iframe,
+  embed,
+  object {
+    max-width: 100%;
+  }
 
-.toggle-btn:hover{background:#0f5b52}
+  img,
+  svg,
+  video,
+  canvas {
+    height: auto;
+  }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:12px;
-}
+  .lesson-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-th,td{
-  padding:10px;
-  border-bottom:1px solid #eee;
-}
+  .section {
+    margin: 24px auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    max-width: 950px;
+  }
 
-th{
-  background:#f3f7ff;
-  color:#174ea6;
-}
+  .concept-box,
+  .quick-check,
+  .activity,
+  .key-terms {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
 
-.image{
-  text-align:center;
-  margin:18px 0;
-}
+  .concept-box {
+    background: #fff7e6;
+    border-left: 5px solid #ffb100;
+  }
 
-img{
-  width:90%;
-  max-width:720px;
-  border-radius:10px;
-}
+  .quick-check {
+    background: #eef3ff;
+    border-left: 5px solid #174ea6;
+  }
 
-iframe{
-  width:100%;
-  max-width:760px;
-  height:420px;
-  display:block;
-  margin:18px auto;
-  border:none;
-  border-radius:10px;
-}
+  .activity {
+    background: #f9fbff;
+    border-left: 5px solid #136f63;
+  }
 
-.quiz-button{
-  background:#136f63;
-  color:white;
-  padding:12px 22px;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:20px;
-}
+  .key-terms {
+    background: #f8fcff;
+    border-left: 5px solid #2b7de9;
+    margin-top: 18px;
+  }
 
-.key-terms{
-  background:#f8fcff;
-  border-left:5px solid #2b7de9;
-  padding:12px 16px;
-  border-radius:8px;
-  margin-top:14px;
-}
+  .answer {
+    display: none;
+    margin-top: 10px;
+    background: #eef3ff;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .toggle-btn,
+  .quiz-button {
+    background: #136f63;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 10px;
+  }
+
+  .toggle-btn:hover,
+  .quiz-button:hover {
+    background: #0f5b52;
+    transform: translateY(-1px);
+  }
+
+  .quiz-button {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 22px;
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f3f7ff;
+    color: #174ea6;
+  }
+
+  .reaction-scheme,
+  .media-block,
+  .video-block,
+  .simulation-block,
+  .image-block {
+    background: #f7fbff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px dashed #d8e9ff;
+    max-width: 100%;
+  }
+
+  .reaction-scheme svg,
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lesson-image,
+  figure img,
+  .image-block img {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    border-radius: 10px;
+    margin: 16px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  figure {
+    margin: 18px auto;
+    text-align: center;
+  }
+
+  figure img {
+    margin-bottom: 8px;
+  }
+
+  .caption,
+  figcaption {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+  }
+
+  iframe,
+  video,
+  .media-frame {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    min-height: 260px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 16px auto;
+    background: #fff;
+  }
+
+  .simulation-frame,
+  .simulation-block iframe,
+  iframe[src*="phet"],
+  iframe[src*="simulation"] {
+    max-width: 900px;
+    aspect-ratio: 4 / 3;
+    min-height: 420px;
+  }
+
+  .quiz-actions {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 720px) {
+    body {
+      font-size: 16px;
+      padding: 20px 14px;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+    }
+
+    .section {
+      padding: 18px 16px;
+      margin: 18px auto;
+      border-radius: 12px;
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+    }
+
+    .reaction-scheme,
+    .media-block,
+    .video-block,
+    .simulation-block,
+    .image-block {
+      padding: 14px;
+      margin: 16px 0;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      min-width: 150px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 220px;
+    }
+
+    .simulation-frame,
+    .simulation-block iframe,
+    iframe[src*="phet"],
+    iframe[src*="simulation"] {
+      min-height: 360px;
+    }
+
+    .toggle-btn,
+    .quiz-button {
+      max-width: 100%;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 420px) {
+    body {
+      padding: 16px 10px;
+    }
+
+    .section {
+      padding: 16px 12px;
+    }
+
+    .concept-box,
+    .quick-check,
+    .activity,
+    .key-terms {
+      padding: 12px 14px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 200px;
+    }
+  }
 </style>
 </head>
 
