@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 Assessment: Lipids</title>
+
+<style>
+/* SAME STYLE AS TEMPLATE */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
+@media (max-width: 600px) {
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.1em; }
+    .stars { font-size: 2em; }
+  }
+
+.diagram-box {margin: 12px 0 20px; background: #f7fbff; border: 1px dashed #d8e9ff; padding: 10px; border-radius: 8px; }
+
+svg {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+<h2>Chapter 4 Assessment: Lipids</h2>
+
+<div class="progress-text" id="progressText"></div>
+<div class="progress-wrapper"><div id="progressBar" class="progress-bar"></div></div>
+
+<div id="quizBox"></div>
+<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+
+const quizData = [
+
+/* --- CONCEPTUAL + BASIC --- */
+
+{q:"1. Lipids are primarily classified based on:",c:["Structure only","Solubility in water","Presence of nitrogen","Number of carbons"],a:1,e:"Lipids are grouped based on hydrophobic behavior."},
+{q:"2. Which lipid is used mainly for energy storage?",c:["Phospholipid","Triglyceride","Cholesterol","Glycolipid"],a:1,e:"Triglycerides store long-term energy."},
+{q:"3. Which part of fatty acid is polar?",c:["Tail","Head","Chain","All parts"],a:1,e:"Carboxyl group is polar."},
+{q:"4. Saturated fatty acids:",c:["Contain double bonds","Contain no double bonds","Are always liquid","Are polar"],a:1,e:"They have only single bonds."},
+{q:"5. Unsaturated fatty acids:",c:["Have double bonds","Are always solid","Have no oxygen","Contain nitrogen"],a:0,e:"Double bonds define unsaturation."},
+
+/* --- APPLICATION --- */
+
+{q:"6. Why do unsaturated fats have lower melting points?",c:["More hydrogen bonding","Bent chains prevent packing","They are ionic","They lack carbon"],a:1,e:"Cis bonds create bends."},
+{q:"7. Which molecule forms bilayers?",c:["Triglyceride","Phospholipid","Wax","Steroid"],a:1,e:"Amphipathic structure forms bilayer."},
+{q:"8. Amphipathic means:",c:["Only hydrophobic","Only hydrophilic","Both hydrophobic and hydrophilic","No polarity"],a:2,e:"Two different polarity regions."},
+{q:"9. Which lipid is part of cell recognition?",c:["Triglyceride","Glycolipid","Wax","Steroid"],a:1,e:"Carbohydrate groups aid recognition."},
+{q:"10. Lipoproteins function to:",c:["Store DNA","Transport lipids","Make proteins","Break sugars"],a:1,e:"They carry lipids in blood."},
+
+/* --- MEMBRANE --- */
+
+{q:"11. Membrane structure is mainly:",c:["Protein layer","Phospholipid bilayer","DNA helix","Carbohydrate wall"],a:1,e:"Bilayer is fundamental structure."},
+{q:"12. Fluid mosaic model means:",c:["Rigid membrane","Moving components","Only proteins","Static structure"],a:1,e:"Membrane components move."},
+{q:"13. Cholesterol function:",c:["Breaks membrane","Controls fluidity","Stores energy","Makes DNA"],a:1,e:"Regulates membrane fluidity."},
+{q:"14. Hydrophobic region is:",c:["Exterior","Interior of membrane","Water region","Protein region"],a:1,e:"Tails face inward."},
+{q:"15. Membrane allows:",c:["All substances","Selective passage","No substances","Only water"],a:1,e:"Selective permeability."},
+
+/* --- TRANSPORT --- */
+
+{q:"16. Diffusion moves:",c:["Low → high","High → low","Random only","Energy driven"],a:1,e:"Down concentration gradient."},
+{q:"17. Active transport requires:",c:["No energy","ATP","Water only","Proteins only"],a:1,e:"Requires ATP."},
+{q:"18. Facilitated diffusion uses:",c:["Energy","Proteins","DNA","Lipids"],a:1,e:"Uses transport proteins."},
+{q:"19. Small nonpolar molecules:",c:["Cannot pass","Pass easily","Require ATP","Need enzymes"],a:1,e:"They diffuse easily."},
+{q:"20. Ions cross membrane via:",c:["Simple diffusion","Protein channels","Direct passage","Evaporation"],a:1,e:"Require channels."},
+
+/* --- ADVANCED --- */
+
+{q:"21. Longer fatty acid chains:",c:["Lower MP","Higher MP","No effect","Always liquid"],a:1,e:"Stronger intermolecular forces."},
+{q:"22. Cis double bonds:",c:["Straight chains","Bent chains","No effect","Increase packing"],a:1,e:"Cause bends."},
+{q:"23. Trans fats:",c:["Highly bent","More linear","Always liquid","Highly polar"],a:1,e:"More linear than cis."},
+{q:"24. Triglyceride hydrolysis produces:",c:["Glycerol + 3 FA","Only FA","Only glycerol","Protein"],a:0,e:"Breaks ester bonds."},
+{q:"25. Ester bonds form via:",c:["Oxidation","Condensation","Reduction","Hydrolysis"],a:1,e:"Condensation releases water."},
+
+/* --- HIGHER ORDER --- */
+
+{q:"26. Why are lipids energy-dense?",c:["More oxygen","More C-H bonds","Less carbon","More nitrogen"],a:1,e:"C-H bonds store energy."},
+{q:"27. Membrane fluidity increases with:",c:["Saturation","Unsaturation","Long chains","Low temp"],a:1,e:"Double bonds increase fluidity."},
+{q:"28. Which disrupts membrane packing?",c:["Straight chains","Bent chains","Proteins","Water"],a:1,e:"Bends prevent packing."},
+{q:"29. Selective permeability depends on:",c:["Charge and size","Color","Temperature only","Shape only"],a:0,e:"Size & polarity matter."},
+{q:"30. Why are lipids compact storage?",c:["Hydrated","Nonpolar","Ionic","Charged"],a:1,e:"Stored without water."},
+
+/* --- INTEGRATION --- */
+
+{q:"31. HDL is beneficial because:",c:["Adds cholesterol","Removes cholesterol","Stores fat","Breaks protein"],a:1,e:"Removes excess cholesterol."},
+{q:"32. LDL risk:",c:["Removes cholesterol","Deposits cholesterol","Stores DNA","Synthesizes lipid"],a:1,e:"Deposits cholesterol in vessels."}
+
+];
+
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+	${q.svg || ""}
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
+}
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+
+  const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>
