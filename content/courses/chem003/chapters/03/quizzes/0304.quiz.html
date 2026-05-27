@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chapter 3 – Lesson 4 Quiz: Chemical Properties of Carbohydrates</title>
+
+<style>
+/* SAME STYLE AS TEMPLATE */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
+@media (max-width: 600px) {
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.1em; }
+    .stars { font-size: 2em; }
+  }
+
+.diagram-box {margin: 12px 0 20px; background: #f7fbff; border: 1px dashed #d8e9ff; padding: 10px; border-radius: 8px; }
+
+svg {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+  <h2>Chemical Properties of Carbohydrates – Quiz</h2>
+
+  <div class="progress-text" id="progressText"></div>
+  <div class="progress-wrapper">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+  {
+    q: "1. Which structural features mainly explain why carbohydrates are chemically reactive?",
+    c: [
+      "Only carbon-carbon single bonds",
+      "Hydroxyl groups and a carbonyl/anomeric carbon",
+      "Metallic bonds and ionic charges",
+      "Long nonpolar hydrocarbon chains only"
+    ],
+    a: 1,
+    e: "Carbohydrates react mainly because they contain many hydroxyl groups and a carbonyl or anomeric carbon that can participate in reactions."
+  },
+  {
+    q: "2. A reducing sugar is best described as a sugar that can:",
+    c: [
+      "Remove all water from solution",
+      "Act as a mild reducing agent due to a free reactive carbonyl/anomeric carbon",
+      "Only form peptide bonds",
+      "Never open from cyclic form"
+    ],
+    a: 1,
+    e: "Reducing sugars can donate electrons to mild oxidizing agents because they have a free anomeric carbon or can open into a reactive carbonyl form."
+  },
+  {
+    q: "3. Which of the following is usually classified as a non-reducing sugar?",
+    c: [
+      "Glucose",
+      "Maltose",
+      "Lactose",
+      "Sucrose"
+    ],
+    a: 3,
+    e: "Sucrose is non-reducing because both anomeric carbons are involved in the glycosidic bond."
+  },
+  {
+    q: "4. Diagram Question: What reaction is represented below?",
+    svg: `
+      <div class="diagram-box">
+        <svg viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="q4title q4desc">
+          <title id="q4title">Hydrolysis of glycosidic bond</title>
+          <desc id="q4desc">Sugar-O-Sugar reacts with water to produce two sugar hydroxyl groups.</desc>
+          <text x="40" y="135" font-size="30" fill="#136f63">Sugar−O−Sugar + H₂O</text>
+          <line x1="455" y1="125" x2="760" y2="125" stroke="#333" stroke-width="4" marker-end="url(#arrowq4)" />
+          <text x="535" y="95" font-size="22" fill="#333">reaction</text>
+          <text x="815" y="135" font-size="30" fill="#136f63">Sugar−OH + HO−Sugar</text>
+          <defs>
+            <marker id="arrowq4" markerWidth="22" markerHeight="22" refX="11" refY="11" orient="auto">
+              <polygon points="0 0, 22 11, 0 22" fill="#333"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="diagram-caption">A glycosidic bond is broken using water.</div>
+      </div>
+    `,
+    c: [
+      "Condensation",
+      "Hydrolysis",
+      "Reduction",
+      "Mutarotation"
+    ],
+    a: 1,
+    e: "The diagram shows hydrolysis because water is used to break a glycosidic bond."
+  },
+  {
+    q: "5. What is oxidized when glucose acts as a reducing sugar?",
+    c: [
+      "Its peptide bond",
+      "Its reactive carbonyl group in the open-chain form",
+      "Its nitrogen group",
+      "Its phosphate backbone"
+    ],
+    a: 1,
+    e: "In reducing sugar reactions, the open-chain carbonyl form of glucose is oxidized."
+  },
+  {
+    q: "6. Oxidation of the aldehyde group of glucose can produce:",
+    c: [
+      "Sorbitol",
+      "Gluconic acid",
+      "Cellulose",
+      "Sucrose"
+    ],
+    a: 1,
+    e: "Oxidizing the aldehyde group of glucose can form gluconic acid."
+  },
+  {
+    q: "7. Reduction of glucose commonly produces:",
+    c: [
+      "Sorbitol",
+      "Gluconic acid",
+      "Maltose",
+      "Cellulose"
+    ],
+    a: 0,
+    e: "Reduction converts the carbonyl group of glucose into an alcohol group, producing sorbitol."
+  },
+  {
+    q: "8. Which statement best describes the difference between oxidation and reduction in carbohydrate chemistry?",
+    c: [
+      "Oxidation adds hydrogen; reduction removes hydrogen",
+      "Oxidation removes electrons or adds oxygen; reduction adds electrons or hydrogen",
+      "Both reactions always form glycosidic bonds",
+      "Both reactions require peptide bonds"
+    ],
+    a: 1,
+    e: "Oxidation commonly involves electron loss or oxygen gain, while reduction involves electron gain or hydrogen gain."
+  },
+  {
+    q: "9. Which reaction forms glycosidic bonds between sugar units?",
+    c: [
+      "Hydrolysis",
+      "Condensation",
+      "Reduction",
+      "Oxidation"
+    ],
+    a: 1,
+    e: "Condensation joins sugar units and releases water, forming glycosidic bonds."
+  },
+  {
+    q: "10. Diagram Question: Which process is shown below?",
+    svg: `
+      <div class="diagram-box">
+        <svg viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="q10title q10desc">
+          <title id="q10title">Condensation of sugars</title>
+          <desc id="q10desc">Two sugar hydroxyl groups form a glycosidic bond and water.</desc>
+          <text x="40" y="135" font-size="30" fill="#136f63">Sugar−OH + HO−Sugar</text>
+          <line x1="455" y1="125" x2="760" y2="125" stroke="#333" stroke-width="4" marker-end="url(#arrowq10)" />
+          <text x="520" y="95" font-size="22" fill="#333">reaction</text>
+          <text x="815" y="135" font-size="30" fill="#136f63">Sugar−O−Sugar + H₂O</text>
+          <defs>
+            <marker id="arrowq10" markerWidth="22" markerHeight="22" refX="11" refY="11" orient="auto">
+              <polygon points="0 0, 22 11, 0 22" fill="#333"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="diagram-caption">Two sugars join and water is released.</div>
+      </div>
+    `,
+    c: [
+      "Hydrolysis",
+      "Condensation",
+      "Mutarotation",
+      "Isomerization"
+    ],
+    a: 1,
+    e: "This is condensation because two sugars join and water is released."
+  },
+  {
+    q: "11. Glucose and fructose both have the formula C₆H₁₂O₆. Why are they different molecules?",
+    c: [
+      "They contain different elements",
+      "They have the same formula but different structures",
+      "Glucose has no oxygen",
+      "Fructose is not a carbohydrate"
+    ],
+    a: 1,
+    e: "Glucose and fructose are isomers: same molecular formula but different structural arrangement."
+  },
+  {
+    q: "12. Which pair correctly describes glucose and fructose?",
+    c: [
+      "Glucose is a ketose; fructose is an aldose",
+      "Glucose is an aldose; fructose is a ketose",
+      "Both are amino acids",
+      "Both are non-carbohydrates"
+    ],
+    a: 1,
+    e: "Glucose is an aldose, while fructose is a ketose."
+  },
+  {
+    q: "13. What is mutarotation?",
+    c: [
+      "The joining of amino acids",
+      "The interconversion of alpha and beta sugar forms through the open-chain form",
+      "The complete destruction of glucose",
+      "The formation of cellulose from proteins"
+    ],
+    a: 1,
+    e: "Mutarotation occurs when α and β anomers interconvert through the open-chain form."
+  },
+  {
+    q: "14. Which best explains why sucrose cannot easily act as a reducing sugar?",
+    c: [
+      "It has no carbon atoms",
+      "It has both anomeric carbons locked in the glycosidic bond",
+      "It contains nitrogen instead of oxygen",
+      "It is made of amino acids"
+    ],
+    a: 1,
+    e: "Sucrose is non-reducing because both anomeric carbons are involved in the glycosidic bond and cannot freely open."
+  },
+  {
+    q: "15. Why is hydrolysis biologically important in carbohydrate digestion?",
+    c: [
+      "It joins sugars into larger molecules for storage only",
+      "It breaks glycosidic bonds to release smaller absorbable sugars",
+      "It converts proteins into carbohydrates",
+      "It prevents all carbohydrates from dissolving"
+    ],
+    a: 1,
+    e: "Hydrolysis breaks glycosidic bonds so large carbohydrates can be digested into smaller sugars for absorption."
+  }
+];
+
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    ${q.svg || ""}
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
+}
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+
+  const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>

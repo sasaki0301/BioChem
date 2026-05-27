@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 – Lesson 1: Amino Acids</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
+    margin: 0;
+    padding: 35px 22px;
+    color: #222;
+    line-height: 1.7;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    color: #136f63;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  h2 {
+    color: #136f63;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin: 1.2em 0 0.55em;
+  }
+
+  h3 {
+    color: #174ea6;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin: 0.8em 0 0.45em;
+  }
+
+  p {
+    margin: 0.65em 0;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 0 28px;
+    padding: 0;
+  }
+
+  img,
+  picture,
+  svg,
+  video,
+  canvas,
+  iframe,
+  embed,
+  object {
+    max-width: 100%;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    height: auto;
+  }
+
+  .lesson-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section {
+    margin: 24px auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    max-width: 950px;
+  }
+
+  .concept-box,
+  .quick-check,
+  .activity,
+  .key-terms {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+
+  .concept-box {
+    background: #fff7e6;
+    border-left: 5px solid #ffb100;
+  }
+
+  .quick-check {
+    background: #eef3ff;
+    border-left: 5px solid #174ea6;
+  }
+
+  .activity {
+    background: #f9fbff;
+    border-left: 5px solid #136f63;
+  }
+
+  .key-terms {
+    background: #f8fcff;
+    border-left: 5px solid #2b7de9;
+    margin-top: 18px;
+  }
+
+  .answer {
+    display: none;
+    margin-top: 10px;
+    background: #eef3ff;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .toggle-btn,
+  .quiz-button {
+    background: #136f63;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 10px;
+  }
+
+  .toggle-btn:hover,
+  .quiz-button:hover {
+    background: #0f5b52;
+    transform: translateY(-1px);
+  }
+
+  .quiz-button {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 22px;
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f3f7ff;
+    color: #174ea6;
+  }
+
+  .reaction-scheme,
+  .media-block,
+  .video-block,
+  .simulation-block,
+  .image-block {
+    background: #f7fbff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px dashed #d8e9ff;
+    max-width: 100%;
+  }
+
+  .reaction-scheme svg,
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lesson-image,
+  figure img,
+  .image-block img {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    border-radius: 10px;
+    margin: 16px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  figure {
+    margin: 18px auto;
+    text-align: center;
+  }
+
+  figure img {
+    margin-bottom: 8px;
+  }
+
+  .caption,
+  figcaption {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+  }
+
+  iframe,
+  video,
+  .media-frame {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    min-height: 260px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 16px auto;
+    background: #fff;
+  }
+
+  .simulation-frame,
+  .simulation-block iframe,
+  iframe[src*="phet"],
+  iframe[src*="simulation"] {
+    max-width: 900px;
+    aspect-ratio: 4 / 3;
+    min-height: 420px;
+  }
+
+  .quiz-actions {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 720px) {
+    body {
+      font-size: 16px;
+      padding: 20px 14px;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+    }
+
+    .section {
+      padding: 18px 16px;
+      margin: 18px auto;
+      border-radius: 12px;
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+    }
+
+    .reaction-scheme,
+    .media-block,
+    .video-block,
+    .simulation-block,
+    .image-block {
+      padding: 14px;
+      margin: 16px 0;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      min-width: 150px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 220px;
+    }
+
+    .simulation-frame,
+    .simulation-block iframe,
+    iframe[src*="phet"],
+    iframe[src*="simulation"] {
+      min-height: 360px;
+    }
+
+    .toggle-btn,
+    .quiz-button {
+      max-width: 100%;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 420px) {
+    body {
+      padding: 16px 10px;
+    }
+
+    .section {
+      padding: 16px 12px;
+    }
+
+    .concept-box,
+    .quick-check,
+    .activity,
+    .key-terms {
+      padding: 12px 14px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 200px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Amino Acids – The Building Blocks</h1>
+
+<div class="section">
+<h2>Overview</h2>
+<ul>
+<li>Structure of amino acids</li>
+<li>Classification based on R-groups</li>
+<li>Acid-base properties (zwitterions)</li>
+<li>Essential vs non-essential amino acids</li>
+<li>Biological importance</li>
+</ul>
+
+<div class="concept-box">
+<strong>Big Idea:</strong> Amino acids are the building blocks of proteins and are essential for structure, function, and metabolism in living organisms.
+</div>
+</div>
+
+<div class="section">
+<h2>1. General Structure of Amino Acids</h2>
+
+<p>
+All amino acids share a common structure centered on a <strong>carbon atom (α-carbon)</strong>.
+</p>
+
+<ul>
+<li>Amino group (−NH₂)</li>
+<li>Carboxyl group (−COOH)</li>
+<li>Hydrogen atom</li>
+<li>R-group (side chain)</li>
+</ul>
+
+<div class="image">
+<img src="https://i.imgur.com/qDBRYGV.png" alt="General amino acid structure">
+<p><em>General structure of an amino acid.</em></p>
+</div>
+
+<div class="concept-box">
+<strong>Important:</strong> The R-group determines the identity and properties of each amino acid.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> What makes one amino acid different from another?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">The R-group (side chain)</div>
+</div>
+</div>
+
+<div class="section">
+<h2>2. Classification of Amino Acids</h2>
+
+<table>
+<tr><th>Type</th><th>Property</th></tr>
+<tr><td>Nonpolar</td><td>Hydrophobic</td></tr>
+<tr><td>Polar</td><td>Hydrophilic</td></tr>
+<tr><td>Acidic</td><td>Negatively charged</td></tr>
+<tr><td>Basic</td><td>Positively charged</td></tr>
+</table>
+
+<div class="concept-box">
+<strong>Memory Tip:</strong>
+<ul>
+<li>Nonpolar → hydrophobic</li>
+<li>Polar → interacts with water</li>
+<li>Charged → affects protein structure strongly</li>
+</ul>
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which type is likely found inside proteins?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Nonpolar (hydrophobic) amino acids</div>
+</div>
+</div>
+
+<div class="section">
+<h2>3. Zwitterions and Acid-Base Behavior</h2>
+
+<p>
+Amino acids can act as both acids and bases. In water, they often exist as <strong>zwitterions</strong>.
+</p>
+
+<div class="concept-box">
+<strong>Zwitterion:</strong> Molecule with both positive and negative charges
+</div>
+
+<ul>
+<li>−NH₂ becomes −NH₃⁺</li>
+<li>−COOH becomes −COO⁻</li>
+</ul>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why are amino acids amphoteric?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Because they can donate and accept protons.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>4. Essential vs Non-Essential Amino Acids</h2>
+
+<table>
+<tr><th>Type</th><th>Description</th></tr>
+<tr><td>Essential</td><td>Must be obtained from diet</td></tr>
+<tr><td>Non-essential</td><td>Synthesized by the body</td></tr>
+</table>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why are essential amino acids important?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">They cannot be produced by the body.</div>
+</div>
+</div>
+
+<div class="section">
+<h2>5. Biological Importance</h2>
+
+<ul>
+<li>Protein synthesis</li>
+<li>Enzyme function</li>
+<li>Hormones and signaling</li>
+<li>Energy source (in some conditions)</li>
+</ul>
+
+<div class="concept-box">
+<strong>Example:</strong> Hemoglobin, enzymes, and antibodies are all made from amino acids.
+</div>
+</div>
+
+<div class="section">
+<h2>6. Video Explanation</h2>
+
+<iframe src="https://www.youtube.com/embed/KbJAqwypP7c" allowfullscreen></iframe>
+</div>
+
+<div class="section">
+<h2>7. Practice Activities</h2>
+
+<div class="activity">
+<h3>Activity 1</h3>
+<p>Identify the functional groups in an amino acid.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Amino group and carboxyl group</div>
+</div>
+
+<div class="activity">
+<h3>Activity 2</h3>
+<p>Which part determines amino acid properties?</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">R-group</div>
+</div>
+
+<div class="activity">
+<h3>Activity 3</h3>
+<p>Explain why amino acids can act as buffers.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">They can donate or accept protons.</div>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Key Terms</h2>
+
+<div class="key-terms">
+<ul>
+<li>Amino Acid</li>
+<li>R-group</li>
+<li>Zwitterion</li>
+<li>Amphoteric</li>
+<li>Essential Amino Acid</li>
+</ul>
+</div>
+</div>
+
+<div style="text-align:center;">
+<button class="quiz-button" id="quizBtn">Take Lesson Quiz →</button>
+</div>
+
+<script>
+function toggleAnswer(btn){
+  const ans = btn.nextElementSibling;
+  ans.style.display = ans.style.display==='block'?'none':'block';
+}
+
+document.getElementById("quizBtn").addEventListener("click",()=>{
+  window.parent.postMessage({type:'openQuiz',quiz:'chapter5_lesson1_quiz.html'},'*');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapter 1 Summary – Foundations of Biochemistry</title>
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
+    margin: 0;
+    padding: 35px 22px;
+    color: #222;
+    line-height: 1.7;
+    font-size: 18px;
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 12px 0;
+  }
+
+  h1 {
+    color: #136f63;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: #136f63;
+    font-size: 1.45em;
+    margin-top: 1.2em;
+    margin-bottom: 0.3em;
+  }
+
+  .section {
+    margin: 24px auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  }
+
+  .key-terms {
+    background: #f8fcff;
+    border-radius: 10px;
+    border-left: 5px solid #2b7de9;
+    padding: 14px 18px;
+    margin-top: 18px;
+  }
+
+  ul { margin-left: 28px; }
+
+  .quiz-button {
+    display: inline-block;
+    background-color: #136f63;
+    color: white;
+    padding: 13px 26px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 22px;
+  }
+  .quiz-button:hover { background-color: #0f5b52; }
+
+  .activity {
+    background: #f9fbff;
+    border-left: 5px solid #136f63;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Chapter 1 Summary: Foundations of Biochemistry</h1>
+<p style="text-align:center; max-width:850px; margin: 0 auto;">
+In this chapter, you explored how chemistry forms the basis of all life processes. You learned what biochemistry is, the chemical foundations of life, and how functional groups define the structure and reactivity of biomolecules.
+</p>
+
+<!-- Section 1 -->
+<div class="section">
+  <h2>1. What is Biochemistry?</h2>
+  <ul>
+    <li>Biochemistry is the study of the chemical substances and processes that occur within living organisms.</li>
+    <li>It bridges biology and chemistry to explain life at the molecular level.</li>
+    <li>Key biomolecules include <strong>carbohydrates, lipids, proteins, and nucleic acids</strong>.</li>
+    <li>Applications: medicine (drug design), food science, genetics, forensics, and molecular biology.</li>
+  </ul>
+</div>
+
+<!-- Section 2 -->
+<div class="section">
+  <h2>2. Chemical Basis of Life</h2>
+  <ul>
+    <li>Life is composed mainly of six elements: <strong>C, H, O, N, P, and S</strong> (the biogenic elements).</li>
+    <li>Atoms form bonds — covalent (sharing), ionic (transfer), and hydrogen (weak attraction).</li>
+    <li>Water, the “molecule of life,” is polar and essential for biochemical reactions.</li>
+    <li>Hydrogen bonding gives water its unique properties (solvent ability, cohesion, high heat capacity).</li>
+  </ul>
+</div>
+
+<!-- Section 3 -->
+<div class="section">
+  <h2>3. Functional Groups and Organic Molecules</h2>
+  <ul>
+    <li>Functional groups define a molecule’s reactivity and polarity.</li>
+    <li>Examples include:</li>
+    <ul>
+      <li><strong>Hydroxyl (–OH):</strong> in alcohols, polar.</li>
+      <li><strong>Carboxyl (–COOH):</strong> acidic, in amino and fatty acids.</li>
+      <li><strong>Amino (–NH₂):</strong> basic, in proteins.</li>
+      <li><strong>Phosphate (–PO₄²⁻):</strong> energy transfer (ATP).</li>
+      <li><strong>Thiol (–SH):</strong> forms disulfide bonds in proteins.</li>
+    </ul>
+    <li>Functional groups are the foundation of all biochemical reactions and macromolecular structures.</li>
+  </ul>
+</div>
+
+<!-- Section 4 -->
+<div class="section">
+  <h2>4. Reflection Activity</h2>
+  <div class="activity">
+    <p><strong>Think about this:</strong> How does knowing about chemical bonds and functional groups help us understand diseases, drug interactions, or metabolism?</p>
+    <p>Write your short reflection or discuss it in class — you may relate it to examples such as diabetes (carbohydrate chemistry) or protein denaturation (bond disruption).</p>
+  </div>
+</div>
+
+<!-- Section 5 -->
+<div class="section">
+  <h2>5. Key Terms Summary</h2>
+  <div class="key-terms">
+    <ul>
+      <li><strong>Biogenic Elements:</strong> The six elements essential for life: C, H, O, N, P, S.</li>
+      <li><strong>Functional Group:</strong> Atom cluster determining molecular reactivity.</li>
+      <li><strong>Covalent Bond:</strong> Electron-sharing bond type.</li>
+      <li><strong>Hydrogen Bond:</strong> Weak bond responsible for water’s special properties.</li>
+      <li><strong>Polarity:</strong> Uneven charge distribution within a molecule.</li>
+      <li><strong>Macromolecule:</strong> Large biological molecules—proteins, lipids, carbs, nucleic acids.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Assessment Button -->
+<div style="text-align:center; margin-top:30px;">
+  <button class="quiz-button" id="takeQuizBtn">Take the Chapter 1 Assessment →</button>
+</div>
+
+<script>
+document.getElementById("takeQuizBtn").addEventListener("click", () => {
+  window.parent.postMessage({
+    type: "openQuiz",
+    quiz: "chapter1_assessment.html"
+  }, "*");
+});
+</script>
+</body>
+</html>

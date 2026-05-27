@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 – Lesson 3: Nucleic Acids</title>
+
+<style>
+body{
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:linear-gradient(135deg,#f3fbf8,#f6f9ff);
+  margin:0;
+  padding:35px 22px;
+  color:#222;
+  line-height:1.7;
+  font-size:18px;
+}
+
+h1{color:#136f63;text-align:center}
+h2{color:#136f63;margin-top:1.2em}
+h3{color:#174ea6;margin-top:0.8em}
+
+.section{
+  background:#fff;
+  padding:22px 26px;
+  border-radius:14px;
+  margin:22px auto;
+  max-width:950px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.05);
+}
+
+ul,ol{margin-left:25px}
+
+.concept-box{
+  background:#fff7e6;
+  border-left:5px solid #ffb100;
+  padding:12px 16px;
+  border-radius:8px;
+  margin-top:12px;
+}
+
+.quick-check{
+  background:#eef3ff;
+  border-left:5px solid #174ea6;
+  padding:12px 16px;
+  border-radius:8px;
+  margin-top:12px;
+}
+
+.activity{
+  background:#f9fbff;
+  border-left:5px solid #136f63;
+  padding:12px 16px;
+  border-radius:8px;
+  margin-top:12px;
+}
+
+.answer{
+  display:none;
+  margin-top:10px;
+  background:#eef3ff;
+  padding:10px;
+  border-radius:8px;
+}
+
+.toggle-btn{
+  margin-top:10px;
+  padding:8px 14px;
+  border:none;
+  background:#136f63;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.toggle-btn:hover{background:#0f5b52}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid #eee;
+}
+
+th{
+  background:#f3f7ff;
+  color:#174ea6;
+}
+
+.image{
+  text-align:center;
+  margin:18px 0;
+}
+
+img{
+  width:90%;
+  max-width:720px;
+  border-radius:10px;
+}
+
+iframe{
+  width:100%;
+  max-width:760px;
+  height:420px;
+  display:block;
+  margin:18px auto;
+  border:none;
+  border-radius:10px;
+}
+
+.quiz-button{
+  background:#136f63;
+  color:white;
+  padding:12px 22px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+.key-terms{
+  background:#f8fcff;
+  border-left:5px solid #2b7de9;
+  padding:12px 16px;
+  border-radius:8px;
+  margin-top:14px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Nucleic Acids – Composition, Types, and Functions</h1>
+
+<div class="section">
+<h2>Overview</h2>
+<ul>
+<li>Structure of nucleotides</li>
+<li>DNA vs RNA</li>
+<li>Base pairing rules</li>
+<li>Functions of nucleic acids</li>
+<li>Information flow in cells</li>
+</ul>
+
+<div class="concept-box">
+<strong>Big Idea:</strong> Nucleic acids store and transmit genetic information that controls all cellular processes.
+</div>
+</div>
+
+<div class="section">
+<h2>1. What Are Nucleic Acids?</h2>
+
+<p>
+Nucleic acids are biological macromolecules that carry genetic information.
+</p>
+
+<ul>
+<li>DNA (Deoxyribonucleic Acid)</li>
+<li>RNA (Ribonucleic Acid)</li>
+</ul>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> What is the main function of nucleic acids?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">To store and transmit genetic information.</div>
+</div>
+</div>
+
+<div class="section">
+<h2>2. Structure of Nucleotides</h2>
+
+<p>
+Nucleic acids are made of repeating units called <strong>nucleotides</strong>.
+</p>
+
+<ul>
+<li>Phosphate group</li>
+<li>5-carbon sugar</li>
+<li>Nitrogenous base</li>
+</ul>
+
+<div class="image">
+<img src="https://i.imgur.com/VuqB4Qe.png" alt="Nucleotide structure">
+</div>
+
+<div class="concept-box">
+<strong>Key Idea:</strong> The sequence of bases encodes genetic information.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which part varies in nucleotides?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Nitrogenous base</div>
+</div>
+</div>
+
+<div class="section">
+<h2>3. DNA vs RNA</h2>
+
+<table>
+<tr><th>Feature</th><th>DNA</th><th>RNA</th></tr>
+<tr><td>Sugar</td><td>Deoxyribose</td><td>Ribose</td></tr>
+<tr><td>Strands</td><td>Double</td><td>Single</td></tr>
+<tr><td>Bases</td><td>A, T, C, G</td><td>A, U, C, G</td></tr>
+<tr><td>Function</td><td>Storage</td><td>Protein synthesis</td></tr>
+</table>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which base is unique to RNA?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Uracil (U)</div>
+</div>
+</div>
+
+<div class="section">
+<h2>4. Base Pairing Rules</h2>
+
+<ul>
+<li>A pairs with T (DNA)</li>
+<li>A pairs with U (RNA)</li>
+<li>C pairs with G</li>
+</ul>
+
+<div class="concept-box">
+<strong>Complementary Base Pairing:</strong> Ensures accurate replication.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why is base pairing important?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">It ensures accurate copying of genetic information.</div>
+</div>
+</div>
+
+<div class="section">
+<h2>5. DNA Structure</h2>
+
+<p>
+DNA has a <strong>double helix</strong> structure.
+</p>
+
+<ul>
+<li>Two strands</li>
+<li>Twisted ladder shape</li>
+<li>Hydrogen bonds between bases</li>
+</ul>
+  
+<div class="image">
+<img src="https://i.imgur.com/nPFZoBz.png" alt="DNA double helix">
+</div>
+<br>  
+<div class="image">
+<img src="https://i.imgur.com/WpDq0do.png" alt="DNA replication">
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> What holds the strands together?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Hydrogen bonds</div>
+</div>
+</div>
+
+<div class="section">
+<h2>6. Types of RNA</h2>
+
+<table>
+<tr><th>Type</th><th>Function</th></tr>
+<tr><td>mRNA</td><td>Carries genetic code</td></tr>
+<tr><td>tRNA</td><td>Brings amino acids</td></tr>
+<tr><td>rRNA</td><td>Forms ribosome</td></tr>
+</table>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which RNA brings amino acids?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">tRNA</div>
+</div>
+</div>
+
+<div class="section">
+<h2>7. Flow of Genetic Information</h2>
+
+<p>
+Genetic information flows from DNA to RNA to protein.
+</p>
+
+<div class="concept-box">
+<strong>Central Dogma:</strong> DNA → RNA → Protein
+</div>
+
+<ul>
+<li>Replication (DNA copying)</li>
+<li>Transcription (DNA → RNA)</li>
+<li>Translation (RNA → protein)</li>
+</ul>
+<br>
+<iframe src="https://www.youtube.com/embed/gG7uCskUOrA" allowfullscreen></iframe>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which step produces proteins?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Translation</div>
+</div>
+</div>
+
+<div class="section">
+<h2>8. Video Explanation</h2>
+
+<iframe src="https://www.youtube.com/embed/TNKWgcFPHqw" allowfullscreen></iframe>
+</div>
+
+<div class="section">
+<h2>9. Practice Activities</h2>
+
+<div class="activity">
+<h3>Activity 1</h3>
+<p>Identify the components of a nucleotide.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Phosphate, sugar, base</div>
+</div>
+
+<div class="activity">
+<h3>Activity 2</h3>
+<p>Explain why DNA is double stranded.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Complementary base pairing stabilizes structure.</div>
+</div>
+
+<div class="activity">
+<h3>Activity 3</h3>
+<p>What happens if base pairing is incorrect?</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">Mutation may occur.</div>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Key Terms</h2>
+
+<div class="key-terms">
+<ul>
+<li>Nucleotide</li>
+<li>DNA</li>
+<li>RNA</li>
+<li>Base Pairing</li>
+<li>Central Dogma</li>
+</ul>
+</div>
+</div>
+
+<div style="text-align:center;">
+<button class="quiz-button" id="quizBtn">Take Lesson Quiz →</button>
+</div>
+
+<script>
+function toggleAnswer(btn){
+  const ans = btn.nextElementSibling;
+  ans.style.display = ans.style.display==='block'?'none':'block';
+}
+
+document.getElementById("quizBtn").addEventListener("click",()=>{
+  window.parent.postMessage({type:'openQuiz',quiz:'chapter5_lesson3_quiz.html'},'*');
+});
+</script>
+
+</body>
+</html>

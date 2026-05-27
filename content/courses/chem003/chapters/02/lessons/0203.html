@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3: Interconversion and Reactions of Organic Compounds</title>
+
+<style>
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg,#f3fbf8,#f6f9ff);
+  margin:0;
+  padding:30px 18px;
+  font-size:18px;
+  line-height:1.7;
+}
+
+h1 { text-align:center; color:#136f63; }
+h2 { color:#136f63; margin-top:20px; }
+h3 { color:#174ea6; }
+
+.section {
+  background:#fff;
+  padding:22px;
+  border-radius:14px;
+  margin:20px auto;
+  box-shadow:0 4px 18px rgba(0,0,0,0.05);
+}
+
+.quick-check {
+  background:#eef3ff;
+  padding:12px;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+.activity {
+  background:#f9fbff;
+  border-left:5px solid #136f63;
+  padding:12px;
+  border-radius:8px;
+  margin-top:12px;
+}
+
+.answer {
+  display:none;
+  background:#eef3ff;
+  padding:10px;
+  margin-top:8px;
+  border-radius:8px;
+}
+
+.toggle-btn {
+  background:#136f63;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+svg {
+  width:100%;
+  max-width:950px;
+  display:block;
+  margin:20px auto;
+}
+
+.quiz-button {
+  background:#136f63;
+  color:white;
+  padding:12px 22px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Lesson 3: Interconversion and Reactions of Organic Compounds</h1>
+
+<!-- INTRO -->
+<div class="section">
+<h2>Overview</h2>
+<p>
+In biochemistry and organic chemistry, molecules are constantly transformed into one another.
+This process is called <strong>interconversion</strong>.
+</p>
+
+<p>
+Understanding these reactions helps explain:
+</p>
+<ul>
+<li>How nutrients are processed in the body</li>
+<li>How drugs are metabolized</li>
+<li>How biomolecules are built and broken down</li>
+</ul>
+
+<div class="quick-check">
+What does "interconversion" mean?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">The transformation of one functional group into another.</div>
+</div>
+</div>
+
+<!-- REACTION TYPES -->
+<div class="section">
+<h2>1. Types of Organic Reactions</h2>
+
+<h3>A. Oxidation</h3>
+<p>
+Oxidation involves <strong>loss of electrons</strong>, removal of hydrogen, or addition of oxygen.
+</p>
+
+<h3>B. Reduction</h3>
+<p>
+Reduction is the opposite: <strong>gain of electrons</strong> or addition of hydrogen.
+</p>
+
+<div class="quick-check">
+Is converting alcohol → aldehyde oxidation or reduction?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">Oxidation (loss of hydrogen).</div>
+</div>
+
+<h3>C. Condensation</h3>
+<p>
+Two molecules combine and release water.
+</p>
+
+<h3>D. Hydrolysis</h3>
+<p>
+Water breaks a molecule into smaller parts.
+</p>
+
+</div>
+
+<!-- INTERCONVERSION FLOW -->
+<div class="section">
+<h2>2. Functional Group Interconversion Map</h2>
+
+<svg viewBox="0 0 1200 400">
+<text x="50" y="200" font-size="26">Alcohol</text>
+<line x1="200" y1="190" x2="350" y2="190" stroke="black" stroke-width="4"/>
+<text x="220" y="170">Oxidation</text>
+
+<text x="380" y="200" font-size="26">Aldehyde</text>
+<line x1="550" y1="190" x2="700" y2="190" stroke="black" stroke-width="4"/>
+<text x="570" y="170">Oxidation</text>
+
+<text x="720" y="200" font-size="26">Carboxylic Acid</text>
+</svg>
+
+<p>
+This shows a common pathway:
+</p>
+<ul>
+<li>Alcohol → Aldehyde → Carboxylic Acid</li>
+</ul>
+
+<div class="quick-check">
+Why can't tertiary alcohols follow this pathway?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">They lack a hydrogen needed for oxidation.</div>
+</div>
+</div>
+
+<!-- ESTER REACTIONS -->
+<div class="section">
+<h2>3. Ester Formation and Breakdown</h2>
+
+<h3>Esterification</h3>
+<svg viewBox="0 0 1400 300">
+<text x="50" y="150" font-size="26">Acid + Alcohol</text>
+<line x1="350" y1="140" x2="900" y2="140" stroke="black" stroke-width="4"/>
+<text x="500" y="110">H⁺</text>
+<text x="950" y="150" font-size="26">Ester + H₂O</text>
+</svg>
+
+<h3>Hydrolysis</h3>
+<svg viewBox="0 0 1400 300">
+<text x="50" y="150" font-size="26">Ester + H₂O</text>
+<line x1="350" y1="140" x2="900" y2="140" stroke="black" stroke-width="4"/>
+<text x="950" y="150" font-size="26">Acid + Alcohol</text>
+</svg>
+
+<div class="quick-check">
+Which direction requires water?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">Hydrolysis.</div>
+</div>
+</div>
+
+<!-- AMIDE -->
+<div class="section">
+<h2>4. Amide Formation (Peptide Bonds)</h2>
+
+<svg viewBox="0 0 1400 300">
+<text x="50" y="150" font-size="26">Acid + Amine</text>
+<line x1="350" y1="140" x2="900" y2="140" stroke="black" stroke-width="4"/>
+<text x="950" y="150" font-size="26">Amide + H₂O</text>
+</svg>
+
+<p>
+This reaction forms the backbone of proteins.
+</p>
+
+<div class="quick-check">
+Why are peptide bonds strong?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">Resonance makes them stable and less reactive.</div>
+</div>
+</div>
+
+<!-- EXAMPLES -->
+<div class="section">
+<h2>5. Real-World Examples</h2>
+
+<ul>
+<li>Digestion: fats broken into acids and alcohols</li>
+<li>Protein synthesis: amino acids form amides</li>
+<li>Metabolism: alcohols oxidized in liver</li>
+</ul>
+
+</div>
+
+<!-- PRACTICE -->
+<div class="section">
+<h2>6. Practice Activities</h2>
+
+<div class="activity">
+What is the product of oxidizing ethanol?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">Ethanal → Ethanoic acid</div>
+</div>
+
+<div class="activity">
+What reaction forms an ester?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">Condensation reaction</div>
+</div>
+
+<div class="activity">
+Why is hydrolysis important in digestion?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">It breaks large molecules into smaller absorbable units.</div>
+</div>
+
+<div class="activity">
+Predict: Ester + Water → ?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show</button>
+<div class="answer">Carboxylic acid + Alcohol</div>
+</div>
+
+</div>
+
+<!-- QUIZ -->
+<div style="text-align:center;">
+<button class="quiz-button" onclick="openQuiz()">Take Lesson 3 Quiz →</button>
+</div>
+
+<script>
+function toggleAnswer(btn){
+  const ans = btn.nextElementSibling;
+  ans.style.display = ans.style.display === "block" ? "none" : "block";
+}
+
+function openQuiz(){
+  window.parent.postMessage({
+    type:"openQuiz",
+    quiz:"chapter2_lesson3_quiz.html"
+  },"*");
+}
+</script>
+
+</body>
+</html>

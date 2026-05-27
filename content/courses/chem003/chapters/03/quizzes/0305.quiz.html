@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chapter 3 Assessment – Carbohydrates</title>
+
+<style>
+/* SAME STYLE AS TEMPLATE */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
+@media (max-width: 600px) {
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.1em; }
+    .stars { font-size: 2em; }
+  }
+
+.diagram-box {margin: 12px 0 20px; background: #f7fbff; border: 1px dashed #d8e9ff; padding: 10px; border-radius: 8px; }
+
+svg {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+  <h2>Chapter 3 Assessment – Carbohydrates</h2>
+
+  <div class="progress-text" id="progressText">Question 1 of 35</div>
+  <div class="progress-wrapper">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+  {
+    q: "1. Which best describes carbohydrates?",
+    c: [
+      "Biomolecules made only of carbon and hydrogen",
+      "Polyhydroxy aldehydes or ketones, or compounds that yield them",
+      "Molecules made only of nitrogen and phosphorus",
+      "Nonpolar biomolecules used only for insulation"
+    ],
+    a: 1,
+    e: "Carbohydrates are commonly described as polyhydroxy aldehydes or ketones, or substances that produce them upon hydrolysis."
+  },
+  {
+    q: "2. Which formula approximately represents many simple carbohydrates?",
+    c: [
+      "Cₙ(H₂O)ₙ",
+      "CₙH₂ₙ₊₂",
+      "NH₂CHRCOOH",
+      "R−COOR′"
+    ],
+    a: 0,
+    e: "Many simple carbohydrates follow the approximate formula Cₙ(H₂O)ₙ, which is why they were historically called hydrates of carbon."
+  },
+  {
+    q: "3. Which of the following is a monosaccharide?",
+    c: [
+      "Sucrose",
+      "Glucose",
+      "Starch",
+      "Cellulose"
+    ],
+    a: 1,
+    e: "Glucose is a single sugar unit, so it is a monosaccharide."
+  },
+  {
+    q: "4. Which carbohydrate is a disaccharide?",
+    c: [
+      "Glucose",
+      "Fructose",
+      "Sucrose",
+      "Glycogen"
+    ],
+    a: 2,
+    e: "Sucrose is a disaccharide made of glucose and fructose."
+  },
+  {
+    q: "5. Which carbohydrate is a polysaccharide?",
+    c: [
+      "Ribose",
+      "Maltose",
+      "Lactose",
+      "Cellulose"
+    ],
+    a: 3,
+    e: "Cellulose is a long chain of glucose units, so it is a polysaccharide."
+  },
+
+  {
+    q: "6. Which pair correctly identifies glucose?",
+    c: [
+      "Ketopentose",
+      "Aldohexose",
+      "Aldopentose",
+      "Ketohexose"
+    ],
+    a: 1,
+    e: "Glucose is an aldose and has six carbon atoms, so it is classified as an aldohexose."
+  },
+  {
+    q: "7. Which sugar is a ketose?",
+    c: [
+      "Glucose",
+      "Galactose",
+      "Ribose",
+      "Fructose"
+    ],
+    a: 3,
+    e: "Fructose is a ketose because it contains a ketone group in its open-chain form."
+  },
+  {
+    q: "8. Ribose is classified as a:",
+    c: [
+      "Pentose",
+      "Hexose",
+      "Disaccharide",
+      "Polysaccharide"
+    ],
+    a: 0,
+    e: "Ribose has five carbon atoms, so it is a pentose."
+  },
+  {
+    q: "9. Which function is most directly associated with glucose?",
+    c: [
+      "Structural support in plant cell walls only",
+      "Immediate cellular energy source",
+      "Formation of peptide bonds",
+      "Main component of DNA bases"
+    ],
+    a: 1,
+    e: "Glucose is a major immediate energy source used by cells."
+  },
+  {
+    q: "10. Which carbohydrate stores energy in animals?",
+    c: [
+      "Cellulose",
+      "Glycogen",
+      "Chitin",
+      "Sucrose"
+    ],
+    a: 1,
+    e: "Glycogen is the storage polysaccharide in animals, especially in liver and muscle cells."
+  },
+
+  {
+    q: "11. What happens during monosaccharide cyclization?",
+    c: [
+      "An internal hydroxyl group reacts with the carbonyl carbon",
+      "Two amino acids form a peptide bond",
+      "Water breaks a glycosidic bond",
+      "A fatty acid reacts with glycerol"
+    ],
+    a: 0,
+    e: "Cyclization happens when an internal −OH group attacks the carbonyl carbon, forming a ring."
+  },
+  {
+    q: "12. The anomeric carbon is best described as:",
+    c: [
+      "The carbon farthest from the ring oxygen",
+      "The former carbonyl carbon that becomes a new stereocenter during ring formation",
+      "The carbon removed during hydrolysis",
+      "A carbon found only in proteins"
+    ],
+    a: 1,
+    e: "The anomeric carbon is the former carbonyl carbon that becomes a new stereocenter when the sugar cyclizes."
+  },
+  {
+    q: "13. Alpha and beta forms of glucose differ in:",
+    c: [
+      "The number of carbon atoms",
+      "The orientation of the OH group on the anomeric carbon",
+      "The presence of nitrogen",
+      "The molecular formula"
+    ],
+    a: 1,
+    e: "Alpha and beta anomers differ based on the orientation of the OH group on the anomeric carbon."
+  },
+  {
+    q: "14. What is mutarotation?",
+    c: [
+      "Conversion of sugars into amino acids",
+      "Interconversion between alpha and beta sugar forms through the open-chain form",
+      "Breaking of peptide bonds",
+      "Formation of triglycerides"
+    ],
+    a: 1,
+    e: "Mutarotation is the interconversion of alpha and beta anomers through the open-chain form."
+  },
+  {
+    q: "15. A six-membered sugar ring is commonly called a:",
+    c: [
+      "Furanose",
+      "Pyranose",
+      "Peptide",
+      "Nucleotide"
+    ],
+    a: 1,
+    e: "A six-membered sugar ring is called a pyranose."
+  },
+
+  {
+    q: "16. What bond connects monosaccharides together?",
+    c: [
+      "Peptide bond",
+      "Glycosidic bond",
+      "Ester bond only",
+      "Ionic bond"
+    ],
+    a: 1,
+    e: "Monosaccharides are linked by glycosidic bonds."
+  },
+  {
+    q: "17. Which reaction forms a glycosidic bond?",
+    c: [
+      "Hydrolysis",
+      "Condensation",
+      "Reduction",
+      "Oxidation"
+    ],
+    a: 1,
+    e: "Glycosidic bonds form by condensation reactions, where water is released."
+  },
+  {
+    q: "18. Which reaction breaks a glycosidic bond?",
+    c: [
+      "Condensation",
+      "Hydrolysis",
+      "Reduction",
+      "Isomerization"
+    ],
+    a: 1,
+    e: "Hydrolysis uses water to break glycosidic bonds."
+  },
+  {
+    q: "19. Which disaccharide is made of glucose + fructose?",
+    c: [
+      "Maltose",
+      "Sucrose",
+      "Lactose",
+      "Cellobiose"
+    ],
+    a: 1,
+    e: "Sucrose is made of glucose and fructose."
+  },
+  {
+    q: "20. Which disaccharide is found in milk?",
+    c: [
+      "Maltose",
+      "Sucrose",
+      "Lactose",
+      "Starch"
+    ],
+    a: 2,
+    e: "Lactose is the sugar found in milk. It is made of glucose and galactose."
+  },
+
+  {
+    q: "21. Which disaccharide is glucose + glucose?",
+    c: [
+      "Maltose",
+      "Sucrose",
+      "Lactose",
+      "Fructose"
+    ],
+    a: 0,
+    e: "Maltose is made of two glucose units."
+  },
+  {
+    q: "22. Why is sucrose non-reducing?",
+    c: [
+      "It has no oxygen atoms",
+      "Both anomeric carbons are involved in the glycosidic bond",
+      "It is a polysaccharide",
+      "It contains peptide bonds"
+    ],
+    a: 1,
+    e: "Sucrose is non-reducing because both anomeric carbons are locked in the glycosidic bond."
+  },
+  {
+    q: "23. Which sugar is usually reducing?",
+    c: [
+      "Sucrose",
+      "Glucose",
+      "Only cellulose",
+      "Only chitin"
+    ],
+    a: 1,
+    e: "Glucose is a reducing sugar because it can open into a reactive carbonyl form."
+  },
+  {
+    q: "24. Which polysaccharide is the main storage carbohydrate in plants?",
+    c: [
+      "Cellulose",
+      "Chitin",
+      "Starch",
+      "Glycogen"
+    ],
+    a: 2,
+    e: "Starch is the main storage polysaccharide in plants."
+  },
+  {
+    q: "25. Which polysaccharide is highly branched and stores glucose in animals?",
+    c: [
+      "Glycogen",
+      "Cellulose",
+      "Chitin",
+      "Amylose"
+    ],
+    a: 0,
+    e: "Glycogen is highly branched and stores glucose in animals."
+  },
+
+  {
+    q: "26. Why is glycogen highly branched?",
+    c: [
+      "To prevent all enzyme activity",
+      "To allow rapid glucose release from many chain ends",
+      "To make it insoluble forever",
+      "To convert it into cellulose"
+    ],
+    a: 1,
+    e: "Branching creates many chain ends where enzymes can release glucose quickly."
+  },
+  {
+    q: "27. Which polysaccharide provides structural support in plant cell walls?",
+    c: [
+      "Starch",
+      "Glycogen",
+      "Cellulose",
+      "Maltose"
+    ],
+    a: 2,
+    e: "Cellulose provides structural support in plant cell walls."
+  },
+  {
+    q: "28. Humans can digest starch but not cellulose mainly because:",
+    c: [
+      "Starch has α-linkages, while cellulose has β-linkages",
+      "Cellulose has no glucose",
+      "Starch has no oxygen",
+      "Cellulose is made of amino acids"
+    ],
+    a: 0,
+    e: "Humans have enzymes that break α-glycosidic bonds in starch but not β-glycosidic bonds in cellulose."
+  },
+  {
+    q: "29. Chitin is mainly found in:",
+    c: [
+      "Plant chloroplasts only",
+      "Fungal cell walls and arthropod exoskeletons",
+      "Human blood only",
+      "DNA strands"
+    ],
+    a: 1,
+    e: "Chitin is a structural polysaccharide found in fungal cell walls and arthropod exoskeletons."
+  },
+  {
+    q: "30. Which reaction is most important in carbohydrate digestion?",
+    c: [
+      "Hydrolysis",
+      "Condensation",
+      "Mutarotation only",
+      "Peptide bond formation"
+    ],
+    a: 0,
+    e: "Carbohydrate digestion uses hydrolysis to break glycosidic bonds into smaller sugars."
+  },
+
+  {
+    q: "31. Oxidation of glucose at the aldehyde group can produce:",
+    c: [
+      "Sorbitol",
+      "Gluconic acid",
+      "Sucrose",
+      "Glycogen"
+    ],
+    a: 1,
+    e: "Oxidation of glucose at its aldehyde group can produce gluconic acid."
+  },
+  {
+    q: "32. Reduction of glucose commonly produces:",
+    c: [
+      "Sorbitol",
+      "Gluconic acid",
+      "Cellulose",
+      "Fructose only"
+    ],
+    a: 0,
+    e: "Reduction of glucose converts its carbonyl group into an alcohol, producing sorbitol."
+  },
+  {
+    q: "33. Glucose and fructose are isomers because they:",
+    c: [
+      "Have the same formula but different structures",
+      "Have different elements",
+      "Are both proteins",
+      "Are both non-carbohydrates"
+    ],
+    a: 0,
+    e: "Glucose and fructose have the same formula, C₆H₁₂O₆, but different structures."
+  },
+  {
+    q: "34. Which statement best compares starch and cellulose?",
+    c: [
+      "Both are proteins",
+      "Both are glucose polymers, but starch has α-linkages and cellulose has β-linkages",
+      "Starch is made of amino acids, while cellulose is made of glucose",
+      "Cellulose is an animal storage molecule"
+    ],
+    a: 1,
+    e: "Starch and cellulose are both glucose polymers, but their different linkages give them different functions."
+  },
+  {
+    q: "35. Which statement best summarizes carbohydrate chemistry?",
+    c: [
+      "Carbohydrates are chemically inactive and only provide sweetness",
+      "Their reactions depend on hydroxyl groups, carbonyl/anomeric carbon, and glycosidic bonds",
+      "Carbohydrates react only with proteins",
+      "All carbohydrates are non-reducing"
+    ],
+    a: 1,
+    e: "Carbohydrate chemistry depends strongly on hydroxyl groups, carbonyl/anomeric carbon behavior, and glycosidic bonds."
+  }
+];
+
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+	${q.svg || ""}
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
+}
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+
+  const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapter 2 Assessment – Hydrocarbon Derivatives and Reactions</title>
+
+<style>
+/* SAME STYLE AS TEMPLATE */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
+  @media (max-width: 600px) {
+    .quiz-container { padding: 25px; }
+    .question { font-size: 1.1em; }
+    .stars { font-size: 2em; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+  <h2>Chapter 2 Assessment</h2>
+  <div class="progress-text" id="progressText">Question 1 of 35</div>
+  <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="quizBox"></div>
+  <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+  {
+    q:"1. Which functional group is present in alcohols?",
+    c:["−OH","−COOH","−NH₂","−CHO"],
+    a:0,
+    e:"Alcohols contain the hydroxyl group, written as −OH."
+  },
+  {
+    q:"2. Which compound is classified as an ether?",
+    c:["R−OH","R−O−R′","R−SH","R−CHO"],
+    a:1,
+    e:"Ethers have an oxygen atom between two carbon groups, represented as R−O−R′."
+  },
+  {
+    q:"3. Thiols contain which functional group?",
+    c:["−OH","−NH₂","−SH","−COOH"],
+    a:2,
+    e:"Thiols contain the sulfhydryl group, −SH."
+  },
+  {
+    q:"4. Which functional group defines an aldehyde?",
+    c:["Internal carbonyl","Terminal carbonyl","Carboxyl group","Amino group"],
+    a:1,
+    e:"Aldehydes contain a carbonyl group at the end of a carbon chain, often written as −CHO."
+  },
+  {
+    q:"5. Which functional group defines a ketone?",
+    c:["R−CO−R′","R−CHO","R−COOH","R−NH₂"],
+    a:0,
+    e:"Ketones contain an internal carbonyl group, represented as R−CO−R′."
+  },
+
+  {
+    q:"6. Oxidation of a primary alcohol using a mild oxidant commonly produces:",
+    c:["Ketone","Aldehyde","Ether","Amide"],
+    a:1,
+    e:"A primary alcohol can be mildly oxidized to an aldehyde."
+  },
+  {
+    q:"7. Further oxidation of an aldehyde produces:",
+    c:["Alcohol","Ketone","Carboxylic acid","Amine"],
+    a:2,
+    e:"Aldehydes can be further oxidized into carboxylic acids."
+  },
+  {
+    q:"8. Oxidation of a secondary alcohol produces:",
+    c:["Aldehyde","Ketone","Carboxylic acid","Ether"],
+    a:1,
+    e:"Secondary alcohols oxidize to ketones."
+  },
+  {
+    q:"9. Why are tertiary alcohols resistant to oxidation under mild conditions?",
+    c:["They contain no oxygen","They lack an α-hydrogen","They are too acidic","They are ionic"],
+    a:1,
+    e:"Tertiary alcohols lack the α-hydrogen needed for normal mild oxidation."
+  },
+  {
+    q:"10. Two thiols can oxidize to form:",
+    c:["Ester bond","Disulfide bond","Peptide bond","Hydrogen bond"],
+    a:1,
+    e:"Two thiol groups can oxidize to form a disulfide bond, R−S−S−R."
+  },
+
+  {
+    q:"11. Which functional group is responsible for acidity in organic acids?",
+    c:["Amino","Carboxyl","Ester","Amide"],
+    a:1,
+    e:"The carboxyl group, −COOH, is responsible for acidic behavior."
+  },
+  {
+    q:"12. Carboxylic acids are stronger acids than alcohols mainly because:",
+    c:["They are larger","Their conjugate base is resonance-stabilized","They contain nitrogen","They are nonpolar"],
+    a:1,
+    e:"The carboxylate ion formed after losing H⁺ is resonance-stabilized, making carboxylic acids more acidic."
+  },
+  {
+    q:"13. Which group is generally basic?",
+    c:["Carboxylic acid","Amine","Ester","Aldehyde"],
+    a:1,
+    e:"Amines are generally basic because nitrogen has a lone pair that can accept H⁺."
+  },
+  {
+    q:"14. Amines act as bases because nitrogen:",
+    c:["Has a lone pair that can accept H⁺","Always donates H⁺","Has no electrons","Forms only ionic bonds"],
+    a:0,
+    e:"The lone pair on nitrogen allows amines to accept a proton."
+  },
+  {
+    q:"15. Which functional group is found in many peptide bonds?",
+    c:["Ester","Amide","Ether","Thiol"],
+    a:1,
+    e:"Peptide bonds are amide linkages formed between amino acids."
+  },
+
+  {
+    q:"16. Esterification usually involves:",
+    c:["Acid + Alcohol","Acid + Amine","Alcohol + Amine","Aldehyde + Ketone"],
+    a:0,
+    e:"Esterification forms an ester from a carboxylic acid and an alcohol."
+  },
+  {
+    q:"17. What is released during esterification?",
+    c:["Carbon dioxide","Water","Oxygen","Hydrogen gas"],
+    a:1,
+    e:"Esterification is a condensation reaction, so water is released."
+  },
+  {
+    q:"18. Esters are often known for having:",
+    c:["Fruity odors","Strong basicity","Strong acidity","Metallic properties"],
+    a:0,
+    e:"Many esters have pleasant or fruity smells."
+  },
+  {
+    q:"19. Hydrolysis of an ester produces:",
+    c:["Alcohol + Carboxylic acid","Amine + Alcohol","Amide + Water","Ether + Acid"],
+    a:0,
+    e:"Ester hydrolysis breaks the ester into an alcohol and a carboxylic acid."
+  },
+  {
+    q:"20. Hydrolysis uses which molecule to break bonds?",
+    c:["Oxygen","Water","Nitrogen","Carbon dioxide"],
+    a:1,
+    e:"Hydrolysis literally means bond-breaking using water."
+  },
+
+  {
+    q:"21. Amide formation can occur from:",
+    c:["Carboxylic acid + Amine","Alcohol + Ether","Ketone + Thiol","Aldehyde + Alcohol"],
+    a:0,
+    e:"Amides can form from the reaction between a carboxylic acid derivative and an amine."
+  },
+  {
+    q:"22. Peptide bond formation is an example of:",
+    c:["Hydrolysis","Condensation","Oxidation","Reduction"],
+    a:1,
+    e:"Peptide bond formation removes water, so it is a condensation reaction."
+  },
+  {
+    q:"23. During condensation, water is:",
+    c:["Added","Removed","Converted into oxygen","Stored as ATP"],
+    a:1,
+    e:"Condensation reactions join molecules while removing water."
+  },
+  {
+    q:"24. During hydrolysis, water is:",
+    c:["Used to break a bond","Removed to form a bond","Converted into acid","Released as gas"],
+    a:0,
+    e:"Hydrolysis uses water to split larger molecules into smaller parts."
+  },
+  {
+    q:"25. Amides are less reactive than esters mainly because of:",
+    c:["Resonance stabilization","Higher acidity","Lack of carbonyl","Low molecular mass"],
+    a:0,
+    e:"Amides are stabilized by resonance between nitrogen and the carbonyl group."
+  },
+
+  {
+    q:"26. Which sequence shows increasing oxidation?",
+    c:["Acid → Aldehyde → Alcohol","Alcohol → Aldehyde → Carboxylic acid","Aldehyde → Alcohol → Acid","Alcohol → Acid → Aldehyde"],
+    a:1,
+    e:"The usual oxidation sequence is primary alcohol → aldehyde → carboxylic acid."
+  },
+  {
+    q:"27. Reduction of an aldehyde commonly produces:",
+    c:["Alcohol","Carboxylic acid","Amide","Ester"],
+    a:0,
+    e:"Reduction adds hydrogen or electrons, converting aldehydes back into alcohols."
+  },
+  {
+    q:"28. Which reaction builds larger molecules by joining smaller molecules?",
+    c:["Hydrolysis","Condensation","Reduction","Combustion"],
+    a:1,
+    e:"Condensation reactions build larger molecules by joining smaller ones and releasing water."
+  },
+  {
+    q:"29. Which reaction breaks larger molecules into smaller units?",
+    c:["Condensation","Hydrolysis","Oxidation","Esterification"],
+    a:1,
+    e:"Hydrolysis breaks molecules apart using water."
+  },
+  {
+    q:"30. Which reaction is important in digestion of fats and proteins?",
+    c:["Hydrolysis","Esterification only","Combustion","Polymerization only"],
+    a:0,
+    e:"Digestion commonly uses hydrolysis to break fats and proteins into absorbable units."
+  },
+
+  {
+    q:"31. Which functional group is found in fatty acids?",
+    c:["Carboxylic acid","Amide","Ether","Aldehyde only"],
+    a:0,
+    e:"Fatty acids contain a carboxylic acid group at one end."
+  },
+  {
+    q:"32. Which group is especially important in protein structure because it forms disulfide bonds?",
+    c:["Thiol","Ester","Ether","Aldehyde"],
+    a:0,
+    e:"Thiol groups from cysteine residues can form disulfide bonds that stabilize protein structure."
+  },
+  {
+    q:"33. Which functional group is common in fats and oils?",
+    c:["Ester","Amine","Aldehyde","Ketone only"],
+    a:0,
+    e:"Fats and oils are triglycerides, which contain ester linkages."
+  },
+  {
+    q:"34. Which pair correctly matches the group with its property?",
+    c:["Amine-acidic","Carboxylic acid-basic","Amide-stable due to resonance","Ester-strong base"],
+    a:2,
+    e:"Amides are stabilized by resonance, which makes them less reactive."
+  },
+  {
+    q:"35. Which best describes interconversion?",
+    c:["Changing one functional group into another","Destroying all organic molecules","Removing all carbon atoms","Making only inorganic compounds"],
+    a:0,
+    e:"Interconversion means transforming one functional group into another through chemical reactions."
+  }
+];
+
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
+}
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+
+  const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>

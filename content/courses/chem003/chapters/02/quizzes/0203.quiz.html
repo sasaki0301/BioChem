@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3 Quiz: Interconversion and Reactions</title>
+
+<style>
+/* SAME STYLE AS TEMPLATE */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
+svg {
+  width:100%;
+  max-width:500px;
+  margin:10px auto;
+  display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+<h2>Lesson 3 Quiz</h2>
+<div id="progressText" style="text-align:center;color:#136f63;font-weight:600;margin-bottom:10px;">
+  Question 1 of 15
+</div>
+<div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+<div id="quizBox"></div>
+<button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+</div>
+
+<script>
+const quizData = [
+
+{
+q:"1. What type of reaction converts an alcohol into an aldehyde?",
+c:["Reduction","Oxidation","Condensation","Hydrolysis"],
+a:1,
+e:"Alcohol → aldehyde involves loss of hydrogen (oxidation)."
+},
+
+{
+q:"2. Which sequence correctly represents increasing oxidation?",
+c:["Acid → Aldehyde → Alcohol","Alcohol → Aldehyde → Acid","Aldehyde → Alcohol → Acid","Alcohol → Acid → Aldehyde"],
+a:1,
+e:"Alcohol oxidizes to aldehyde, then further to carboxylic acid."
+},
+
+{
+q:"3. Why can't tertiary alcohols be oxidized easily?",
+c:["Too reactive","Too stable","No alpha hydrogen","Too small"],
+a:2,
+e:"They lack the hydrogen needed for oxidation."
+},
+
+{
+q:"4. Which reaction requires water as a reactant?",
+c:["Condensation","Oxidation","Hydrolysis","Reduction"],
+a:2,
+e:"Hydrolysis uses water to break bonds."
+},
+
+{
+q:"5. What is formed when an ester undergoes hydrolysis?",
+c:["Alcohol + Acid","Amine + Acid","Alcohol + Amine","Acid + Amide"],
+a:0,
+e:"Hydrolysis breaks ester into alcohol and acid."
+},
+
+{
+q:"6. Which reaction forms an amide?",
+c:["Hydrolysis","Oxidation","Condensation","Reduction"],
+a:2,
+e:"Amide forms via condensation of acid and amine."
+},
+
+{
+q:"7. What type of bond is formed in amide formation?",
+c:["Ionic","Hydrogen","Peptide","Metallic"],
+a:2,
+e:"Peptide bond is a type of amide linkage."
+},
+
+{
+q:"8. Which process breaks peptide bonds?",
+c:["Condensation","Hydrolysis","Reduction","Oxidation"],
+a:1,
+e:"Water breaks peptide bonds via hydrolysis."
+},
+
+{
+q:"9. Which reaction produces water as a product?",
+c:["Hydrolysis","Condensation","Reduction","Neutralization"],
+a:1,
+e:"Condensation reactions release water."
+},
+
+{
+q:"10. What is the product of reducing an aldehyde?",
+c:["Alcohol","Acid","Ester","Amide"],
+a:0,
+e:"Reduction adds hydrogen, forming alcohol."
+},
+
+{
+q:"11. Diagram Question:",
+c:["Alcohol → Acid","Alcohol → Aldehyde → Acid","Acid → Alcohol","Aldehyde → Alcohol"],
+a:1,
+e:"This is the oxidation pathway sequence."
+},
+
+{
+q:"12. Which compound is most oxidized?",
+c:["Alcohol","Aldehyde","Carboxylic acid","Amine"],
+a:2,
+e:"Carboxylic acids are the most oxidized form here."
+},
+
+{
+q:"13. Why is hydrolysis important in digestion?",
+c:["Builds molecules","Breaks molecules","Adds oxygen","Removes nitrogen"],
+a:1,
+e:"Hydrolysis breaks large biomolecules into smaller units."
+},
+
+{
+q:"14. Which transformation involves gain of hydrogen?",
+c:["Oxidation","Reduction","Condensation","Hydrolysis"],
+a:1,
+e:"Reduction adds hydrogen."
+},
+
+{
+q:"15. What is the major difference between condensation and hydrolysis?",
+c:["Energy","Water direction","Temperature","Catalyst"],
+a:1,
+e:"Condensation removes water, hydrolysis adds water."
+}
+
+];
+
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
+}
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+
+  const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>

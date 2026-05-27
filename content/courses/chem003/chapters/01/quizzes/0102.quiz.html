@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapter 1 – Lesson 2 Quiz: Chemical Basis of Life</title>
+<style>
+/* SAME STYLE AS TEMPLATE */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f9f1, #f7faff);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.quiz-container {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  width: 95%;
+  max-width: 850px;
+  text-align: center;
+}
+h2 { color: #136f63; margin-bottom: 25px; }
+.progress-wrapper { background:#e9f5ef; border-radius:8px; height:14px; width:100%; margin-bottom:25px; overflow:hidden;}
+.progress-bar { height:100%; background:linear-gradient(to right,#136f63,#2b7de9); width:0%; transition:width 0.4s;}
+.progress-text { text-align:right; font-size:0.95em; color:#174ea6; margin-bottom:10px; font-weight:600;}
+.question { font-size:1.3em; font-weight:600; color:#174ea6; margin-bottom:20px;}
+.choices { display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+.choice { background:#e8ecf8; border:none; border-radius:10px; padding:14px; cursor:pointer; text-align:left;}
+.choice:hover { background:#d3dbf8; transform:translateY(-2px);}
+.choice.correct {background: #2b7de9;color: #fff;}
+.choice.incorrect {background: #e57373;color: #fff;}
+.explanation { background:#eef3ff; border-radius:10px; padding:14px; text-align:left; margin-bottom:20px; display:none;}
+.next-btn { background:#136f63; color:#fff; border:none; padding:12px 26px; border-radius:10px; cursor:pointer;}
+.result { font-size:1.4em; font-weight:bold; color:#174ea6;}
+.stars { font-size:2.5em; margin-top:10px;}
+.quiz-nav { margin-top:25px; display:flex; justify-content:center; gap:10px;}
+.quiz-btn { background:#e8ecf8; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;}
+.quiz-btn.primary { background:#136f63; color:#fff;}
+</style>
+</head>
+
+<body>
+  <div class="quiz-container">
+    <h2>Lesson 2 Quiz – Chemical Basis of Life</h2>
+    <div class="progress-text" id="progressText">Question 1 of 10</div>
+    <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+
+    <div id="quizBox"></div>
+    <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
+  </div>
+
+<script>
+const quizData = [
+  {
+    q: "1. Which six elements make up the majority of living organisms?",
+    c: ["C, H, O, N, P, S", "Na, Cl, Mg, K, Fe, Zn", "He, Ne, Ar, Kr, Xe, Rn", "C, H, O, Ca, Fe, Cu"],
+    a: 0,
+    e: "The six most abundant elements in living organisms are carbon, hydrogen, oxygen, nitrogen, phosphorus, and sulfur (CHONPS)."
+  },
+  {
+    q: "2. Carbon is essential for life because it:",
+    c: ["Forms only one stable bond", "Can form up to four covalent bonds and complex molecules", "Is the most reactive element", "Is a metal that conducts electricity"],
+    a: 1,
+    e: "Carbon’s ability to form four covalent bonds allows it to create diverse organic molecules such as carbohydrates and proteins."
+  },
+  {
+    q: "3. Which type of bond involves the sharing of electrons between atoms?",
+    c: ["Ionic bond", "Covalent bond", "Hydrogen bond", "Metallic bond"],
+    a: 1,
+    e: "Covalent bonds share electrons, forming stable molecules like water and glucose."
+  },
+  {
+    q: "4. An ionic bond is formed when:",
+    c: ["Atoms share electrons equally", "One atom donates electrons to another", "Atoms form hydrogen bridges", "Molecules attract through van der Waals forces"],
+    a: 1,
+    e: "Ionic bonds occur when one atom transfers electrons to another, resulting in charged ions (e.g., Na⁺ and Cl⁻)."
+  },
+  {
+    q: "5. The weak attraction between polar molecules, such as between water molecules, is known as:",
+    c: ["Covalent bond", "Hydrogen bond", "Ionic bond", "Peptide bond"],
+    a: 1,
+    e: "Hydrogen bonds form between polar molecules and are essential in DNA base pairing and water’s cohesion."
+  },
+  {
+    q: "6. What property of water allows it to dissolve many substances?",
+    c: ["Its nonpolar structure", "Its high surface tension", "Its polarity", "Its metallic bonding"],
+    a: 2,
+    e: "Water’s polarity allows it to attract and surround charged or polar molecules, making it the universal solvent."
+  },
+  {
+    q: "7. The high heat capacity of water helps organisms by:",
+    c: ["Keeping enzymes inactive", "Regulating body and environmental temperature", "Breaking down food", "Increasing body acidity"],
+    a: 1,
+    e: "Because of water’s high heat capacity, it resists temperature changes, helping organisms maintain stable internal temperatures."
+  },
+  {
+    q: "8. Hydrogen bonds are crucial in DNA because they:",
+    c: ["Store energy for metabolism", "Hold the two strands together", "Break apart during translation", "Create amino acid chains"],
+    a: 1,
+    e: "Hydrogen bonds connect complementary nitrogen bases, stabilizing the DNA double helix."
+  },
+  {
+    q: "9. Which of the following best describes 'biogenic elements'?",
+    c: ["Elements produced by stars", "Elements essential for life", "Radioactive elements", "Heavy metals in organisms"],
+    a: 1,
+    e: "Biogenic elements (C, H, O, N, P, S) are the six essential elements that make up most living matter."
+  },
+  {
+    q: "10. Why is water called the molecule of life?",
+    c: ["It contains all known elements", "It is abundant and essential for biochemical reactions", "It forms metallic bonds", "It is hydrophobic"],
+    a: 1,
+    e: "Water’s abundance, polarity, and ability to dissolve substances make it vital for sustaining biochemical reactions in cells."
+  }
+];
+
+let current = 0, score = 0, selected = null, showingExplanation = false;
+const quizBox = document.getElementById("quizBox");
+const nextBtn = document.getElementById("nextBtn");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+
+function showQuestion() {
+  const q = quizData[current];
+  updateProgress();
+  quizBox.innerHTML = `
+    <div class='question'>${q.q}</div>
+    <div class='choices'></div>
+    <div class='explanation' id='explanationBox'></div>
+  `;
+  const choicesContainer = quizBox.querySelector(".choices");
+  q.c.forEach((choice, i) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = choice;
+    btn.addEventListener("click", () => selectChoice(i));
+    choicesContainer.appendChild(btn);
+  });
+  nextBtn.style.display = "none";
+  selected = null;
+  showingExplanation = false;
+}
+
+function selectChoice(i) {
+  if (showingExplanation) return;
+
+  const q = quizData[current];
+  const buttons = document.querySelectorAll(".choice");
+  const expBox = document.getElementById("explanationBox");
+  const correct = i === q.a;
+
+  if (correct) score++;
+
+  buttons.forEach((btn, idx) => {
+    btn.disabled = true;
+
+    if (idx === q.a) {
+      btn.classList.add("correct");
+    }
+
+    if (idx === i && idx !== q.a) {
+      btn.classList.add("incorrect");
+    }
+  });
+
+  expBox.innerHTML = `<strong>${correct ? "✅ Correct!" : "❌ Incorrect."}</strong><br>${q.e}`;
+  expBox.style.display = "block";
+  nextBtn.style.display = "inline-block";
+  showingExplanation = true;
+}
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current < quizData.length) showQuestion();
+  else showResult();
+});
+
+function updateProgress() {
+  const percent = (current / quizData.length) * 100;
+  progressBar.style.width = percent + "%";
+  progressText.textContent = `Question ${current + 1} of ${quizData.length}`;
+}
+
+function getStarRating(percent) {
+  if (percent === 100) return "⭐️⭐️⭐️";
+  else if (percent >= 90) return "⭐️⭐️☆";
+  else if (percent >= 80) return "⭐️☆☆";
+  else return "☆☆☆";
+}
+
+let resultSent = false;
+
+function showResult() {
+  progressBar.style.width = "100%";
+  progressText.textContent = "Quiz Completed";
+
+  const percent = Math.round((score / quizData.length) * 100);
+  const passed = percent >= 80;
+
+  quizBox.innerHTML = `
+    <div class='stars'>${getStarRating(percent)}</div>
+    <div class='result'>You scored ${score}/${quizData.length} (${percent}%)</div>
+    <p id="saveStatus" style="color:#174ea6;font-weight:600;margin-top:10px;">Saving progress...</p>
+    <div class='quiz-nav'>
+      <button class='quiz-btn' id='backBtn' disabled>⬅ Back</button>
+      <button class='quiz-btn' id='retryBtn' disabled>🔁 Retry</button>
+      <button class='quiz-btn primary' id='nextLessonBtn' disabled>➡ Next Lesson</button>
+    </div>
+  `;
+
+  nextBtn.style.display = "none";
+
+  if (!resultSent) {
+    resultSent = true;
+    window.parent.postMessage({ type: "quizResult", score: percent, passed }, "*");
+  }
+
+  setTimeout(() => {
+    const status = document.getElementById("saveStatus");
+    const backBtn = document.getElementById("backBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const nextLessonBtn = document.getElementById("nextLessonBtn");
+
+    if (status) status.textContent = passed
+      ? "Progress sent. You may proceed after it is saved."
+      : "Attempt recorded. Retake the quiz to unlock the next lesson.";
+
+    if (backBtn) backBtn.disabled = false;
+    if (retryBtn) retryBtn.disabled = false;
+    if (nextLessonBtn) nextLessonBtn.disabled = !passed;
+
+    if (retryBtn) retryBtn.addEventListener("click", retryQuiz);
+    if (backBtn) backBtn.addEventListener("click", () =>
+      window.parent.postMessage({ type: "quizBack" }, "*")
+    );
+    if (nextLessonBtn) nextLessonBtn.addEventListener("click", () => {
+      if (passed) window.parent.postMessage({ type: "quizNextLesson" }, "*");
+    });
+  }, 1200);
+}
+
+function retryQuiz() {
+  resultSent = false;
+  current = 0;
+  score = 0;
+  showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>
