@@ -1,0 +1,12 @@
+{
+  "courseId": "chem003",
+  "subjectId": "CHEM003",
+  "title": "Biochemistry",
+  "repository": "sasaki0301/BioChem",
+  "version": "0.1.0",
+  "access": "free",
+  "contentRoot": "content/courses/chem003",
+  "lessonPathPattern": "chapters/{chapter}/lessons/{lesson}.html",
+  "quizPathPattern": "chapters/{chapter}/quizzes/{lesson}.quiz.html",
+  "rootHtmlPreserved": true
+}
