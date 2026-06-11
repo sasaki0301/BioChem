@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6 – Lesson 2: Classification and Types of Enzymes</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
+    margin: 0;
+    padding: 35px 22px;
+    color: #222;
+    line-height: 1.7;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    color: #136f63;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  h2 {
+    color: #136f63;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin: 1.2em 0 0.55em;
+  }
+
+  h3 {
+    color: #174ea6;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin: 0.8em 0 0.45em;
+  }
+
+  p {
+    margin: 0.65em 0;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 0 28px;
+    padding: 0;
+  }
+
+  img,
+  picture,
+  svg,
+  video,
+  canvas,
+  iframe,
+  embed,
+  object {
+    max-width: 100%;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    height: auto;
+  }
+
+  .lesson-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section {
+    margin: 24px auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    max-width: 950px;
+  }
+
+  .concept-box,
+  .quick-check,
+  .activity,
+  .key-terms {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+
+  .concept-box {
+    background: #fff7e6;
+    border-left: 5px solid #ffb100;
+  }
+
+  .quick-check {
+    background: #eef3ff;
+    border-left: 5px solid #174ea6;
+  }
+
+  .activity {
+    background: #f9fbff;
+    border-left: 5px solid #136f63;
+  }
+
+  .key-terms {
+    background: #f8fcff;
+    border-left: 5px solid #2b7de9;
+    margin-top: 18px;
+  }
+
+  .answer {
+    display: none;
+    margin-top: 10px;
+    background: #eef3ff;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .toggle-btn,
+  .quiz-button {
+    background: #136f63;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 10px;
+  }
+
+  .toggle-btn:hover,
+  .quiz-button:hover {
+    background: #0f5b52;
+    transform: translateY(-1px);
+  }
+
+  .quiz-button {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 22px;
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f3f7ff;
+    color: #174ea6;
+  }
+
+  .reaction-scheme,
+  .media-block,
+  .video-block,
+  .simulation-block,
+  .image-block {
+    background: #f7fbff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px dashed #d8e9ff;
+    max-width: 100%;
+  }
+
+  .reaction-scheme svg,
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lesson-image,
+  figure img,
+  .image-block img {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    border-radius: 10px;
+    margin: 16px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  figure {
+    margin: 18px auto;
+    text-align: center;
+  }
+
+  figure img {
+    margin-bottom: 8px;
+  }
+
+  .caption,
+  figcaption {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+  }
+
+  iframe,
+  video,
+  .media-frame {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    min-height: 260px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 16px auto;
+    background: #fff;
+  }
+
+  .simulation-frame,
+  .simulation-block iframe,
+  iframe[src*="phet"],
+  iframe[src*="simulation"] {
+    max-width: 900px;
+    aspect-ratio: 4 / 3;
+    min-height: 420px;
+  }
+
+  .quiz-actions {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 720px) {
+    body {
+      font-size: 16px;
+      padding: 20px 14px;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+    }
+
+    .section {
+      padding: 18px 16px;
+      margin: 18px auto;
+      border-radius: 12px;
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+    }
+
+    .reaction-scheme,
+    .media-block,
+    .video-block,
+    .simulation-block,
+    .image-block {
+      padding: 14px;
+      margin: 16px 0;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      min-width: 150px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 220px;
+    }
+
+    .simulation-frame,
+    .simulation-block iframe,
+    iframe[src*="phet"],
+    iframe[src*="simulation"] {
+      min-height: 360px;
+    }
+
+    .toggle-btn,
+    .quiz-button {
+      max-width: 100%;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 420px) {
+    body {
+      padding: 16px 10px;
+    }
+
+    .section {
+      padding: 16px 12px;
+    }
+
+    .concept-box,
+    .quick-check,
+    .activity,
+    .key-terms {
+      padding: 12px 14px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 200px;
+    }
+  }
+</style>
+</head>
+
+<body>
+<h1>Classification and Types of Enzymes</h1>
+
+<div class="section">
+<h2>Overview</h2>
+<ul>
+<li>Why enzymes are classified</li>
+<li>The major classes of enzymes</li>
+<li>How enzyme names are formed</li>
+<li>Examples of enzymes in the human body</li>
+<li>Applications of enzyme classification in biology and medicine</li>
+</ul>
+
+<div class="concept-box">
+<strong>Big Idea:</strong> Thousands of enzymes exist in living organisms. Scientists classify them according to the type of reaction they catalyze.
+</div>
+</div>
+
+<div class="section">
+<h2>1. Why Are Enzymes Classified?</h2>
+
+<p>
+Scientists have identified thousands of enzymes in living organisms. Because there are so many enzymes, a systematic way of organizing them is needed.
+</p>
+
+<p>
+Rather than classifying enzymes by where they are found, scientists classify them according to the chemical reactions they catalyze.
+</p>
+
+<p>
+For example, digestive enzymes and cellular enzymes may be found in different parts of the body, but they can belong to the same enzyme class if they perform the same type of reaction.
+</p>
+
+<div class="concept-box">
+<strong>Think About It:</strong> Books in a library are organized by subject rather than color. Similarly, enzymes are classified by function rather than location.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why do scientists classify enzymes based on reactions rather than location?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Classification by reaction type provides a consistent way to organize enzymes because the same type of reaction may occur in different organisms and tissues.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>2. Enzyme Naming Convention</h2>
+
+<p>
+Most enzyme names end with the suffix <strong>-ase</strong>.
+</p>
+
+<p>
+Many enzymes are named after the substrate they act upon.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>Substrate</th>
+<th>Enzyme</th>
+<th>Function</th>
+</tr>
+<tr>
+<td>Starch</td>
+<td>Amylase</td>
+<td>Breaks down starch</td>
+</tr>
+<tr>
+<td>Lactose</td>
+<td>Lactase</td>
+<td>Breaks down lactose</td>
+</tr>
+<tr>
+<td>Lipids</td>
+<td>Lipase</td>
+<td>Breaks down fats</td>
+</tr>
+<tr>
+<td>Proteins</td>
+<td>Protease</td>
+<td>Breaks down proteins</td>
+</tr>
+</table>
+</div>
+
+<p>
+However, some enzymes have historical names that do not follow this rule.
+</p>
+
+<p>
+Examples include:
+</p>
+
+<ul>
+<li>Pepsin</li>
+<li>Trypsin</li>
+<li>Chymotrypsin</li>
+</ul>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> If an enzyme breaks down cellulose, what would its likely name be?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Cellulase, because enzyme names commonly end in "-ase" and are often named after their substrate.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>3. The Six Major Classes of Enzymes</h2>
+
+<p>
+The International Union of Biochemistry and Molecular Biology (IUBMB) classifies enzymes into six major groups based on the reactions they catalyze.
+</p>
+
+<div class="image-block">
+<img class="lesson-image" src="https://i.imgur.com/F6n7JtH.png" alt="Major enzyme classification chart">
+<p class="caption"><em>Scientists classify enzymes according to the reactions they catalyze.</em></p>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>Class</th>
+<th>Function</th>
+</tr>
+<tr>
+<td>Oxidoreductases</td>
+<td>Transfer electrons</td>
+</tr>
+<tr>
+<td>Transferases</td>
+<td>Transfer functional groups</td>
+</tr>
+<tr>
+<td>Hydrolases</td>
+<td>Break bonds using water</td>
+</tr>
+<tr>
+<td>Lyases</td>
+<td>Add or remove groups without hydrolysis</td>
+</tr>
+<tr>
+<td>Isomerases</td>
+<td>Rearrange atoms within molecules</td>
+</tr>
+<tr>
+<td>Ligases</td>
+<td>Join molecules together using ATP</td>
+</tr>
+</table>
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which enzyme class would most digestive enzymes belong to?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Most digestive enzymes belong to the hydrolase class because they break large molecules into smaller ones using water.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>4. Oxidoreductases</h2>
+
+<p>
+Oxidoreductases catalyze oxidation-reduction (redox) reactions involving electron transfer.
+</p>
+
+<p>
+These reactions are extremely important in cellular respiration and energy production.
+</p>
+
+<div class="concept-box">
+<strong>Example:</strong> Dehydrogenase enzymes remove hydrogen atoms and electrons from molecules during cellular respiration.
+</div>
+
+<p>
+Without oxidoreductases, cells would not be able to efficiently produce ATP.
+</p>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why are oxidoreductases important for energy production?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+They facilitate electron transfer reactions that ultimately drive ATP production.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>5. Transferases</h2>
+
+<p>
+Transferases transfer functional groups from one molecule to another.
+</p>
+
+<p>
+These groups may include:
+</p>
+
+<ul>
+<li>Phosphate groups</li>
+<li>Methyl groups</li>
+<li>Amino groups</li>
+</ul>
+
+<div class="concept-box">
+<strong>Example:</strong> Hexokinase transfers a phosphate group from ATP to glucose during glycolysis.
+</div>
+
+<p>
+This reaction is one of the first steps in cellular energy production.
+</p>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which enzyme class would add a phosphate group to a molecule?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Transferases, specifically kinases, transfer phosphate groups.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>6. Hydrolases</h2>
+
+<p>
+Hydrolases catalyze reactions that break chemical bonds by adding water.
+</p>
+
+<p>
+This process is called hydrolysis.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>Enzyme</th>
+<th>Substrate</th>
+<th>Product</th>
+</tr>
+<tr>
+<td>Amylase</td>
+<td>Starch</td>
+<td>Simple sugars</td>
+</tr>
+<tr>
+<td>Lipase</td>
+<td>Lipids</td>
+<td>Fatty acids and glycerol</td>
+</tr>
+<tr>
+<td>Protease</td>
+<td>Proteins</td>
+<td>Amino acids</td>
+</tr>
+</table>
+</div>
+
+<div class="concept-box">
+<strong>Important:</strong> Most digestive enzymes are hydrolases.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why is water necessary for hydrolysis reactions?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Water participates directly in breaking chemical bonds during hydrolysis.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>7. Lyases, Isomerases, and Ligases</h2>
+
+<h3>Lyases</h3>
+
+<p>
+Lyases add or remove groups from molecules without using water or oxidation.
+</p>
+
+<p>
+They often form or break double bonds.
+</p>
+
+<h3>Isomerases</h3>
+
+<p>
+Isomerases rearrange atoms within a molecule to form an isomer.
+</p>
+
+<div class="concept-box">
+<strong>Example:</strong> During glycolysis, phosphoglucose isomerase converts glucose-6-phosphate into fructose-6-phosphate.
+</div>
+
+<h3>Ligases</h3>
+
+<p>
+Ligases join two molecules together using energy from ATP.
+</p>
+
+<div class="concept-box">
+<strong>Example:</strong> DNA ligase joins DNA fragments during DNA replication and repair.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Which enzyme class would help repair a broken DNA strand?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Ligases, particularly DNA ligase, join DNA fragments together.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>8. The Newer Seventh Class: Translocases</h2>
+
+<p>
+In 2018, the IUBMB introduced a seventh enzyme class called translocases.
+</p>
+
+<p>
+Translocases move ions or molecules across biological membranes.
+</p>
+
+<div class="concept-box">
+<strong>Example:</strong> ATP synthase helps transport protons across membranes while producing ATP.
+</div>
+
+<p>
+Although newer than the traditional six classes, translocases are essential for cellular transport and energy production.
+</p>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> What is the primary function of translocases?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+They transport molecules or ions across biological membranes.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>9. Why Enzyme Classification Matters</h2>
+
+<p>
+Understanding enzyme classification helps scientists:
+</p>
+
+<ul>
+<li>Predict enzyme function</li>
+<li>Study metabolic pathways</li>
+<li>Develop medicines</li>
+<li>Diagnose diseases</li>
+<li>Design industrial applications</li>
+</ul>
+
+<p>
+For example, many drugs work by inhibiting specific enzyme classes involved in disease processes.
+</p>
+
+<div class="concept-box">
+<strong>Real-World Application:</strong> Many cholesterol-lowering drugs target enzymes involved in cholesterol synthesis.
+</div>
+</div>
+
+<div class="section">
+<h2>10. Video Explanation</h2>
+
+<div class="video-block">
+<iframe src="https://www.youtube.com/embed/XM6YwJc8H7g" title="Enzyme Classification" allowfullscreen></iframe>
+</div>
+
+</div>
+
+<div class="section">
+<h2>11. Practice Activities</h2>
+
+<div class="activity">
+<h3>Activity 1: Classification Challenge</h3>
+
+<p>
+A scientist discovers an enzyme that breaks proteins into amino acids by adding water. Which enzyme class does it belong to? Explain.
+</p>
+
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+
+<div class="answer">
+The enzyme belongs to the hydrolase class because it uses water to break chemical bonds.
+</div>
+</div>
+
+<div class="activity">
+<h3>Activity 2: Real-Life Application</h3>
+
+<p>
+A patient has difficulty digesting fats. Which enzyme is most likely deficient and what enzyme class does it belong to?
+</p>
+
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+
+<div class="answer">
+The enzyme is likely lipase. Lipase belongs to the hydrolase class because it breaks down fats through hydrolysis.
+</div>
+</div>
+
+<div class="activity">
+<h3>Activity 3: Metabolism Connection</h3>
+
+<p>
+Hexokinase transfers a phosphate group from ATP to glucose. Which enzyme class does it belong to and why?
+</p>
+
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+
+<div class="answer">
+Hexokinase is a transferase because it transfers a phosphate group from one molecule to another.
+</div>
+</div>
+
+<div class="activity">
+<h3>Activity 4: Higher-Order Challenge</h3>
+
+<p>
+DNA ligase becomes nonfunctional in a cell. Predict two possible consequences during DNA replication.
+</p>
+
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+
+<div class="answer">
+DNA fragments may not join properly, leading to incomplete DNA replication and increased risk of mutations or cell death.
+</div>
+</div>
+
+</div>
+
+<div class="section">
+<h2>12. Key Terms</h2>
+
+<div class="key-terms">
+<ul>
+<li>Enzyme Classification</li>
+<li>Oxidoreductase</li>
+<li>Transferase</li>
+<li>Hydrolase</li>
+<li>Lyase</li>
+<li>Isomerase</li>
+<li>Ligase</li>
+<li>Translocase</li>
+<li>Hydrolysis</li>
+<li>DNA Ligase</li>
+<li>Hexokinase</li>
+<li>ATP Synthase</li>
+</ul>
+</div>
+
+</div>
+
+<div class="quiz-actions">
+<button class="quiz-button" id="quizBtn">
+Take Lesson Quiz →
+</button>
+</div>
+
+
+<div style="text-align:center;">
+<button class="quiz-button" id="quizBtn">Take Lesson Quiz →</button>
+</div>
+
+<script>
+function toggleAnswer(btn){
+  const ans = btn.nextElementSibling;
+  ans.style.display = ans.style.display==='block'?'none':'block';
+}
+
+document.getElementById("quizBtn").addEventListener("click",()=>{
+  window.parent.postMessage({type:'openQuiz',quiz:'chapter5_lesson1_quiz.html'},'*');
+});
+</script>
+
+</body>
+</html>
