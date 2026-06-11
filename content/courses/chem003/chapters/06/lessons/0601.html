@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6 – Lesson 1: Introduction to Enzymes</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f3fbf8, #f6f9ff);
+    margin: 0;
+    padding: 35px 22px;
+    color: #222;
+    line-height: 1.7;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    color: #136f63;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  h2 {
+    color: #136f63;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin: 1.2em 0 0.55em;
+  }
+
+  h3 {
+    color: #174ea6;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin: 0.8em 0 0.45em;
+  }
+
+  p {
+    margin: 0.65em 0;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 0 28px;
+    padding: 0;
+  }
+
+  img,
+  picture,
+  svg,
+  video,
+  canvas,
+  iframe,
+  embed,
+  object {
+    max-width: 100%;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    height: auto;
+  }
+
+  .lesson-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section {
+    margin: 24px auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    max-width: 950px;
+  }
+
+  .concept-box,
+  .quick-check,
+  .activity,
+  .key-terms {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+
+  .concept-box {
+    background: #fff7e6;
+    border-left: 5px solid #ffb100;
+  }
+
+  .quick-check {
+    background: #eef3ff;
+    border-left: 5px solid #174ea6;
+  }
+
+  .activity {
+    background: #f9fbff;
+    border-left: 5px solid #136f63;
+  }
+
+  .key-terms {
+    background: #f8fcff;
+    border-left: 5px solid #2b7de9;
+    margin-top: 18px;
+  }
+
+  .answer {
+    display: none;
+    margin-top: 10px;
+    background: #eef3ff;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .toggle-btn,
+  .quiz-button {
+    background: #136f63;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 10px;
+  }
+
+  .toggle-btn:hover,
+  .quiz-button:hover {
+    background: #0f5b52;
+    transform: translateY(-1px);
+  }
+
+  .quiz-button {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 22px;
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f3f7ff;
+    color: #174ea6;
+  }
+
+  .reaction-scheme,
+  .media-block,
+  .video-block,
+  .simulation-block,
+  .image-block {
+    background: #f7fbff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px dashed #d8e9ff;
+    max-width: 100%;
+  }
+
+  .reaction-scheme svg,
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lesson-image,
+  figure img,
+  .image-block img {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    border-radius: 10px;
+    margin: 16px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  figure {
+    margin: 18px auto;
+    text-align: center;
+  }
+
+  figure img {
+    margin-bottom: 8px;
+  }
+
+  .caption,
+  figcaption {
+    font-size: 15px;
+    color: #444;
+    margin-top: 6px;
+  }
+
+  iframe,
+  video,
+  .media-frame {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    min-height: 260px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 16px auto;
+    background: #fff;
+  }
+
+  .simulation-frame,
+  .simulation-block iframe,
+  iframe[src*="phet"],
+  iframe[src*="simulation"] {
+    max-width: 900px;
+    aspect-ratio: 4 / 3;
+    min-height: 420px;
+  }
+
+  .quiz-actions {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 720px) {
+    body {
+      font-size: 16px;
+      padding: 20px 14px;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+    }
+
+    .section {
+      padding: 18px 16px;
+      margin: 18px auto;
+      border-radius: 12px;
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+    }
+
+    .reaction-scheme,
+    .media-block,
+    .video-block,
+    .simulation-block,
+    .image-block {
+      padding: 14px;
+      margin: 16px 0;
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      min-width: 150px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 220px;
+    }
+
+    .simulation-frame,
+    .simulation-block iframe,
+    iframe[src*="phet"],
+    iframe[src*="simulation"] {
+      min-height: 360px;
+    }
+
+    .toggle-btn,
+    .quiz-button {
+      max-width: 100%;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: 420px) {
+    body {
+      padding: 16px 10px;
+    }
+
+    .section {
+      padding: 16px 12px;
+    }
+
+    .concept-box,
+    .quick-check,
+    .activity,
+    .key-terms {
+      padding: 12px 14px;
+    }
+
+    iframe,
+    video,
+    .media-frame {
+      min-height: 200px;
+    }
+  }
+</style>
+</head>
+
+<body>
+<h1>Introduction to Enzymes</h1>
+
+<div class="section">
+<h2>Overview</h2>
+<ul>
+<li>What enzymes are</li>
+<li>Why living organisms need enzymes</li>
+<li>Activation energy</li>
+<li>Enzyme specificity</li>
+<li>Enzyme-substrate complex</li>
+<li>Real-world importance of enzymes</li>
+</ul>
+
+<div class="concept-box">
+<strong>Big Idea:</strong> Enzymes are biological catalysts that make life possible by speeding up chemical reactions without being used up.
+</div>
+</div>
+
+<div class="section">
+<h2>1. What Are Enzymes?</h2>
+
+<p>
+Enzymes are biological molecules that speed up chemical reactions inside living organisms. Most enzymes are proteins, although some RNA molecules can also act as catalysts.
+</p>
+
+<p>
+A catalyst is a substance that increases the rate of a chemical reaction without being consumed. This means enzymes can be used again and again after each reaction.
+</p>
+
+<div class="concept-box">
+<strong>Example:</strong> Amylase is an enzyme in saliva that helps break down starch into simpler sugars.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why are enzymes considered catalysts?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Because they speed up chemical reactions without being used up or permanently changed.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>2. Why Living Organisms Need Enzymes</h2>
+
+<p>
+Cells carry out thousands of chemical reactions every second. These reactions include digestion, energy production, DNA copying, waste removal, and the building of new molecules.
+</p>
+
+<p>
+Many reactions would happen too slowly at normal body temperature. The body cannot simply raise its temperature to speed reactions because excessive heat can damage cells and denature proteins.
+</p>
+
+<div class="concept-box">
+<strong>Simple analogy:</strong> If a reaction is like pushing a heavy rock over a hill, an enzyme makes the hill lower so the reaction can happen more easily.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why can’t the body just use high temperature to speed up reactions?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+High temperature can damage cells and denature proteins, including enzymes.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>3. Activation Energy</h2>
+
+<p>
+Before a chemical reaction can occur, molecules must overcome an energy barrier called <strong>activation energy</strong>.
+</p>
+
+<p>
+Activation energy is the minimum energy needed to start a reaction. Enzymes lower this energy requirement, allowing reactions to happen faster under normal biological conditions.
+</p>
+
+<div class="image-block">
+<img class="lesson-image" src="https://i.imgur.com/Bqz2bPA.png" alt="Enzyme lowering activation energy diagram">
+<p class="caption"><em>Enzymes lower activation energy, allowing reactions to occur more easily.</em></p>
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Do enzymes add energy to reactions?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+No. Enzymes lower the activation energy needed for the reaction to proceed.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>4. Enzyme Specificity</h2>
+
+<p>
+Enzymes are highly specific. This means each enzyme usually works on one substrate or a small group of closely related substrates.
+</p>
+
+<p>
+A <strong>substrate</strong> is the molecule that an enzyme acts on.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Enzyme</th><th>Substrate</th><th>Function</th></tr>
+<tr><td>Amylase</td><td>Starch</td><td>Breaks starch into simpler sugars</td></tr>
+<tr><td>Lactase</td><td>Lactose</td><td>Breaks lactose into glucose and galactose</td></tr>
+<tr><td>Lipase</td><td>Lipids</td><td>Breaks fats into fatty acids and glycerol</td></tr>
+<tr><td>Protease</td><td>Proteins</td><td>Breaks proteins into peptides or amino acids</td></tr>
+</table>
+</div>
+
+<div class="concept-box">
+<strong>Real-life connection:</strong> People with lactose intolerance do not produce enough lactase, so lactose is not digested properly.
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why can’t amylase digest proteins?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Because amylase is specific for starch and does not recognize proteins as its substrate.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>5. Enzyme-Substrate Complex</h2>
+
+<p>
+When an enzyme binds to its substrate, they form a temporary structure called the <strong>enzyme-substrate complex</strong>.
+</p>
+
+<p>
+After the reaction occurs, the product is released and the enzyme is free to act again.
+</p>
+
+<div class="concept-box">
+<strong>General reaction:</strong><br>
+Enzyme + Substrate → Enzyme-Substrate Complex → Enzyme + Product
+</div>
+
+<div class="image-block">
+<img class="lesson-image" src="https://i.imgur.com/F2vTjE8.png" alt="Enzyme substrate complex diagram">
+<p class="caption"><em>The enzyme binds the substrate, forms a complex, releases the product, and remains reusable.</em></p>
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> What happens to the enzyme after the product is released?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+The enzyme remains unchanged and can be used again in another reaction.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>6. Importance of Enzymes in Living Organisms</h2>
+
+<p>
+Enzymes are involved in almost every biological process. Without enzymes, reactions needed for life would be too slow.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Biological Process</th><th>Example Enzyme</th><th>Role</th></tr>
+<tr><td>Digestion</td><td>Amylase, lipase, protease</td><td>Break down food molecules</td></tr>
+<tr><td>Energy production</td><td>Respiratory enzymes</td><td>Help produce ATP</td></tr>
+<tr><td>DNA replication</td><td>DNA polymerase</td><td>Copies DNA</td></tr>
+<tr><td>Protection</td><td>Catalase</td><td>Breaks down harmful hydrogen peroxide</td></tr>
+</table>
+</div>
+
+<div class="quick-check">
+<strong>Quick Check:</strong> Why would life be difficult without enzymes?<br>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+Many essential reactions would occur too slowly to support life.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>7. Real-World Applications of Enzymes</h2>
+
+<ul>
+<li><strong>Medicine:</strong> enzymes are used in blood tests, diagnostics, and drug development.</li>
+<li><strong>Food industry:</strong> enzymes help in cheese production, bread making, and fermentation.</li>
+<li><strong>Biotechnology:</strong> DNA polymerase is used in PCR to copy DNA.</li>
+<li><strong>Household products:</strong> detergent enzymes break down protein, starch, and fat stains.</li>
+</ul>
+
+<div class="concept-box">
+<strong>Application:</strong> Enzymes are useful because they are specific, efficient, and work under mild conditions.
+</div>
+</div>
+
+<div class="section">
+<h2>8. Video Explanation</h2>
+<div class="video-block">
+<iframe src="https://www.youtube.com/embed/qgVFkRn8f10" title="Introduction to Enzymes" allowfullscreen></iframe>
+</div>
+</div>
+
+<div class="section">
+<h2>9. Practice Activities</h2>
+
+<div class="activity">
+<h3>Activity 1: Correct the Statement</h3>
+<p>A student says, “Enzymes are used up during reactions.” Is this correct? Explain.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+The statement is incorrect. Enzymes are not consumed during reactions. They help convert substrates into products and can be reused afterward.
+</div>
+</div>
+
+<div class="activity">
+<h3>Activity 2: Lactose Intolerance Scenario</h3>
+<p>A person experiences gas and bloating after drinking milk. Answer the following:</p>
+<ol>
+<li>Which enzyme may be lacking?</li>
+<li>What substrate is not being digested properly?</li>
+<li>Why do symptoms occur?</li>
+</ol>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+<ol>
+<li>The enzyme is lactase.</li>
+<li>The substrate is lactose.</li>
+<li>Symptoms occur because undigested lactose is fermented by intestinal bacteria, producing gas and discomfort.</li>
+</ol>
+</div>
+</div>
+
+<div class="activity">
+<h3>Activity 3: ATP Production Problem</h3>
+<p>If an enzyme needed for ATP production stops working, predict two possible effects on the cell.</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+The cell may produce less ATP, and energy-dependent processes such as active transport, repair, growth, and movement may slow down or stop.
+</div>
+</div>
+
+<div class="activity">
+<h3>Activity 4: Challenge Reasoning</h3>
+<p>A scientist discovers a biological molecule that speeds up a reaction and remains unchanged afterward. Why might it be classified as an enzyme?</p>
+<button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+<div class="answer">
+It behaves like a catalyst because it increases reaction rate without being consumed. If it works in a biological system, it may be classified as an enzyme.
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>10. Key Terms</h2>
+<div class="key-terms">
+<ul>
+<li><strong>Enzyme:</strong> Biological catalyst that speeds up reactions.</li>
+<li><strong>Catalyst:</strong> Substance that increases reaction rate without being consumed.</li>
+<li><strong>Activation Energy:</strong> Minimum energy needed to start a reaction.</li>
+<li><strong>Substrate:</strong> Molecule acted upon by an enzyme.</li>
+<li><strong>Product:</strong> Molecule formed after the reaction.</li>
+<li><strong>Enzyme-Substrate Complex:</strong> Temporary binding of enzyme and substrate.</li>
+<li><strong>Specificity:</strong> Ability of an enzyme to act on a particular substrate.</li>
+</ul>
+</div>
+</div>
+<div style="text-align:center;">
+<button class="quiz-button" id="quizBtn">Take Lesson Quiz →</button>
+</div>
+
+<script>
+function toggleAnswer(btn){
+  const ans = btn.nextElementSibling;
+  ans.style.display = ans.style.display==='block'?'none':'block';
+}
+
+document.getElementById("quizBtn").addEventListener("click",()=>{
+  window.parent.postMessage({type:'openQuiz',quiz:'chapter5_lesson1_quiz.html'},'*');
+});
+</script>
+
+</body>
+</html>
